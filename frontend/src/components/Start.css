@@ -39,6 +39,7 @@ html, body {
     display: flex;
     height: 90%;
     transition: opacity 0.5s ease;
+    z-index: 10;
   }
   
   .background-image.fade {
@@ -91,4 +92,18 @@ html, body {
   .final-text.show {
     display: block;
   }
+
+  @font-face {
+    font-family: 'Kalam';
+    src: url(../font/Kalam.ttf);
+  }
   
+  .click-to-enter{
+    position: absolute;
+    bottom: 40px; 
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5em;
+    cursor: pointer; 
+    font-family: Kalam;
+  }
