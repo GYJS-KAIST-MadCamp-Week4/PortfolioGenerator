@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Start.css'; 
 
 const Start = () => {
   const [showInitialText, setShowInitialText] = useState(true);
-  const [showGradientBackground, setShowGradientBackground] = useState(false); // 상태 변수 정의
+  const [showGradientBackground, setShowGradientBackground] = useState(false); 
   const [showFinalText, setShowFinalText] = useState(false);
   const [showClickToEnter, setShowClickToEnter] = useState(false);
   const [typedText, setTypedText] = useState('');
   const text = "HAEJWO;";
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (showFinalText) {
@@ -49,8 +51,14 @@ const Start = () => {
     };
   }, []);
 
+  const handleScreenClick = () => {
+    if (showClickToEnter) {
+      navigate("/login");
+    }
+  };
+
   return (
-    <div className="start-page">
+    <div className="start-page" onClick = {handleScreenClick}>
       {showInitialText && <div className="initial-text">개발자 포트폴리오 사이트 누가 대신 만들어줘!</div>}
       <div className={`background-image ${!showInitialText ? 'fade' : ''}`} />
       {showFinalText && showGradientBackground &&
@@ -58,7 +66,7 @@ const Start = () => {
           {typedText}
           <span className='cursor'/>
         </div>}
-      {showClickToEnter && <Link to="/login"><div className="click-to-enter">click to enter</div></Link> }
+      {showClickToEnter && <div className="click-to-enter">click to enter</div>}
     </div>
   );
 };
