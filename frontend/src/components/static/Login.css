@@ -31,6 +31,22 @@
     margin-bottom: 2rem;
 }
 
+@font-face {
+    font-family: 'Nico';
+    src: url(../../font/Nico.ttf);
+}
+
+.header-text {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+    font-size: 30px; 
+    font-family: 'Nico';
+    color: #367AFF; 
+}
+
+
 .header-button {
     background: none;
     border: none;
@@ -55,20 +71,16 @@
     bottom: -10px;
     left: 0;
     transition: background-color 0.3s;
+    opacity: 0; 
 }
 
-.header-button:hover::after,
-.header-button:focus::after {
-    background: rgba(54, 122, 255, 0.39);
+.header-button.active::after {
+    background: #367AFF; 
+    opacity: 1; 
 }
 
 .active {
     color: #367AFF;
-    font-weight: bold;
-}
-
-.active::after {
-    background: #367AFF;
     font-weight: bold;
 }
 

@@ -5,13 +5,13 @@ import './static/Login.css';
 function Login() {
     const [active, setActive] = useState('login');
 
-
     return (
       <div className="split-screen">
         <div className="left-side">
           <div className="background-image"></div> 
         </div>
         <div className="right-side">
+          <div className="header-text">HAEJWO</div> 
           <div className="login-container">
             <div className="login-header">
               <button 
@@ -35,6 +35,7 @@ function Login() {
               </form>
             ) : (
               <form className="signup-form">
+                <input type="text" placeholder="Nickname" />
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />
                 <input type="password" placeholder="Confirm Password" />
