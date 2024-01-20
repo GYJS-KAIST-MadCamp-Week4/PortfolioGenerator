@@ -2,7 +2,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* 스크롤바를 숨깁니다 */
+  overflow: hidden; 
 }
 
 .start-page {
@@ -14,7 +14,7 @@ html, body {
 
   @font-face {
     font-family: 'NanumSquareRound';
-    src: url(../font/Nanum.ttf);
+    src: url(../../font/Nanum.ttf);
   }
   
   .initial-text {
@@ -30,10 +30,11 @@ html, body {
     white-space: nowrap;
   }
   
-  .background-image {
-    background-image: url('../img/background_start.png'); /* 이미지 경로를 여기에 지정하세요. */
+  .background-image-start {
+    background-image: url('../../img/background_start.png'); 
     background-size: contain;
     background-position: center;
+    background-repeat: no-repeat;
     opacity: 1;
     position: relative;
     display: flex;
@@ -42,7 +43,7 @@ html, body {
     z-index: 10;
   }
   
-  .background-image.fade {
+  .background-image-start.fade {
     opacity: 0.2; 
   }
 
@@ -57,7 +58,7 @@ html, body {
 
   @font-face {
     font-family: 'NovaMono';
-    src: url(../font/NovaMono.ttf);
+    src: url(../../font/NovaMono.ttf);
   }
   
   .final-text {
@@ -95,7 +96,7 @@ html, body {
 
   @font-face {
     font-family: 'Kalam';
-    src: url(../font/Kalam.ttf);
+    src: url(../../font/Kalam.ttf);
   }
   
   .click-to-enter{
@@ -106,4 +107,16 @@ html, body {
     font-size: 1.5em;
     cursor: pointer; 
     font-family: Kalam;
+    animation: fadeIn 1s ease-in forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      visibility: hidden;
+    }
+    to {
+      opacity: 1;
+      visibility: visible;
+    }
   }

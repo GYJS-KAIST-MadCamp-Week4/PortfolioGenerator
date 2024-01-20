@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Start.css'; 
+import './static/Start.css'; 
 
 const Start = () => {
   const [showInitialText, setShowInitialText] = useState(true);
@@ -26,7 +26,7 @@ const Start = () => {
               return typedText;
             }
           });
-        }, 550);
+        }, 500);
         
         return () => clearInterval(intervalId);
       }, 300); 
@@ -43,7 +43,7 @@ const Start = () => {
 
     const gradientTimer = setTimeout(() => {
       setShowFinalText(true); 
-    }, 2000); 
+    }, 1000); 
 
     return () => {
       clearTimeout(initialTextTimer);
@@ -60,7 +60,7 @@ const Start = () => {
   return (
     <div className="start-page" onClick = {handleScreenClick}>
       {showInitialText && <div className="initial-text">개발자 포트폴리오 사이트 누가 대신 만들어줘!</div>}
-      <div className={`background-image ${!showInitialText ? 'fade' : ''}`} />
+      <div className={`background-image-start ${!showInitialText ? 'fade' : ''}`} />
       {showFinalText && showGradientBackground &&
         <div className={`final-text ${showFinalText ? 'show' : ''}`}>
           {typedText}
