@@ -38,6 +38,7 @@
     color: #367AFF;
 }
 
+/* 첫번째 페이지 */
 @font-face {
     font-family: 'Inter';
     src: url(../../font/Inter.ttf);
@@ -60,6 +61,7 @@
   
 .introduction .description {
     margin-bottom: 30px; 
+    color: #666;
 }
   
 .introduction .buttons {
@@ -128,7 +130,7 @@
 .section-description {
     font-size: 18px;
     line-height: 1.5; 
-    color: #333333;
+    color: #666;
     font-family: 'Inter';
     margin-bottom: 40px; 
 }
@@ -169,7 +171,7 @@
 .template-description {
     font-size: 18px;
     line-height: 1.5; 
-    color: #333333;
+    color: #666;
     font-family: 'Inter';
     margin-bottom: 40px; 
 }
@@ -204,7 +206,6 @@
     height: calc(100vh - 40px); 
     text-align: center;
     background-color: #F4F8FA; 
-    color: #333; 
     font-family: 'Inter';
 }
 
@@ -229,11 +230,28 @@
 
 .faq-section {
     display: flex; 
-    justify-content: center; 
-    flex-direction: column; 
-    margin-top: 150px;
-    margin-left: 100px;
-    margin-bottom: 180px; 
+    justify-content: center;
+    align-items: flex-start; 
+    height: 50%; 
+}
+
+.faq-title-section {
+    flex: 35%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px; 
+    margin-left: 130px;
+    margin-top: 130px;
+}
+
+.faq-card-section{
+    flex: 65%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px; 
+    margin-right: 150px;
+    margin-top: 90px;
 }
 
 .faq-title {
@@ -274,6 +292,37 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+.faq-item {
+    background-color: #E3F1FF; 
+    border-radius: 10px; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+    transition: all 0.3s ease; 
+}
+  
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer; 
+    font-family: 'Inter';
+    padding-left: 10px;
+}
+  
+.toggle-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+  
+.faq-answer {
+    padding-top: 10px; 
+    padding-left: 10px;
+    color: #484848;
+}
+  
 
 footer {
     text-align: center;

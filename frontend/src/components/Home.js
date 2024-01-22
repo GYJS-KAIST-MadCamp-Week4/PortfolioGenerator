@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SectionsContainer, Section } from 'react-fullpage';
 import { useNavigate } from 'react-router-dom';
 import './static/Home.css'; 
@@ -79,6 +79,20 @@ const Column3 = () => (
   </div>
 );
 
+const FAQItem = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="faq-item">
+      <div className="faq-question" onClick={() => setIsOpen(!isOpen)}>
+        {question}
+        <button className="toggle-button">{isOpen ? '-' : '+'}</button>
+      </div>
+      {isOpen && <div className="faq-answer">{answer}</div>}
+    </div>
+  );
+};
+
 const Column4 = () => {
   const navigate = useNavigate();
 
@@ -86,13 +100,25 @@ const Column4 = () => {
     navigate('/question');
   };
 
+  const faqs = [
+    { question: "'해줘'를 개발한 사람은 누구인가요?", answer: "'해줘'를 개발한 사람은 몰입캠프 1분반의 김가연 그리고 박진석 입니다." },
+    { question: '두 번째 질문', answer: '두 번째 답변' },
+  ];
+
   return (
     <div className="container">
       <div className="faq-section">
+      <div className="faq-title-section">
         <p className='faq-title'>Frequently Asked Questions</p>
         <div className="faq">
           <h2>자주 묻는 질문</h2>
-        </div>
+          </div>
+          </div>
+          <div className="faq-card-section">
+            {faqs.map(faq => (
+                <FAQItem key={faq.question} question={faq.question} answer={faq.answer} />
+              ))}
+          </div>
       </div>
       <div className="banner-section">
         <h2 className="banner-section-title">Create your portfolio</h2>
