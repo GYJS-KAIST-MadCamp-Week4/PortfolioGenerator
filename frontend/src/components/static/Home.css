@@ -1,0 +1,92 @@
+.header {
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+  
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    height: 50px;
+}
+
+@font-face {
+    font-family: 'Nico';
+    src: url(../../font/Nico.ttf);
+}
+  
+.navbar .logo {
+    font-weight: bold;
+    font-family: 'Nico';
+    font-size: 1.5em;
+    color: #367AFF;
+}
+  
+.navbar .menu a {
+    text-decoration: none;
+    margin-left: 30px;
+    color: #333;
+    font-weight: 500;
+}
+  
+.navbar .menu a:hover {
+    color: #367AFF;
+}
+  
+.body {
+    margin-top: 60px;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url(../../font/Inter.ttf);
+}
+
+.introduction {
+    text-align: center; 
+    padding: 100px 0; 
+}
+  
+.introduction h1 {
+    font-family: 'Inter';
+    font-size: 64px; 
+    margin-bottom: 20px; 
+    max-width: 900px;
+    margin-left: auto; 
+    margin-right: auto;
+}
+  
+@media (max-width: 900px) {
+    .introduction h1 {
+      font-size: 2em; 
+      max-width: 90%; 
+    }
+}
+
+.introduction .description {
+    margin-bottom: 40px; 
+}
+  
+.introduction .buttons {
+    display: flex;
+    justify-content: center; 
+    gap: 20px; 
+}
+  
+.introduction button {
+    padding: 10px 20px; 
+    border: none;
+    background-color: #4328EB;
+    color: #fff; 
+    cursor: pointer;
+}
+  
+.introduction button:hover {
+    opacity: 0.8; 
+}
+  
