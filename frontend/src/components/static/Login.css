@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 3rem;
+    padding: 5rem;
     background-color: #F4F4F4;
 }
   
@@ -28,7 +28,7 @@
 .login-header {
     display: flex;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 @font-face {
@@ -38,9 +38,8 @@
 
 .header-text {
     position: absolute;
-    top: 0;
-    right: 0;
-    margin: 1rem;
+    top: 1rem;
+    right: 1rem;
     font-size: 30px; 
     font-family: 'Nico';
     color: #367AFF; 
@@ -113,3 +112,13 @@
     font-family: 'Inter';
     src: url(../../font/Inter.ttf);
 }
+
+.password-error {
+    font-family: 'Inter';
+    color: red;
+    font-size: 0.8rem;
+    text-align: right;
+    position: relative;
+    top: -10px;
+  }
+  

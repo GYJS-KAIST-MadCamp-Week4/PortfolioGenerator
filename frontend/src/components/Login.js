@@ -10,6 +10,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [passwordError, setPasswordError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
@@ -23,17 +24,20 @@ const Login = () => {
       }
 
       if (password !== confirmPassword) {
-        alert('비밀번호가 일치하지 않습니다.');
+        setPasswordError('비밀번호가 일치하지 않습니다.');
         return;
+      } else{
+        setPasswordError('');
       }
 
       const newUser = { nickname, email, password };
-      console.log(JSON.stringify(newUser))
+
       setIsLoading(true);
-      const response = await fetch('http://cors-anywhere.herokuapp.com/http://localhost:5000/signup', {
+      const response = await fetch('http://localhost:5000/signup', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json;charset=utf-8',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'http://localhost:3000' 
         },
         body: JSON.stringify(newUser),
       })
@@ -61,7 +65,7 @@ const Login = () => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
-            // 'Access-Control-Allow-Origin': '*' // 이 헤더는 요청 시 사용하지 않습니다.
+            'Access-Control-Allow-Origin': '*' 
           },
           body: JSON.stringify({ email, password }),
         });
@@ -85,7 +89,6 @@ const Login = () => {
       }
     };
     
-
 
     return (
       <div className="split-screen">
@@ -149,8 +152,12 @@ const Login = () => {
                   type="password"
                   placeholder="Confirm Password"
                   value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                 onChange={(e) => {
+                  setConfirmPassword(e.target.value);
+                  setPasswordError(''); 
+                }}
                 />
+                {passwordError && <div className="password-error">{passwordError}</div>}
                 <button type="submit">Sign Up</button>
               </form>
             )}
