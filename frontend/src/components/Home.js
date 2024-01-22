@@ -1,37 +1,53 @@
 import React from 'react';
 import { SectionsContainer, Section } from 'react-fullpage';
-import { Link } from 'react-scroll';
+import { useNavigate } from 'react-router-dom';
 import './static/Home.css'; 
 
-const Header = () => (
-  <header className="header">
-    <nav className="navbar">
-      <div className="logo">HAEJWO</div>
-      <div className="menu">
-        <Link to="sectionTwo" spy={true} smooth={true} duration={500}>Instruction</Link>
-        <Link to="sectionThree" spy={true} smooth={true} duration={500}>Reviews</Link>
-        <Link to="sectionFour" spy={true} smooth={true} duration={500}>FAQ</Link>
-        <Link to="my-page" spy={true} smooth={true} duration={500}>My Page</Link>
+
+const Header = () => {
+  const navigate = useNavigate();
+
+  const handleMyPageClick = () => {
+    navigate('/mypage');
+  };
+
+  return (
+    <header className="header">
+      <nav className="navbar">
+        <div className="logo">HAEJWO</div>
+        <div className="menu">
+          <a href="#home">Home</a>
+          <a href="#instruction">Instruction</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#faq">FAQ</a>
+          <a onClick={handleMyPageClick}>My Page</a> 
+        </div>
+      </nav>
+    </header>
+  );
+};
+
+const Column1 = () => {
+  const navigate = useNavigate();
+
+  const handleTryNowClick = () => {
+    navigate('/question');
+  };
+
+  return (
+    <div className="introduction">
+      <h1>Start Designing <br /> Developer portfolio website</h1>
+      <div className="description">
+        개발자 포트폴리오 사이트를 만들고 싶은데 귀찮으신가요? 혹은 너무 막막하게 느껴지시나요?<br />
+        그런 여러분들을 위해 준비했습니다. 간단한 작업을 통해 본인만의 특색있는 포트폴리오 사이트를 만들어보세요!
       </div>
-    </nav>
-  </header>
-);
-
-const Body = ({ children }) => <div className="body">{children}</div>;
-
-const Column1 = () => (
-  <div className="introduction">
-    <h1>Start Designing <br /> Developer portfolio website</h1>
-    <div className="description">
-      개발자 포트폴리오 사이트를 만들고 싶은데 귀찮으신가요? 혹은 너무 막막하게 느껴지시나요?<br />
-      그런 여러분들을 위해 준비했습니다. 간단한 작업을 통해 본인만의 특색있는 포트폴리오 사이트를 만들어보세요!
+      <div className="buttons">
+        <button onClick={handleTryNowClick}>Try Now</button>
+        <button>View More</button>
+      </div>
     </div>
-    <div className="buttons">
-      <button>Try Now</button>
-      <button>View More</button>
-    </div>
-  </div>
-);
+  );
+};
 
 const Column2 = () => (
   <div className="column2-container">
@@ -63,48 +79,56 @@ const Column3 = () => (
   </div>
 );
 
-const Column4 = () => (
-  <div className="container">
-    <div className="faq-section">
-      <p className='faq-title'>Frequently Asked Questions</p>
-      <div className="faq">
-        <h2>자주 묻는 질문</h2>
+const Column4 = () => {
+  const navigate = useNavigate();
+
+  const handleTryNowClick = () => {
+    navigate('/question');
+  };
+
+  return (
+    <div className="container">
+      <div className="faq-section">
+        <p className='faq-title'>Frequently Asked Questions</p>
+        <div className="faq">
+          <h2>자주 묻는 질문</h2>
+        </div>
       </div>
+      <div className="banner-section">
+        <h2 className="banner-section-title">Create your portfolio</h2>
+        <button onClick={handleTryNowClick}>Get Started</button>
+      </div>
+      <footer>
+        © Copyright 2024. Hajewo. All rights reserved.
+      </footer>
     </div>
-    <div className="banner-section">
-      <h2 className="banner-section-title">Create your portfolio</h2>
-      <button>Get Started</button>
-    </div>
-    <footer>
-      © Copyright 2024. Hajewo. All rights reserved.
-    </footer>
-  </div>
-);
+  );
+};
 
 
 const Home = () => {
   let options = {
-    anchors: ['sectionOne', 'sectionTwo', 'sectionThree', 'sectionFour'],
+    anchors: ['home', 'instruction', 'reviews', 'faq'], 
+    scrollBar: false,
+    navigation: true,
   };
 
   return (
     <>
       <Header />
       <SectionsContainer {...options}>
-        <Body>
-          <Section>
+        <Section className="section" anchor="home">
             <Column1/>
-          </Section>
-          <Section>
-            <Column2/>
-          </Section>
-          <Section>
-            <Column3/>
-          </Section>
-          <Section>
-            <Column4/>
-          </Section>
-        </Body>
+        </Section>
+        <Section className="section" anchor="instruction"> 
+          <Column2/>
+        </Section>
+        <Section className="section" anchor="reviews"> 
+          <Column3/>
+        </Section>
+        <Section className="section" anchor="faq"> 
+          <Column4/>
+        </Section>
       </SectionsContainer>
     </>
   );

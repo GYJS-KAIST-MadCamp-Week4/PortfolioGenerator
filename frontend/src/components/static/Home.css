@@ -11,7 +11,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 30px;
+    padding: 0 50px;
     height: 40px;
 }
 
@@ -37,7 +37,6 @@
 .navbar .menu a:hover {
     color: #367AFF;
 }
-  
 
 @font-face {
     font-family: 'Inter';
@@ -46,7 +45,9 @@
 
 .introduction {
     text-align: center; 
-    padding: 30px 0; 
+    padding: 30px 0;
+    background-color: #F4F8FA;  
+    min-height: 93vh;
 }
   
 .introduction h1 {
@@ -71,6 +72,7 @@
     padding: 10px 20px; 
     border: none;
     background-color: #4328EB;
+    border-radius: 5px;
     color: #fff; 
     cursor: pointer;
 }
@@ -242,10 +244,9 @@
     margin-bottom: 0px;
 }
 
-.faq{
-    margin-left: 30px;
-    margin-top:0px;
-    font-size: 18px;
+.faq {
+    margin-left: 40px;
+    font-size: 20px;
     font-family: 'Inter';
 }
   
