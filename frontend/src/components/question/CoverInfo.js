@@ -6,8 +6,9 @@ import CoverOne from '../cover/CoverOne';
 import { useNavigate } from 'react-router-dom';
 
 
-function CoverInfo({status}) {
+function CoverInfo({status, signal}) {
     const navigate = useNavigate();
+    console.log(signal)
 
     // We are going to send this data to the backend
 
@@ -16,6 +17,59 @@ function CoverInfo({status}) {
     const [description, setDescription] = useState('')
     const [selectedFile, setSelectedFile] = useState(null);
     const [isModalOpen, setModalOpen] = useState(false);
+
+    const handleCover = async () => {
+      const apiUrl = 'http://192.249.29.120:4000/savecover'; // Replace with your backend API endpoint
+      console.log(signal);
+      console.log("We are inside the cover function");
+    
+      console.log("Selected Image is " + selectedFile);
+      // Convert selected file to base64
+      let base64Image = null;
+    
+      if (selectedFile) {
+        console.log("There is a selectedFile");
+        const reader = new FileReader();
+        console.log(reader);
+    
+        reader.onloadend = async () => {
+          base64Image = reader.result.split(',')[1]; // Get base64 portion of the result
+          console.log(base64Image);
+    
+          // Now you can use base64Image in the rest of your logic
+          const requestData = {
+            userID: "jjpark57@hotmail.com",
+            signal: signal,
+            name: name,
+            subtitle: subtitle,
+            description: description,
+            coverimage: base64Image,
+          };
+    
+          try {
+            const response = await fetch(apiUrl, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(requestData),
+            });
+    
+            // Handle the response as needed
+            console.log(response);
+          } catch (error) {
+            // Handle network errors or other issues
+            console.error('Error sending answers to backend', error);
+          }
+        };
+    
+        reader.readAsDataURL(selectedFile);
+        console.log("We transformed to base64");
+      } else {
+        console.log("Did not select file");
+      }
+    };
+    
 
     const handleModalButtonClick = () => {
 
@@ -69,6 +123,7 @@ function CoverInfo({status}) {
             <input  type="text" style={{border: '1px solid #BEBEBE', width: '80%', height: '150px', borderRadius: '20px', marginBottom: '50px', paddingLeft: '20px'}} value={description} onChange={handleDescription} placeholder="Describe yourself..." />
             
             <button onClick={handleModalButtonClick}>Open Modal</button>
+            <button onClick={handleCover}>Next Step</button>
 
     </div>
   </>

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
-function Aboutinfo({status}) {
+function Aboutinfo({status, signal}) {
     const navigate = useNavigate();
 
     // We are going to send this data to the backend
@@ -59,8 +59,58 @@ function Aboutinfo({status}) {
 
     const handleFileChange = (event) => {
       const file = event.target.files[0];
-      setSelectedFile(file);
+
+      // Check if a file is selected
+      if (file) {
+        const reader = new FileReader();
+    
+        reader.onloadend = () => {
+          // When reading is complete, set the result (base64 string) in state
+          const base64String = reader.result;
+          setSelectedFile(base64String);
+        };
+    
+        // Read the contents of the file as a data URL (base64 encoded)
+        reader.readAsDataURL(file);
+      } else {
+        // Handle the case where no file is selected
+        setSelectedFile(null);
+      }
     };
+
+    const handleAbout = async () => {
+      const apiUrl = 'http://192.249.29.120:4000/saveabout'; // Replace with your backend API endpoint
+
+      const requestData = {
+        userID: "jjpark57@hotmail.com",
+        signal: signal,
+        date: date,
+        address: address,
+        email: email,
+        education: education,
+        // selectedFile: selectedFile
+      };
+  
+      console.log(selectedFile)
+      try {
+  
+  
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(requestData),
+        });
+        
+  
+      } catch (error) {
+        // Handle network errors or other issues
+        console.error('Error sending answers to backend', error);
+      }
+  
+    };
+
   
   return (
     <>
@@ -80,6 +130,7 @@ function Aboutinfo({status}) {
             <input  type="text" style={{border: '1px solid #BEBEBE', width: '80%', height: '150px', borderRadius: '20px', marginBottom: '50px', paddingLeft: '20px'}} value={education} onChange={handleEducation} placeholder="Enter your education..." />
             
             <button onClick={handleModalButtonClick}>Open Modal</button>
+            <button onClick={handleAbout}>Next Step</button>
 
     </div>
   </>

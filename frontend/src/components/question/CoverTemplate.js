@@ -3,13 +3,14 @@ import '../../static/covertemplate.scss'
 import coverOneImage from '../../assets/coverone.png';
 import CoverInfo from './CoverInfo';
 import { useNavigate } from 'react-router-dom';
+import { useSignal } from '../../context/SignalContext';
 
 
 function CoverTemplate() {
     const navigate = useNavigate();
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     
-    const signal = [0,0,0]
+    const { signal, setSignal } = useSignal();
 
     const handleNextClick = () => {
         navigate('/abouttemplate');
@@ -18,17 +19,18 @@ function CoverTemplate() {
     const handleInfo = () => {
         setStatus(1)
     }   
-    const handleAnswerClick = (answer, e) => {
-        setSelectedAnswer(answer);
-        if(signal[e] == 0) {
-            signal[e] = 1
-        }
-        else{
-            signal[e] = 0
-        }
-        console.log(signal)
-      };
+    const handleAnswerClick = (answer, index) => {
+        // Update the signal array using useState\
+        setSignal((prevSignal) => {
+            const newSignal = prevSignal.map((row, i) =>
+              i === 0 ? row.map((_, j) => (j === index ? 1 : 0)) : row
+            );
+            return newSignal;
+          });
 
+        setSelectedAnswer(answer);
+      };
+    
 
   return (
     <>
@@ -55,7 +57,7 @@ function CoverTemplate() {
             </div>
 
         </div>
-        {status == 1 && <CoverInfo status={status}/> }
+        {status == 1 && <CoverInfo status={status} signal={signal}/> }
 
         </>
   )

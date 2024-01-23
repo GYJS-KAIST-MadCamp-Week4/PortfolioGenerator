@@ -1,17 +1,40 @@
 require('dotenv').config();
+const { Octokit, App } = require("octokit");
 const express = require('express');
+const axios = require('axios');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
+const requests = require('requests');
+const bodyParser = require('body-parser');
+const path = require('path');
+const fs = require('fs');
 
 const app = express();
-app.use(express.json());
+app.use(express.json({limit:'10mb'}));
+app.use('/uploads', express.static('uploads'));
 app.use(cors());
 
 const userSchema = new mongoose.Schema({
     nickname: String,
     email: { type: String, unique: true },
-    password: String
+    password: String,
+    signal: Object,
+    name: String,
+    subtitle: String,
+    description: String,
+    education: String,
+    date: String,
+    address: String,
+    emailAddress: String,
+    frontend: String,
+    backend: String,
+    versionControl: String,
+    deployment: String,
+    others: String,
+    github: String,
+    introduction: String,
+    coverimage: String
 }, { timestamps: true });
 
 const User = mongoose.model("User", userSchema);
@@ -55,6 +78,246 @@ app.post('/confirm', async (req, res) => {
         res.status(500).json({ error: 'Internal server error', details: error.message });
     }
 });
+
+
+/*
+app.post('/summary', async (req, res) => {
+    const client_id = process.env.CLIENT_ID
+    const client_secret = process.env.CLIENT_SECRET
+    const url = "https://naveropenapi.apigw.ntruss.com/text-summary/v1/summarize"
+
+    try {
+        const { githubAddress } = req.body;
+
+        if (!githubAddress) {
+            return res.status(200).json({ info: '사용자가 직접 작성하였습니다' }); 
+        } 
+
+        const octokit = new Octokit({
+            auth: process.env.GITHUB_TOKEN
+        })
+
+        const urlParts = githubAddress.split('/');
+        const owner = urlParts[3]; 
+        const repo = urlParts[4]; 
+        
+        const context = await octokit.request('GET /repos/{owner}/{repo}/readme', {
+            owner: owner,
+            repo: repo,
+            headers: {
+                'X-GitHub-Api-Version': '2022-11-28'
+            }
+        })
+        
+        const githubContent_base64 = context.data.content
+        let githubContent = Buffer.from(githubContent_base64, 'base64').toString();
+        githubContent = githubContent.replace(/!\[.*\]\(.*\)/g, '');  // 이미지 링크 제거
+        githubContent = githubContent.replace(/<img[^>]*>/g, '');  // 이미지 링크 제거
+        githubContent = githubContent.replace(/\s+/g, '');  // 공백 제거
+        console.log(githubContent.length);
+        console.log(typeof(githubContent));
+
+        try{
+            const clovaResponse = await axios.post(
+                url,
+                {
+                  document: {
+                    content: githubContent,
+                  },
+                  option: {
+                    language: "ko",
+                    model: "general",
+                  },
+                },
+                {
+                  headers: {
+                    "X-NCP-APIGW-API-KEY-ID": client_id,
+                    "X-NCP-APIGW-API-KEY": client_secret,
+                    "content-type": "application/json",
+                  },
+                }
+              );
+
+            res.status(200).json({ info: clovaResponse.data });
+
+        } catch (error) {
+            console.error(error.message);
+            res.status(500).json({ error: 'Clova API error', details: error.message });
+        }       
+
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error', details: error.message });
+    }
+});
+*/
+
+app.post("/savecover", async(req, res) => {
+    try {
+        const { signal, name, subtitle, description, coverimage, userID } = req.body;
+        console.log("We are inside nodejs savecover function");
+        console.log(signal);
+        console.log(name);
+        console.log(subtitle);
+        console.log(description);
+        console.log(userID);
+        console.log(typeof(signal));
+
+        const buffer = Buffer.from(coverimage, 'base64');
+        const fileName = userID + '-' + Date.now() + '.png'; // 확장자는 실제 이미지 타입에 맞게 변경
+        const filePath = path.join(__dirname, 'uploads', fileName);
+
+        fs.writeFileSync(filePath, buffer);
+
+        const imageUrl = `http://192.249.29.120:4000/uploads/${fileName}`;
+        console.log(imageUrl);
+
+
+        const updatedUser = await User.findOneAndUpdate(
+            { email: userID }, 
+            { 
+                $set: {
+                    signal: signal, 
+                    name: name, 
+                    subtitle: subtitle, 
+                    description: description,
+                    coverimage: imageUrl
+                }
+            },
+            { new: true } 
+        );
+
+        console.log(updatedUser);
+        res.json({ status: 'success' });
+
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error', details: error.message });
+    }
+});
+
+
+app.post("/saveabout", async(req, res) => {
+    try {
+        const { date, address, email, education, signal, userID } = req.body;
+        console.log("We are inside nodejs savecover function")
+        console.log(date)
+        console.log(address)
+        console.log(email)
+        console.log(education)
+        console.log(signal)
+
+        // const imagePath = base64Img.imgSync(selectedFile, './uploads', 'image');
+
+        const updatedUser = await User.findOneAndUpdate(
+            { email: userID }, 
+            { 
+                $set: {
+                    date: date, 
+                    address: address, 
+                    emailAddress: email, 
+                    education: education,
+                    signal: signal
+                }
+            },
+            { new: true } 
+        );
+
+        console.log(updatedUser);
+        res.json({ status: 'success'});
+
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error', details: error.message });
+    }
+})
+
+app.post("/saveskills", async(req, res) => {
+    try {
+        const { frontend, backend, vc, deployment, others, userID } = req.body;
+        console.log("We are inside nodejs savecover function")
+        console.log(frontend);
+        console.log(backend);
+        console.log(vc);
+        console.log(deployment);
+        console.log(others);
+        console.log(userID);
+        
+        // const imagePath = base64Img.imgSync(selectedFile, './uploads', 'image');
+
+        const updatedUser = await User.findOneAndUpdate(
+            { email: userID }, 
+            { 
+                $set: {
+                    frontend: frontend,
+                    backend: backend,
+                    versionControl: vc,
+                    deployment: deployment,
+                    others: others
+                }
+            },
+            { new: true } 
+        );
+
+        console,log(updatedUser);
+
+        res.json({ status: 'success'});
+
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error', details: error.message });
+    }
+})
+
+app.post("/saveproject", async(req, res) => {
+    try {
+        const { github, introduction, signal,userID } = req.body;
+        console.log("We are inside nodejs savecover function")
+        console.log(github);
+        console.log(introduction);
+        console.log(userID);
+        console.log(signal);
+        
+        // const imagePath = base64Img.imgSync(selectedFile, './uploads', 'image');
+
+        const updatedUser = await User.findOneAndUpdate(
+            { email: userID }, 
+            { 
+                $set: {
+                    github: github,
+                    introduction: introduction,
+                    signal: signal
+                }
+            },
+            { new: true } 
+        );
+
+        console,log(updatedUser);
+
+        res.json({ status: 'success'});
+
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error', details: error.message });
+    }
+})
+
+app.post("/result", async(req, res) => {
+    try {
+        const {userID} = req.body;
+        // const imagePath = base64Img.imgSync(selectedFile, './uploads', 'image');
+
+        const user = await User.findOne({ email: userID })
+                               .select('-password -_id -createdAt -updatedAt -__v');
+
+        console.log(user);
+
+        if (user) {
+            res.status(200).json({ status: 'success', userData: user });
+        } else {
+            res.status(404).json({ error: 'User not found' });
+        }
+
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error', details: error.message });
+    }
+})
+
 
 // Server start
 const port = process.env.PORT || 4000;

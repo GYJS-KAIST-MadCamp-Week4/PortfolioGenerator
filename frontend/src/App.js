@@ -15,9 +15,12 @@ import { DataProvider } from './context/DataContext';
 import SkillsTemplate from './components/question/SkillsTemplate';
 import AboutTemplate from './components/question/AboutTemplate';
 import ProjectTemplate from './components/question/ProjectTemplate';
+import { SignalProvider } from './context/SignalContext';
+import Result from './components/Result';
 
 function App() {
   return (
+    <SignalProvider>
     <DataProvider>
     <Router>
       <Routes>
@@ -35,11 +38,13 @@ function App() {
         <Route path="/abouttemplate" element={<AboutTemplate/>} />
         <Route path="/skillstemplate" element={<SkillsTemplate/>} />
         <Route path="/projecttemplate" element={<ProjectTemplate/>} />
+        <Route path="/result" element={<Result/>} />
 
 
       </Routes>
     </Router>
     </DataProvider>
+    </SignalProvider>
   );
 }
 
