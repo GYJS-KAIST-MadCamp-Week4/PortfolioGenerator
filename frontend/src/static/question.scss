@@ -1,0 +1,65 @@
+.question-container {
+    height: 100vh;
+    width: 100%;
+    .question-image {
+        background-image: url('../assets/cutoff.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 400px;
+        width: 400px;
+        z-index: 1;
+        background-position: fixed;
+    
+    }
+    .question-wrapper {
+        height: 400px;
+        width:70%;
+        margin: auto;
+        transform: translateY(-50%);
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;  // Center content vertically
+        align-items: center;      // Center content horizontally
+        .question-title {
+            text-align: center;
+            font-size: 28pt;
+            font-weight: bold;
+        }
+        .question-subtitle {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12pt;
+        }
+        .question-box {
+            width: 100%;
+            height: 300px;
+            border-radius: 20px;
+            margin-top: 50px;
+            padding: 60px;
+            background-color: #F5F5F5;
+
+            .answerone:hover {
+                cursor: pointer;
+            }
+            .answertwo:hover {
+                cursor: pointer;
+            }
+            .answerthree:hover {
+                cursor: pointer;
+            }
+            .answerfour:hover {
+                cursor: pointer;
+            }
+            .answerfive:hover {
+                cursor: pointer;
+            }
+        }
+
+        .next-button:hover {
+            cursor: pointer;
+        }
+
+    }
+
+}

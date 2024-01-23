@@ -1,0 +1,99 @@
+.skill-section {
+    background-color: white;
+    height:230vh;
+    z-index:1;
+    cursor:default ;
+
+    span:hover{
+        color:#f96815;
+        cursor:default;
+        transition: color 0.5s;
+    }
+
+
+    .skill-container {
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 20px;
+        margin: 0 auto;
+        background-color: white;
+        width:100%;
+        height:200vh;
+        padding-top:40px;
+        background-color: transparent;
+        width:70%;
+
+        span {
+            font-size:28pt;
+            cursor:default ;
+
+        }
+
+        a {
+            margin-bottom:20px;
+            cursor:default ;
+
+        }
+        a:hover {
+                color:#f96815;
+                 transition: color 0.5s;
+                 cursor: default;
+     
+        }
+
+        .title {
+            grid-column: 1/4;
+            font-size:28pt;
+            margin: 0 auto;
+            height:80px;
+            color:whitesmoke;
+            padding-bottom:20px;
+
+        }
+        .title:hover {
+            color:#f96815;
+            transition: color 0.5s;
+            cursor: default;
+
+
+        }
+
+        .frontend {
+            padding: 30px;
+            border: 1px solid black;
+            border-radius:15px;
+            margin-left: 30px;
+            margin-bottom:30px;
+            transition: transform 0.2s ease-in-out;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width:min-content;
+        }
+
+        .frontend:hover{ 
+            transform: scale(1.05);
+            background-color: white;
+        }
+
+        .backend {
+            padding: 30px;
+            border: 1px solid black;
+            border-radius:15px;
+            margin-left: 30px;
+            transition: transform 0.2s ease-in-out;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            background-color: white;
+            height:auto;
+            width:min-content;
+        }
+
+        .backend:hover{ 
+
+            background-color: white;
+            transform: scale(1.05);
+        }
+
+
+        
+    }
+}

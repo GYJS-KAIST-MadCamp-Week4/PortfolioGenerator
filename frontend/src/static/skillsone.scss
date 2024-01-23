@@ -1,0 +1,69 @@
+.skills-container {
+    align-items: center;
+    display :flex;
+    flex-direction: column;
+    ul {
+        margin-top: 40px;
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            width: 980px;
+            display: flex;
+            margin-bottom: 20px;
+
+            .skill-name {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 120px;
+                font-size: 20px;
+                font-weight: 600;
+                color: rgba(0, 0, 0, .7);
+            }
+
+            .ability-bar {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 800px;
+                height: 32px;
+                padding: 0 1px;
+                background-color: #eee;
+                border-radius: 5px;
+                box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, .3);
+                // transition: all 0.2s linear;
+
+                .ability-percent {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    height: 30px;
+                    padding: 0 20px;
+                    border-radius: 0 15px 15px 0;
+                    background: linear-gradient(90deg, rgba(254, 233, 178, 1) 0%, rgba(255, 200, 152, 1) 100%);
+                    animation: SkillUp 4s linear;
+
+                    .percent {
+                        color: #fff;
+                        font-size: 18px;
+                    }
+                }
+
+                p {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    @keyframes SkillUp {
+        0% {
+            width: 10%;
+        }
+
+        100% {
+            width: 100%;
+        }
+    }
+}
