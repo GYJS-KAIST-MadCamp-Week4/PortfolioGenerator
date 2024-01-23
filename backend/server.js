@@ -27,14 +27,11 @@ const userSchema = new mongoose.Schema({
     date: String,
     address: String,
     emailAddress: String,
-    frontend: String,
-    backend: String,
-    versionControl: String,
-    deployment: String,
-    others: String,
-    github: String,
-    introduction: String,
-    coverimage: String
+    frontend: Object,
+    backend: Object,
+    others: Object,
+    coverimage: String,
+    projects: Object
 }, { timestamps: true });
 
 const User = mongoose.model("User", userSchema);
@@ -231,16 +228,13 @@ app.post("/saveabout", async(req, res) => {
 
 app.post("/saveskills", async(req, res) => {
     try {
-        const { frontend, backend, vc, deployment, others, userID } = req.body;
+        const { frontend, backend, others, userID } = req.body;
         console.log("We are inside nodejs savecover function")
         console.log(frontend);
         console.log(backend);
-        console.log(vc);
-        console.log(deployment);
         console.log(others);
         console.log(userID);
         
-        // const imagePath = base64Img.imgSync(selectedFile, './uploads', 'image');
 
         const updatedUser = await User.findOneAndUpdate(
             { email: userID }, 
@@ -248,8 +242,6 @@ app.post("/saveskills", async(req, res) => {
                 $set: {
                     frontend: frontend,
                     backend: backend,
-                    versionControl: vc,
-                    deployment: deployment,
                     others: others
                 }
             },
@@ -267,21 +259,31 @@ app.post("/saveskills", async(req, res) => {
 
 app.post("/saveproject", async(req, res) => {
     try {
-        const { github, introduction, signal,userID } = req.body;
-        console.log("We are inside nodejs savecover function")
-        console.log(github);
-        console.log(introduction);
+        const { projects, signal,userID } = req.body;
+        console.log("We are inside nodejs saveproject function")
         console.log(userID);
         console.log(signal);
-        
-        // const imagePath = base64Img.imgSync(selectedFile, './uploads', 'image');
+        console.log(projects);
+
+        for (let i=0; i<projects.length; i++) {
+            const image = projects[i].file;
+
+            const buffer = Buffer.from(image, 'base64');
+            const fileName = userID + '-' + Date.now() + '.png'; 
+            const filePath = path.join(__dirname, 'uploads', fileName);
+
+            fs.writeFileSync(filePath, buffer);
+
+            const imageUrl = `http://192.249.29.120:4000/uploads/${fileName}`;
+
+            projects[i].file = imageUrl;
+        }
 
         const updatedUser = await User.findOneAndUpdate(
             { email: userID }, 
             { 
                 $set: {
-                    github: github,
-                    introduction: introduction,
+                    projects: projects,
                     signal: signal
                 }
             },
@@ -305,6 +307,7 @@ app.post("/result", async(req, res) => {
         const user = await User.findOne({ email: userID })
                                .select('-password -_id -createdAt -updatedAt -__v');
 
+        console.log("In resuslt");
         console.log(user);
 
         if (user) {
