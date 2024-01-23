@@ -1,0 +1,122 @@
+.create-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url('../../img/background_icon.png');
+    background-size: auto;
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-color: #FAFFFF;
+}
+
+.create-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-icon {
+    width: 50px;
+    height: 50px;
+    background-image: url('../../img/preview_button.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+    position: absolute;
+    left: 80px;
+}
+
+.progress-bar {
+    width: 850px;
+    height: 50px;
+    background-image: url('../../img/progress_cover.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 40px auto; 
+}
+
+.arrow {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.left {
+    left: 30px;
+    background-image: url('../../img/previous_button.png');
+}
+
+.right {
+    right: 15px;
+    background-image: url('../../img/next_button.png');
+}
+
+
+@font-face {
+    font-family: 'Handlee';
+    src: url(../../font/Handlee.ttf);
+}
+
+.content-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0;
+    width: 100%; 
+}
+
+.photo-container {
+    width: 300px; 
+    height: 300px; 
+    background-image: url('../../img/cover_icon.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 200px; 
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column; 
+    width: 400px;
+}
+
+@font-face {
+    font-family: 'Nanum';
+    src: url(../../font/Nanum.ttf);
+}
+
+.input-label {
+    font-family: 'Handlee';
+    font-size: 30px; 
+    color: #000;
+    -webkit-text-stroke: 0.5px #000;
+    margin-bottom: 10px;
+}
+
+.name-input, .subtitle-input {
+    width: 100%; 
+    padding: 10px;
+    font-size: 16px; 
+    margin-bottom: 20px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.image-upload-wrapper {
+    border: 1px solid #ccc; 
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.image-upload-input {
+    width: 100%; 
+    padding: 10px 0;
+    font-size: 16px; 
+}

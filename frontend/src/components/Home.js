@@ -31,7 +31,7 @@ const Column1 = () => {
   const navigate = useNavigate();
 
   const handleTryNowClick = () => {
-    navigate('/question');
+    navigate('/create');
   };
 
   return (
@@ -97,7 +97,7 @@ const Column4 = () => {
   const navigate = useNavigate();
 
   const handleTryNowClick = () => {
-    navigate('/question');
+    navigate('/create');
   };
 
   const faqs = [
@@ -143,7 +143,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    // 페이지 로드 시 모든 섹션을 차례로 활성화합니다.
     const sections = ['home', 'instruction', 'reviews', 'faq'];
     sections.forEach((section, index) => {
       setTimeout(() => setActiveSection(prev => [...prev, section]), index * 600);
