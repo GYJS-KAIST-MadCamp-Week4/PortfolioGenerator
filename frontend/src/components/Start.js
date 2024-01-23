@@ -61,11 +61,12 @@ const Start = () => {
     <div className="start-page" onClick = {handleScreenClick}>
       {showInitialText && <div className="initial-text">개발자 포트폴리오 사이트 누가 대신 만들어줘!</div>}
       <div className={`background-image-start ${!showInitialText ? 'fade' : ''}`} />
-      {showFinalText && showGradientBackground &&
+      {showFinalText && 
+      <div className={`gradient-background ${showGradientBackground ? 'show' : ''}`} />}
         <div className={`final-text ${showFinalText ? 'show' : ''}`}>
           {typedText}
           <span className='cursor'/>
-        </div>}
+        </div>
       {showClickToEnter && <div className="click-to-enter">click to enter</div>}
     </div>
   );

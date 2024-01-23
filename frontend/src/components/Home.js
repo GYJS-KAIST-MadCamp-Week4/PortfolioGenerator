@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SectionsContainer, Section } from 'react-fullpage';
 import { useNavigate } from 'react-router-dom';
 import './static/Home.css'; 
@@ -103,7 +103,7 @@ const Column4 = () => {
   const faqs = [
     { question: "'해줘'를 개발한 사람은 누구인가요?", answer: "'해줘'를 개발한 사람은 몰입캠프 1분반의 김가연 그리고 박진석 입니다." },
     { question: '정말 배포된 사이트가 결과물로 도출되나요?', answer: '물론입니다:)' },
-    { question: '어떻게 이용하나요?', answer: '상세한 이용방법은 Instruction 탭에 소개되어있습니다. 이 내용을 참고해주세요.' },
+    { question: '어떻게 이용하나요?', answer: '상세한 이용방법은 Instruction 탭에 소개되어있습니다. 위 내용을 참고해주세요.' },
   ];
 
   return (
@@ -134,26 +134,38 @@ const Column4 = () => {
 
 
 const Home = () => {
+  const [activeSection, setActiveSection] = useState('');
+
   let options = {
     anchors: ['home', 'instruction', 'reviews', 'faq'], 
     scrollBar: false,
     navigation: true,
   };
 
+  useEffect(() => {
+    // 페이지 로드 시 모든 섹션을 차례로 활성화합니다.
+    const sections = ['home', 'instruction', 'reviews', 'faq'];
+    sections.forEach((section, index) => {
+      setTimeout(() => setActiveSection(prev => [...prev, section]), index * 600);
+    });
+  }, []);
+
+  const isActive = (section) => activeSection.includes(section);
+
   return (
     <>
       <Header />
       <SectionsContainer {...options}>
-        <Section className="section" anchor="home">
-            <Column1/>
+        <Section className={`section ${isActive('home') ? 'active' : ''}`} anchor="home">
+          <Column1/>
         </Section>
-        <Section className="section" anchor="instruction"> 
+        <Section className={`section ${isActive('instruction') ? 'active' : ''}`} anchor="instruction"> 
           <Column2/>
         </Section>
-        <Section className="section" anchor="reviews"> 
+        <Section className={`section ${isActive('reviews') ? 'active' : ''}`} anchor="reviews"> 
           <Column3/>
         </Section>
-        <Section className="section" anchor="faq"> 
+        <Section className={`section ${isActive('faq') ? 'active' : ''}`} anchor="faq"> 
           <Column4/>
         </Section>
       </SectionsContainer>

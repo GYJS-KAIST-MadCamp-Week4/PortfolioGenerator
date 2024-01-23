@@ -1,3 +1,17 @@
+.section {
+    opacity: 0;
+    transform: translateY(20px);
+    display: none;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .section.active {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+  }
+  
+
 .header {
     background-color: "transparent";
     position: fixed;
@@ -47,6 +61,8 @@
     text-align: center; 
     padding: 30px 0;
     background-color: #F4F8FA;  
+    color: #333;
+    font-family: 'Inter';
     min-height: 93vh;
     background-image: url('../../img/background_design.png');
     background-size: auto;
@@ -125,6 +141,7 @@
   
 .section-heading {
     font-size: 42px;
+    color: #333;
     font-family: 'Inter';
     margin-top: 0px;
     margin-bottom: 0px;
@@ -167,6 +184,7 @@
 .template-heading {
     font-size: 42px;
     font-family: 'Inter';
+    color: #333;
     margin-top:0px;
     margin-bottom: 0px;
 }
@@ -215,6 +233,7 @@
 .reviews h1 {
     font-size: 2.5em;
     margin-bottom: 5px;
+    color: #333;
   }
   
 .reviews .text {
@@ -269,6 +288,7 @@
     margin-left: 40px;
     font-size: 20px;
     font-family: 'Inter';
+    color: #333;
 }
   
 .banner-section {
@@ -311,6 +331,7 @@
     cursor: pointer; 
     font-family: 'Inter';
     padding-left: 10px;
+    color: #333;
 }
   
 .toggle-button {
@@ -323,7 +344,7 @@
 .faq-answer {
     padding-top: 10px; 
     padding-left: 10px;
-    color: #484848;
+    color: #535353;
 }
   
 
@@ -332,4 +353,5 @@ footer {
     padding: 15px;
     font-size: 0.8em;
     margin-top: auto; 
+    color: #616161;
 }
