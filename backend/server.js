@@ -7,15 +7,34 @@ const bcrypt = require('bcrypt');
 const cors = require('cors');
 const requests = require('requests');
 const bodyParser = require('body-parser');
+const path = require('path');
+const fs = require('fs');
 
 const app = express();
-app.use(express.json());
+app.use(express.json({limit:'10mb'}));
+app.use('/uploads', express.static('uploads'));
 app.use(cors());
 
 const userSchema = new mongoose.Schema({
     nickname: String,
     email: { type: String, unique: true },
-    password: String
+    password: String,
+    signal: Object,
+    name: String,
+    subtitle: String,
+    description: String,
+    education: String,
+    date: String,
+    address: String,
+    emailAddress: String,
+    frontend: String,
+    backend: String,
+    versionControl: String,
+    deployment: String,
+    others: String,
+    github: String,
+    introduction: String,
+    coverimage: String
 }, { timestamps: true });
 
 const User = mongoose.model("User", userSchema);
@@ -134,8 +153,24 @@ app.post('/summary', async (req, res) => {
 
 app.post("/savecover", async(req, res) => {
     try {
-        const { signal, name, subtitle, description, selectedFile, userID } = req.body;
+        const { signal, name, subtitle, description, coverimage, userID } = req.body;
         console.log("We are inside nodejs savecover function");
+        console.log(signal);
+        console.log(name);
+        console.log(subtitle);
+        console.log(description);
+        console.log(userID);
+        console.log(typeof(signal));
+
+        const buffer = Buffer.from(coverimage, 'base64');
+        const fileName = userID + '-' + Date.now() + '.png'; // 확장자는 실제 이미지 타입에 맞게 변경
+        const filePath = path.join(__dirname, 'uploads', fileName);
+
+        fs.writeFileSync(filePath, buffer);
+
+        const imageUrl = `http://192.249.29.120:4000/uploads/${fileName}`;
+        console.log(imageUrl);
+
 
         const updatedUser = await User.findOneAndUpdate(
             { email: userID }, 
@@ -144,13 +179,14 @@ app.post("/savecover", async(req, res) => {
                     signal: signal, 
                     name: name, 
                     subtitle: subtitle, 
-                    description: description
+                    description: description,
+                    coverimage: imageUrl
                 }
             },
             { new: true } 
         );
 
-        // 업데이트 성공 응답
+        console.log(updatedUser);
         res.json({ status: 'success' });
 
     } catch (error) {
@@ -175,9 +211,9 @@ app.post("/saveabout", async(req, res) => {
             { email: userID }, 
             { 
                 $set: {
-                    data: data, 
+                    date: date, 
                     address: address, 
-                    email: email, 
+                    emailAddress: email, 
                     education: education,
                     signal: signal
                 }
@@ -185,6 +221,7 @@ app.post("/saveabout", async(req, res) => {
             { new: true } 
         );
 
+        console.log(updatedUser);
         res.json({ status: 'success'});
 
     } catch (error) {
@@ -194,12 +231,14 @@ app.post("/saveabout", async(req, res) => {
 
 app.post("/saveskills", async(req, res) => {
     try {
-        const { frontend, backend, versionControl, deployment, others, userID } = req.body;
+        const { frontend, backend, vc, deployment, others, userID } = req.body;
         console.log("We are inside nodejs savecover function")
-        console.log(date)
-        console.log(address)
-        console.log(email)
-        console.log(education)
+        console.log(frontend);
+        console.log(backend);
+        console.log(vc);
+        console.log(deployment);
+        console.log(others);
+        console.log(userID);
         
         // const imagePath = base64Img.imgSync(selectedFile, './uploads', 'image');
 
@@ -209,13 +248,47 @@ app.post("/saveskills", async(req, res) => {
                 $set: {
                     frontend: frontend,
                     backend: backend,
-                    versionControl: versionControl,
+                    versionControl: vc,
                     deployment: deployment,
                     others: others
                 }
             },
             { new: true } 
         );
+
+        console,log(updatedUser);
+
+        res.json({ status: 'success'});
+
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error', details: error.message });
+    }
+})
+
+app.post("/saveproject", async(req, res) => {
+    try {
+        const { github, introduction, signal,userID } = req.body;
+        console.log("We are inside nodejs savecover function")
+        console.log(github);
+        console.log(introduction);
+        console.log(userID);
+        console.log(signal);
+        
+        // const imagePath = base64Img.imgSync(selectedFile, './uploads', 'image');
+
+        const updatedUser = await User.findOneAndUpdate(
+            { email: userID }, 
+            { 
+                $set: {
+                    github: github,
+                    introduction: introduction,
+                    signal: signal
+                }
+            },
+            { new: true } 
+        );
+
+        console,log(updatedUser);
 
         res.json({ status: 'success'});
 
@@ -232,8 +305,10 @@ app.post("/result", async(req, res) => {
         const user = await User.findOne({ email: userID })
                                .select('-password -_id -createdAt -updatedAt -__v');
 
+        console.log(user);
+
         if (user) {
-            res.json({ status: 'success', userData: user });
+            res.status(200).json({ status: 'success', userData: user });
         } else {
             res.status(404).json({ error: 'User not found' });
         }
