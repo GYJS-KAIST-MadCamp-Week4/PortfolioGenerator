@@ -61,7 +61,7 @@ const Column2 = () => (
     </div>
     <div className="template-section">
       <p className="template-title">Template</p>
-      <h2 className="template-heading">Pick template you want </h2>
+      <h2 className="template-heading">Pick any template you want </h2>
       <p className="template-description">당신을 위해 여러가지 템플릿을 준비해봤어요. <br />
         여러 템플릿 중 마음에 드는 것을 골라 본인 만의 포트폴리오를 만들어보세요.<br /></p>
       <button  className="template-button">Learn More</button>
@@ -102,7 +102,8 @@ const Column4 = () => {
 
   const faqs = [
     { question: "'해줘'를 개발한 사람은 누구인가요?", answer: "'해줘'를 개발한 사람은 몰입캠프 1분반의 김가연 그리고 박진석 입니다." },
-    { question: '두 번째 질문', answer: '두 번째 답변' },
+    { question: '정말 배포된 사이트가 결과물로 도출되나요?', answer: '물론입니다:)' },
+    { question: '어떻게 이용하나요?', answer: '상세한 이용방법은 Instruction 탭에 소개되어있습니다. 이 내용을 참고해주세요.' },
   ];
 
   return (
@@ -115,9 +116,9 @@ const Column4 = () => {
           </div>
           </div>
           <div className="faq-card-section">
-            {faqs.map(faq => (
-                <FAQItem key={faq.question} question={faq.question} answer={faq.answer} />
-              ))}
+            {faqs.map((faq) => (
+              <FAQItem question={faq.question} answer={faq.answer} />
+            ))}
           </div>
       </div>
       <div className="banner-section">
@@ -125,7 +126,7 @@ const Column4 = () => {
         <button onClick={handleTryNowClick}>Get Started</button>
       </div>
       <footer>
-        © Copyright 2024. Hajewo. All rights reserved.
+        © Copyright 2024. Haejwo. All rights reserved.
       </footer>
     </div>
   );
