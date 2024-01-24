@@ -57,7 +57,7 @@ const CreateAbout = () => {
                 <form className="form-about">
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
-                        <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} />
+                        <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} placeholder="이름을 입력해주세요"/>
                     </div>
                     <div className="form-group">
                     <label htmlFor="birthDate">Birth</label>
@@ -68,20 +68,20 @@ const CreateAbout = () => {
                     />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="email">Email</label>
-                        <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} />
-                    </div>
-                    <div className="form-group">
                         <label htmlFor="image">Image</label>
                         <input type="file" id="image" name="image" onChange={handleImageChange} />
                     </div>
                     <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                        <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="이메일(연락처)을 입력해주세요" />
+                    </div>
+                    <div className="form-group">
                         <label htmlFor="address">Address</label>
-                        <input type="text" id="address" name="address" value={formData.address} onChange={handleInputChange} />
+                        <input type="text" id="address" name="address" value={formData.address} onChange={handleInputChange} placeholder="주소지를 입력해주세요" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="education">Education</label>
-                        <input type="text" id="education" name="education" value={formData.education} onChange={handleInputChange} />
+                        <input type="text" id="education" name="education" value={formData.education} onChange={handleInputChange} placeholder="학력을 기입해주세요" />
                     </div>
                 </form>
                 <div className="arrow right-about"></div>
