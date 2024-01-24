@@ -12,7 +12,7 @@ import global from '../global.js';
 function AboutMeOne() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { userID, signal, name, email, education, selectedFile } = location.state;
+  const { userID, signal, name, email, education, address, selectedFile } = location.state;
 
   const backgroundImageStyle = selectedFile
   ? { backgroundImage: `url(${URL.createObjectURL(selectedFile)})`}
@@ -48,6 +48,7 @@ function AboutMeOne() {
                 signal: signal,
                 name: name,
                 emailAddress: email,
+                address: address,
                 education: education,
                 aboutfile: base64Image,
               };
@@ -86,7 +87,7 @@ function AboutMeOne() {
                 <div className='Name'><div className='box1'>< Person2Icon /> </div > <div className='box2'><span>이름</span></div><div className='box3'>{name}</div></div>
                 <div className='School'> <div className='box1'><SchoolIcon /></div> <div className='box2'><span>학교</span></div><div className='box3'>{education}</div></div>
                 <div className='Email'> <div className='box1'><EmailIcon /></div><div className='box2'>이메일</div><div className='box3'>{email}</div> </div>
-                <div className='Github'><div className='box1'><GitHubIcon /></div><div className='box2'>Github</div> <div className='box3'><a href="https://github.com/jjpark51" style={{color: 'whitesmoke'}}>jjpark51</a></div> </div>
+                <div className='Github'><div className='box1'><GitHubIcon /></div><div className='box2'>주소지</div> <div className='box3'><a href="https://github.com/jjpark51" style={{color: 'whitesmoke'}}>{address}</a></div> </div>
             </div>   
             <div className="arrow right" onClick={handleNextClick}></div>
 

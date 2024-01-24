@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import '../../static/covertemplate.scss'
 import coverOneImage from '../../assets/coverone.png';
+import coverTwoImage from '../../assets/covertwo.png'
 import CoverInfo from './CoverInfo';
 import { useNavigate } from 'react-router-dom';
 import { useSignal } from '../../context/SignalContext';
@@ -48,22 +49,22 @@ function CoverTemplate() {
                         <p>Cover</p>
                     </div>
                     <div className={`answertwo ${selectedAnswer === 'answertwo' ? 'selected-answer' : ''}`} onClick={() => handleAnswerClick('answertwo', 1)} style={{width: '350px', height: '300px',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)', textAlign: 'center', borderRadius: '20px', backgroundColor: 'white'}} >
-                    <div className='display-one' style={{backgroundImage: `url(${coverOneImage})` , height: '170px',width: '350px', backgroundSize: 'contain', backgroundPosition: 'top', backgroundRepeat: 'no-repeat', borderTopLeftRadius: '20px', borderTopRightRadius: '20px'}}>
+                    <div className='display-one' style={{backgroundImage: `url(${coverTwoImage})` , height: '170px',width: '350px', backgroundSize: 'contain', backgroundPosition: 'top', backgroundRepeat: 'no-repeat', borderTopLeftRadius: '20px', borderTopRightRadius: '20px'}}>
                         </div>
                         <p>About Me</p></div>
-                    <div className={`answerthree ${selectedAnswer === 'answerthree' ? 'selected-answer' : ''}`} onClick={() => handleAnswerClick('answerthree', 2)} style={{width: '350px', height: '300px',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)', textAlign: 'center', borderRadius: '20px', backgroundColor: 'white'}} >
+                    {/* <div className={`answerthree ${selectedAnswer === 'answerthree' ? 'selected-answer' : ''}`} onClick={() => handleAnswerClick('answerthree', 2)} style={{width: '350px', height: '300px',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)', textAlign: 'center', borderRadius: '20px', backgroundColor: 'white'}} >
                     <div className='display-one' style={{backgroundImage: `url(${coverOneImage})` , height: '170px',width: '350px', backgroundSize: 'contain', backgroundPosition: 'top', backgroundRepeat: 'no-repeat', borderTopLeftRadius: '20px', borderTopRightRadius: '20px'}}>
                         </div>
-                        <p>Skills</p></div>
+                        <p>Skills</p></div> */}
                     {/* <div className="arrow right-about" style={{}} onClick={handleNextClick}></div> */}
 
                     {/* <button onClick={handleInfo} className='next-button' style={{backgroundColor: '#367AFF', width: '80px', borderRadius: '20px', border: '1px solid white', marginTop: '10px'}}><p style={{color: 'white'}}>Next</p></button> */}
-                    <button onClick={handleNextClick} className='next-button' style={{backgroundColor: '#367AFF', width: '80px', borderRadius: '20px', border: '1px solid white', marginTop: '-10px'}}><p style={{color: 'white'}}>Details</p></button>
 
             </div>
+            <button onClick={handleNextClick} className='next-button' style={{backgroundColor: '#367AFF', width: '80px', borderRadius: '20px', border: '1px solid white', marginTop: '-10px'}}><p style={{color: 'white'}}>Details</p></button>
+
 
         </div>
-        {status == 1 && <CoverInfo status={status} signal={signal}/> }
 
         </>
   )

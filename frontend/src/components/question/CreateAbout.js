@@ -124,8 +124,12 @@ const CreateAbout = () => {
               const userID = "jjpark57@hotmail.com"
 
               if(signal[1][0] == 1){
-                navigate('/aboutmeone', {state: {userID, signal, name, email, education, selectedFile}});
+                navigate('/aboutmeone', {state: {userID, signal, name, address, email, education, selectedFile}});
         
+              }
+              else {
+                navigate('/aboutmetwo', {state: {userID, signal, name, address, email, education, selectedFile}});
+
               }
   
         
@@ -163,7 +167,7 @@ const CreateAbout = () => {
                             <input type="email" id="email" name="email" value={email} onChange={handleEmail} placeholder="이메일(연락처)을 입력해주세요" />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="address">Github Link</label>
+                            <label htmlFor="address">Address</label>
                             <input type="text" id="address" name="address" value={address} onChange={handleAddress} placeholder="주소지를 입력해주세요" />
                         </div>
                         <div className="form-group">

@@ -24,6 +24,8 @@ import CreateSkills from './components/question/CreateSkills';
 import CreateProject from './components/question/CreateProject';
 import CoverPreview from './components/cover/CoverPreview';
 import MyPage from './components/MyPage';
+import CoverTwo from './components/cover/CoverTwo';
+import AboutMeTwo from './components/aboutme/AboutMeTwo';
 
 function App() {
   return (
@@ -36,7 +38,10 @@ function App() {
         <Route path="/home" element={<Home/>} />
         <Route path="/mypage" element={<MyPage/>} />
         <Route path="/coverone" element={<CoverOne/>} />
+        <Route path="/covertwo" element={<CoverTwo/>} />
         <Route path="/aboutmeone" element={<AboutMeOne/>} />
+        <Route path="/aboutmetwo" element={<AboutMeTwo/>} />
+
         <Route path="/skills1" element={<Skillsone/>} />
         <Route path="/skills2" element={<Skillstwo/>} />
         <Route path="/skills3" element={<Skillsthree/>} />

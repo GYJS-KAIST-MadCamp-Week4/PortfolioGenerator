@@ -1,0 +1,30 @@
+#about {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh; 
+    
+    .about-inner {
+      width: 980px;
+      padding: 20px;
+      text-align: center; 
+    }
+  
+    #introduction {
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 1.5;
+  
+      .typeit {
+        height: 120px;
+        margin-bottom: 200px; 
+        font-size:60px;
+      }
+  
+      p {
+        font-size: 35px;
+        font-weight: 400;
+      }
+    }
+  }
+  

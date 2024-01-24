@@ -101,7 +101,7 @@ const CreateCover = () => {
 
       }
       else {
-        navigate('/coverone', {state: {name, subtitle, description, selectedFile}});
+        navigate('/covertwo', {state: {name, subtitle, description, selectedFile}});
 
       }
 
