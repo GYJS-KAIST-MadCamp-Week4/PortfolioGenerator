@@ -1,0 +1,357 @@
+.section {
+    opacity: 0;
+    transform: translateY(20px);
+    display: none;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .section.active {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+  }
+  
+
+.header {
+    background-color: "transparent";
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+  
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    height: 40px;
+}
+
+@font-face {
+    font-family: 'Nico';
+    src: url(../font/Nico.ttf);
+}
+  
+.navbar .logo {
+    font-weight: bold;
+    font-family: 'Nico';
+    font-size: 1.5em;
+    color: #367AFF;
+}
+  
+.navbar .menu a {
+    text-decoration: none;
+    margin-left: 40px;
+    color: #333;
+    font-weight: 500;
+}
+  
+.navbar .menu a:hover {
+    color: #367AFF;
+}
+
+/* 첫번째 페이지 */
+@font-face {
+    font-family: 'Inter';
+    src: url(../font/Inter.ttf);
+}
+
+.introduction {
+    text-align: center; 
+    padding: 30px 0;
+    background-color: #F4F8FA;  
+    color: #333;
+    font-family: 'Inter';
+    min-height: 93vh;
+    background-image: url('../img/background_design.png');
+    background-size: auto;
+    background-position: top left;
+    background-repeat: no-repeat;
+}
+  
+.introduction h1 {
+    font-family: 'Inter';
+    font-size: 64px; 
+    margin-bottom: 20px; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+  
+.introduction .description {
+    margin-bottom: 30px; 
+    color: #666;
+}
+  
+.introduction .buttons {
+    display: flex;
+    justify-content: center; 
+    gap: 20px; 
+}
+  
+.introduction button {
+    padding: 10px 20px; 
+    border: none;
+    background-color: #4328EB;
+    border-radius: 5px;
+    color: #fff; 
+    cursor: pointer;
+}
+  
+.introduction button:hover {
+    opacity: 0.8; 
+}
+
+/* 2번째 페이지 */
+.column2-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    height: 100vh; 
+    gap: 20px;
+}
+  
+.how-to-use-section {
+    flex:1;
+    grid-column: 1;
+    grid-row: 1;
+    margin-left: 100px;
+    margin-top: 100px;
+    line-height: 1.6;
+}
+  
+.template-section {
+    flex:1;
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+    text-align: right;
+    line-height: 1.6;
+    margin-right: 150px;
+    margin-top: 80px;
+    padding: 10px;
+}
+
+.section-title {
+    font-size: 15px;
+    color: #0085FF;
+    font-family: 'Inter';
+    margin-bottom: 0px;
+}
+  
+.section-heading {
+    font-size: 42px;
+    color: #333;
+    font-family: 'Inter';
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+  
+.section-description {
+    font-size: 18px;
+    line-height: 1.5; 
+    color: #666;
+    font-family: 'Inter';
+    margin-bottom: 40px; 
+}
+  
+.text-button {
+    background: none; 
+    border: none; 
+    color: #0085FF;
+    font-family: 'Inter';
+    padding: 0; 
+    font-size: 15px; 
+    cursor: pointer; 
+    text-decoration: none;
+    display: inline; 
+    margin: 0; 
+}
+  
+.text-button:hover,
+.text-button:focus {
+    text-decoration: underline;
+    outline: none; 
+}
+
+.template-title {
+    font-size: 15px;
+    color: #00A424;
+    font-family: 'Inter';
+    margin-bottom: 0px;
+}
+  
+.template-heading {
+    font-size: 42px;
+    font-family: 'Inter';
+    color: #333;
+    margin-top:0px;
+    margin-bottom: 0px;
+}
+  
+.template-description {
+    font-size: 18px;
+    line-height: 1.5; 
+    color: #666;
+    font-family: 'Inter';
+    margin-bottom: 40px; 
+}
+  
+.template-button {
+    background: none; 
+    border: none; 
+    color: #00A424;
+    font-family: 'Inter';
+    padding: 0; 
+    font-size: 15px; 
+    cursor: pointer; 
+    text-decoration: none;
+    display: inline; 
+    margin: 0; 
+}
+  
+.template-button:hover,
+.template-button:focus {
+    text-decoration: underline;
+    outline: none; 
+}
+
+
+/* 3번째 페이지 */
+.reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 40px; 
+    height: calc(100vh - 40px); 
+    text-align: center;
+    background-color: #F4F8FA; 
+    font-family: 'Inter';
+}
+
+.reviews h1 {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+.reviews .text {
+    font-size: 18px;
+    color: #666;
+    margin-top:5px
+} 
+
+/* 4번째 페이지 */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    height: 100vh;
+}
+
+.faq-section {
+    display: flex; 
+    justify-content: center;
+    align-items: flex-start; 
+    height: 50%; 
+}
+
+.faq-title-section {
+    flex: 35%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px; 
+    margin-left: 130px;
+    margin-top: 130px;
+}
+
+.faq-card-section{
+    flex: 65%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px; 
+    margin-right: 150px;
+    margin-top: 130px;
+}
+
+.faq-title {
+    font-size: 15px;
+    color: #EB2891;
+    font-family: 'Inter';
+    margin-left: 30px; 
+    margin-bottom: 0px;
+}
+
+.faq {
+    margin-left: 40px;
+    font-size: 20px;
+    font-family: 'Inter';
+    color: #333;
+}
+  
+.banner-section {
+    background: linear-gradient(270deg, #6a11cb 0%, #337dfc 100%);
+    color: white;
+    text-align: center;
+    padding: 80px;
+    border-radius: 20px;
+    width: 60%;
+    margin: auto; 
+}
+
+.banner-section-title {
+    font-size: 3em;
+    font-family: 'Inter';
+}
+  
+.banner-section button {
+    background-color: #fff;
+    color: #2575fc;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.faq-item {
+    background-color: #E3F1FF; 
+    border-radius: 10px; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+    transition: all 0.3s ease; 
+}
+  
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer; 
+    font-family: 'Inter';
+    padding-left: 10px;
+    color: #333;
+}
+  
+.toggle-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+  
+.faq-answer {
+    padding-top: 10px; 
+    padding-left: 10px;
+    color: #535353;
+}
+  
+
+footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 0.8em;
+    margin-top: auto; 
+    color: #616161;
+}

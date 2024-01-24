@@ -5,9 +5,9 @@ import {frontend} from '../../assets/frontend'
 import Cards from './Cards';
 import '../../static/skillstwo.scss'
 
-function ResultSkillstwo() {
+function ResultSkillstwo({frontend, backend, others}) {
   return (
-        <div className='skill-section' >
+        <div className='skill-section' style={{height: '100vh'}}>
 
             <Fade duration={3500}>
 
@@ -18,25 +18,31 @@ function ResultSkillstwo() {
             <Fade duration={3500}>
 
 
-        <div className='skill-container'>
+        <div className='skill-container' style={{height: '100vh'}} >
 
 
 
-            <div><div className='frontend'><center><span>Frontend</span><br/><a style={{color: '#214832'}}> ____________________________ </a></center>{ frontend[0].map(e => ( 
-                    < Cards {...e} />
+            <div><div className='frontend'><center><span>Frontend</span><br/><a style={{color: '#214832'}}> ____________________________ </a></center>{ frontend.map(e => ( 
+                        <div className='card-container'>
+                        <div className='card-image' style={{backgroundImage: `url(${e})`, width: '100%', height: '80px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
+                    </div>
+                      
+                    </div>
             ))}</div></div>
-            <div><div className='backend'><center><span>Backend</span><br/><a style={{color: '#214832'}}> ____________________________ </a></center>{ frontend[1].map(e => ( 
-                    < Cards {...e} />
-            ))}</div></div>
-            <div className='version-control'><div className='backend'><center><span>Version Control</span><br/><a style={{color: '#214832'}}> ____________________________ </a></center>{ frontend[2].map(e => ( 
-                    < Cards {...e} />
-            ))}</div></div>
-            <div className='AI'>   <div className='backend'><center><span>Artificial Intelligence</span><br/><a style={{color: '#214832'}}> ____________________________ </a></center>{ frontend[3].map(e => ( 
-                    < Cards {...e} />
+            <div><div className='backend'><center><span>Backend</span><br/><a style={{color: '#214832'}}> ____________________________ </a></center>{ backend.map(e => ( 
+                       <div className='card-container'>
+                       <div className='card-image' style={{backgroundImage: `url(${e})`, width: '100%', height: '80px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
+                   </div>
+                     
+                   </div>
             ))}</div></div>
             <div>
-            <div className='backend'><center><span>Others</span><br/><a style={{color: '#214832'}}> ____________________________ </a></center>{ frontend[4].map(e => ( 
-                    < Cards {...e} />
+            <div className='backend'><center><span>Others</span><br/><a style={{color: '#214832'}}> ____________________________ </a></center>{ others.map(e => ( 
+                       <div className='card-container'>
+                       <div className='card-image' style={{backgroundImage: `url(${e})`, width: '100%', height: '80px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
+                   </div>
+                     
+                   </div>
             ))}</div>
             </div>
 

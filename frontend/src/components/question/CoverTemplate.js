@@ -34,7 +34,7 @@ function CoverTemplate() {
 
   return (
     <>
-        <div className='cover-template-wrapper'>
+        <div className='cover-template-wrapper'  style={{marginTop: '-240px'}}>
             <div className='question-title'>Choose your template</div>
             <div className='question-subtitle'>마음에 드는 템플릿을 선택해주세요</div>
             <div className='question-box' style={{display: 'flex',justifyContent: 'center',  flexDirection: 'row', width: '100%', gap: '50px', flexWrap: 'wrap' }}>

@@ -38,7 +38,7 @@ function SkillsTemplate() {
 
   return (
 <>
-<div className='question-container'>
+<div className='question-container' style={{marginTop: '-240px'}}>
         <div className='question-image'></div>
         <div className='cover-template-wrapper'>
             <div className='question-title'>Choose your template</div>

@@ -16,6 +16,7 @@
     "react-card-flip": "^1.2.2",
     "react-datepicker": "^4.25.0",
     "react-dom": "^18.2.0",
+    "react-fullpage": "^0.1.19",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.21.3",
     "react-scripts": "5.0.1",

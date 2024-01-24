@@ -2,7 +2,7 @@ import React from 'react'
 import '../../static/skillsthree.scss'
 import Layer from './Layer'
 
-function Skillsthree() {
+function Skillsthree({frontend, backend, others}) {
 
     const skilllist = [
         {

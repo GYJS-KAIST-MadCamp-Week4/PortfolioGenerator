@@ -1,9 +1,9 @@
 import React from 'react'
 import { Fade } from "react-awesome-reveal";
 
-function Cards({name, link})  {
+function Cards({link})  {
 
-
+    console.log(link)
     return (
         <Fade>
 

@@ -1,6 +1,5 @@
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import './App.css';
-import Login from './components/Login';
 import Home from './components/Home';
 import CoverOne from './components/cover/CoverOne';
 import AboutMeOne from './components/aboutme/AboutMeOne'
@@ -17,6 +16,8 @@ import AboutTemplate from './components/question/AboutTemplate';
 import ProjectTemplate from './components/question/ProjectTemplate';
 import { SignalProvider } from './context/SignalContext';
 import Result from './components/Result';
+import Start from './components/Start'
+import Login from './components/Login'
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
     <DataProvider>
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Start />} />
+        <Route path="/Login" element={<Login />} />
         <Route path="/home" element={<Home/>} />
         <Route path="/coverone" element={<CoverOne/>} />
         <Route path="/aboutmeone" element={<AboutMeOne/>} />

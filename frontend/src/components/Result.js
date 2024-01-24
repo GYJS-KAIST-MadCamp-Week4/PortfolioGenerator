@@ -106,33 +106,36 @@ function Result() {
           <div style={{marginTop: '0vh'}}>
           {responseData.userData?.signal?.[2]?.[0] === 1 && (
             <ResultSkillsone
-
+              frontend={responseData.userData.frontend}
+              backend={responseData.userData.backend}
+              others={responseData.userData.others}
             />
           )}
           {responseData.userData?.signal?.[2]?.[1] === 1 && (
             <ResultSkillstwo
-
+              frontend={responseData.userData.frontend}
+              backend={responseData.userData.backend}
+              others={responseData.userData.others}
             />
           )}
           {responseData.userData?.signal?.[2]?.[2] === 1 && (
             <ResultSkillsthree
-
+              frontend={responseData.userData.frontend}
+              backend={responseData.userData.backend}
+              others={responseData.userData.others}
             />
           )}
           </div>
           <div style={{marginTop: '0vh'}}>
           {responseData.userData?.signal?.[3]?.[0] === 1 && (
             <ResultProjectOne
+              projects={responseData.userData.projects}
 
             />
           )}
           {responseData.userData?.signal?.[3]?.[1] === 1 && (
             <ResultProjecttwo
-
-            />
-          )}
-          {responseData.userData?.signal?.[3]?.[2] === 1 && (
-            <ResultProjecttwo
+              projects={responseData.userData.projects}
 
             />
           )}

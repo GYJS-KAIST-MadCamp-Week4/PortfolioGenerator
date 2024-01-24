@@ -1,0 +1,13 @@
+.project-container {
+    margin-top: 100px;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    margin: 0 auto;
+    background-color: blue;
+    width:100%;
+    height:100vh;
+    padding-top:40px;
+    background-color: transparent;
+    width:70%;
+}

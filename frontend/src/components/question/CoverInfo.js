@@ -112,7 +112,7 @@ function CoverInfo({status, signal}) {
   
   return (
     <>
-    <div className='cover-template-wrapper' style={{marginTop: '400px', height: 'max-content'}}>
+    <div className='cover-template-wrapper' style={{marginTop: '400px', height: 'max-content', overflowY: 'auto'}}>
             <div className='question-title' style={{fontWeight: 'normal'}}>Name</div>
             <input className='question-titleinput' type="text" style={{border: '1px solid #BEBEBE', width: '80%', height: '50px', borderRadius: '20px', paddingLeft: '20px'}} value={name} onChange={handleInputChange} placeholder="Whats your name..." />
             <div className='question-subtitle' style={{fontWeight: 'normal'}}>Subtitle</div>
