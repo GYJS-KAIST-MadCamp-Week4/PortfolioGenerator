@@ -13,7 +13,9 @@ import global from '../global.js';
 function AboutMeTwo() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { signal, address, email, education, name } = location.state;
+    const { signal, address, email, education, name, date } = location.state;
+
+    console.log(date);
 
     const handleAbout = async () => {
         const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
@@ -27,6 +29,7 @@ function AboutMeTwo() {
                 name: name,
                 emailAddress: email,
                 education: education,
+                date: date
               };
               
         
@@ -62,10 +65,10 @@ function AboutMeTwo() {
                     <div className='info-item'>< Person2Icon />이름</div>
                     <div className='info-item-input'>{name}</div>
                 </div>
-                {/* <div className='info-input'>
+                <div className='info-input'>
                     <div className='info-item'>< CakeIcon />생년월일</div>
                     <div className='info-item-input'>{date}</div>
-                </div> */}
+                </div> 
                 <div className='info-input'>
                     <div className='info-item'>< EmailIcon />이메일</div>
                     <div className='info-item-input'>{email}</div>

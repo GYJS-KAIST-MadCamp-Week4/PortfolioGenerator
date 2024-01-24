@@ -97,6 +97,23 @@
     width: 100%; 
 }
 
+.form-group-birth {
+    display: flex; 
+    align-items: center;
+    margin: 35px 35px 35px 200px; 
+    width: 100%; 
+}
+
+.form-group-birth label {
+    font-family: 'Handlee';
+    font-size: 30px; 
+    color: #000;
+    -webkit-text-stroke: 0.5px #000;
+    width: 120px; 
+    margin-right: 40px; 
+    text-align: right; 
+}
+
 .form-group label {
     font-family: 'Handlee';
     font-size: 30px; 
@@ -112,21 +129,8 @@
     margin-top: 5px;
     width: 300px; 
     background-color: rgba(245, 245, 245, 0.16); 
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid #a3a3a3;
-}
-
-.custom-input {
-    padding: 10px;
-    width: 330px;
-    background-color: rgba(245, 245, 245, 0.16); 
-    border-radius: 10px;
-    border: 1px solid #a3a3a3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    flex-direction: row-reverse;
 }
 
 .form-group input,
@@ -135,11 +139,7 @@
     padding: 10px;
     margin-top: 5px;
     background-color: rgba(245, 245, 245, 0.16); 
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid #a3a3a3;
 }
 
-.calendar-icon {
-    width: 24px; 
-    height: auto;
-}

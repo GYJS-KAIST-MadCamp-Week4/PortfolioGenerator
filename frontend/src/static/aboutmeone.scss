@@ -81,11 +81,35 @@
             }
         }
 
-        .School {
+        .Birth {
             grid-column: 2;
             display: grid;
             grid-template-columns: 1fr 5fr;
             grid-row:3;
+            .box1 {
+                grid-column: 1;
+                grid-row:1/2;
+                .box1 svg {
+                    font-size:40px;
+                }
+
+            
+            }
+
+            .box2 {
+                grid-column: 2;
+            }
+
+            .box3 {
+                grid-column: 2;
+            }
+        }
+
+        .School {
+            grid-column: 2;
+            display: grid;
+            grid-template-columns: 1fr 5fr;
+            grid-row:4;
 
             .box1 {
                 grid-column: 1;
@@ -107,7 +131,7 @@
             grid-column: 2;
             display: grid;
             grid-template-columns: 1fr 5fr;
-            grid-row:4;
+            grid-row:5;
 
             .box1{
                 grid-column: 1;
@@ -127,7 +151,7 @@
 
             display: grid;
             grid-template-columns: 1fr 5fr;
-            grid-row:5;
+            grid-row:6;
 
             .box1{
                 grid-column: 1;
@@ -147,7 +171,7 @@
             grid-column: 2;
             display: grid;
             grid-template-columns: 1fr 5fr;
-            grid-row:6;
+            grid-row:7;
             .box1 {
                 grid-column: 1;
                 grid-row:1/2;

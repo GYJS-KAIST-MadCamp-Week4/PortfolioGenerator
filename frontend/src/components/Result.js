@@ -94,6 +94,7 @@ function Result() {
               emailAddress={responseData.userData.emailAddress}
               education={responseData.userData.education}
               aboutfile={responseData.userData.aboutfile}
+              date={responseData.userData.date}
             />
           )}
           </div>
@@ -104,6 +105,7 @@ function Result() {
               emailAddress={responseData.userData.emailAddress}
               education={responseData.userData.education}
               aboutfile={responseData.userData.aboutfile}
+              date={responseData.userData.date}
             />
           )}
           </div>

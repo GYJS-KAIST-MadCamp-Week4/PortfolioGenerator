@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import calendarIcon from '../../img/calendar_icon.png';
-import 'react-datepicker/dist/react-datepicker.css';
+import dayjs, { Dayjs } from 'dayjs';
+import TextField from '@mui/material/TextField';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import '../../static/CreateAbout.css';
 import { useSignal } from '../../context/SignalContext';
 import { useNavigate } from 'react-router-dom';
@@ -13,29 +15,17 @@ const CreateAbout = () => {
     const navigate = useNavigate();
 
     const [name, setName] = useState('');
-    const [date, setDate] = useState(new Date());
     const [address, setAddress] = useState('')
     const [email, setEmail] = useState('')
     const [education, setEducation] = useState('')
     const [selectedFile, setSelectedFile] = useState(null);
+    const [date, setDate] = useState(dayjs()); 
     const {userData, setUserData} = useData();
 
-    // console.log("This is the userData")
-    // console.log(userData)
 
-    // const CustomInput = ({ value, onClick }) => (
-    //     <button 
-    //       className="custom-input" 
-    //       onClick={(e) => {
-    //         e.preventDefault(); 
-    //         e.stopPropagation(); 
-    //         onClick(e); 
-    //       }}
-    //     >
-    //       {value}
-    //       <img src={calendarIcon} alt="calendar icon" className="calendar-icon" />
-    //     </button>
-    // );
+    const handleBackClick = async() => {
+      navigate('/abouttemplate');
+  }
       
     const handleNextClick = async() => {
         await handleAbout()
@@ -52,6 +42,10 @@ const CreateAbout = () => {
     // Event handler to update the input value
     const handleEmail = (event) => {
       setEmail(event.target.value);
+    };
+
+    const handleDateChange = (newValue) => {
+      setDate(newValue); 
     };
 
         // Event handler to update the input value
@@ -90,6 +84,7 @@ const CreateAbout = () => {
                     emailAddress: email,
                     education: education,
                     aboutfile: base64Image,
+                    date: date.format('YYYY-MM-DD')
                   };
                   
             
@@ -120,20 +115,19 @@ const CreateAbout = () => {
               const file = event.target.files[0];
               setSelectedFile(file);
             };
-            const handlePreview = ()=> {
-              const userID = "jjpark57@hotmail.com"
 
+            const handlePreview = () => {
+              const userID = "jjpark57@hotmail.com";
+              const formattedDate = date.format('YYYY-MM-DD'); 
+            
               if(signal[1][0] == 1){
-                navigate('/aboutmeone', {state: {userID, signal, name, address, email, education, selectedFile}});
-        
+                navigate('/aboutmeone', {state: {userID, signal, name, address, email, education, selectedFile, date: formattedDate}});
               }
               else {
-                navigate('/aboutmetwo', {state: {userID, signal, name, address, email, education, selectedFile}});
-
+                navigate('/aboutmetwo', {state: {userID, signal, name, address, email, education, selectedFile, date: formattedDate}});
               }
-  
-        
             }
+            
 
           return (
             <div className="create-container-about">
@@ -142,7 +136,7 @@ const CreateAbout = () => {
                     <div className="progress-bar-about"></div>
                 </header>
                 <main className="create-main">
-                    <div className="arrow left-about"></div>
+                    <div className="arrow left-about" onClick={handleBackClick}></div>
                     <div className="content-container-about">
                         <div className="photo-container-about"></div>
                     </div>
@@ -151,13 +145,17 @@ const CreateAbout = () => {
                             <label htmlFor="name">Name</label>
                             <input type="text" id="name" name="name" value={name} onChange={handleInputChange} placeholder="이름을 입력해주세요"/>
                         </div>
-                        {/* <div className="form-group"> */}
-                        {/* <label htmlFor="birthDate">Birth</label>
-                        <DatePicker
-                           selected={date} onChange={(date) => setDate(date)}
-                            customInput={<CustomInput />}
-                        /> */} 
-                        {/* </div> */}
+                        <div className="form-group-birth">
+                            <label htmlFor="birthDate">Birth</label>
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DatePicker
+                              value={date} 
+                              onChange={handleDateChange} 
+                              renderInput={(params) => <TextField {...params} value={date.format('YYYY-MM-DD')} />} 
+                              inputFormat="YYYY-MM-DD"
+                            />
+                            </LocalizationProvider>
+                          </div>
                         <div className="form-group">
                             <label htmlFor="image">Image</label>
                             <input type="file" id="image" name="image" onChange={handleFileChange} />
