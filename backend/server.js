@@ -27,11 +27,9 @@ const userSchema = new mongoose.Schema({
     date: String,
     address: String,
     emailAddress: String,
-    frontend: String,
-    backend: String,
-    versionControl: String,
-    deployment: String,
-    others: String,
+    frontend: Object,
+    backend: Object,
+    others: Object,
     github: String,
     introduction: String,
     coverimage: String
@@ -231,12 +229,10 @@ app.post("/saveabout", async(req, res) => {
 
 app.post("/saveskills", async(req, res) => {
     try {
-        const { frontend, backend, vc, deployment, others, userID } = req.body;
-        console.log("We are inside nodejs savecover function")
+        const { frontend, backend,others, userID } = req.body;
+        console.log("We are inside nodejs saveskills function")
         console.log(frontend);
         console.log(backend);
-        console.log(vc);
-        console.log(deployment);
         console.log(others);
         console.log(userID);
         
@@ -248,8 +244,6 @@ app.post("/saveskills", async(req, res) => {
                 $set: {
                     frontend: frontend,
                     backend: backend,
-                    versionControl: vc,
-                    deployment: deployment,
                     others: others
                 }
             },

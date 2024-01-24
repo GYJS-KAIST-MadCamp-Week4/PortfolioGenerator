@@ -1,0 +1,64 @@
+
+> backend@1.0.0 start
+> nodemon server.js
+
+[33m[nodemon] 3.0.3[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node server.js`[39m
+(node:81831) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:81831) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+Server running
+MongoDB Connected
+We are inside nodejs savecover function
+[ [ 1, 0, 0 ], [ 1, 0, 0 ], [ 0, 0, 1 ], [ 1, 0, 0 ] ]
+sdfs
+sdf
+sdfdf
+undefined
+object
+http://192.249.29.120:4000/uploads/undefined-1706085225042.png
+null
+We are inside nodejs savecover function
+2024-01-24T08:33:46.045Z
+sdfsdf
+dfsdf
+fffff
+[ [ 1, 0, 0 ], [ 1, 0, 0 ], [ 0, 0, 1 ], [ 1, 0, 0 ] ]
+null
+We are inside nodejs savecover function
+[
+  'https://user-images.githubusercontent.com/30186107/29488525-f55a69d0-84da-11e7-8a39-5476f663b5eb.png',
+  'https://cdn-icons-png.flaticon.com/512/5968/5968381.png',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Sass_Logo_Color.svg/1280px-Sass_Logo_Color.svg.png',
+  'https://cdn.iconscout.com/icon/free/png-256/free-react-1-282599.png?f=webp'
+]
+[ 'https://iconape.com/wp-content/png_logo_vector/node-js-2.png' ]
+undefined
+undefined
+[
+  'https://w7.pngwing.com/pngs/46/626/png-transparent-c-logo-the-c-programming-language-computer-icons-computer-programming-source-code-programming-miscellaneous-template-blue-thumbnail.png'
+]
+undefined
+We are inside nodejs savecover function
+undefined
+undefined
+undefined
+[ [ 1, 0, 0 ], [ 1, 0, 0 ], [ 0, 0, 1 ], [ 1, 0, 0 ] ]
+We are inside nodejs savecover function
+undefined
+undefined
+undefined
+[ [ 1, 0, 0 ], [ 1, 0, 0 ], [ 0, 0, 1 ], [ 1, 0, 0 ] ]
+null
+null
+null
+We are inside nodejs savecover function
+undefined
+undefined
+undefined
+[ [ 1, 0, 0 ], [ 1, 0, 0 ], [ 0, 0, 1 ], [ 1, 0, 0 ] ]
+null
+null
