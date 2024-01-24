@@ -1,5 +1,9 @@
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import './App.css';
+<<<<<<< HEAD
+=======
+import Login from './components/Login';
+>>>>>>> 001a1643d7d7738d0447e64b37e933c4ea7f0948
 import Home from './components/Home';
 import CoverOne from './components/cover/CoverOne';
 import AboutMeOne from './components/aboutme/AboutMeOne'
@@ -16,8 +20,11 @@ import AboutTemplate from './components/question/AboutTemplate';
 import ProjectTemplate from './components/question/ProjectTemplate';
 import { SignalProvider } from './context/SignalContext';
 import Result from './components/Result';
+<<<<<<< HEAD
 import Start from './components/Start'
 import Login from './components/Login'
+=======
+>>>>>>> 001a1643d7d7738d0447e64b37e933c4ea7f0948
 
 function App() {
   return (
@@ -25,8 +32,12 @@ function App() {
     <DataProvider>
     <Router>
       <Routes>
+<<<<<<< HEAD
         <Route path="/" element={<Start />} />
         <Route path="/Login" element={<Login />} />
+=======
+        <Route path="/" element={<Login />} />
+>>>>>>> 001a1643d7d7738d0447e64b37e933c4ea7f0948
         <Route path="/home" element={<Home/>} />
         <Route path="/coverone" element={<CoverOne/>} />
         <Route path="/aboutmeone" element={<AboutMeOne/>} />
