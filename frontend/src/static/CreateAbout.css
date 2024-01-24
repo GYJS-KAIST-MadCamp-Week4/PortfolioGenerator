@@ -48,7 +48,7 @@
 
 .left-about {
     left: 30px;
-    background-image: url('../img/preview_button.png');
+    background-image: url('../img/previous_button.png');
 }
 
 .right-about {
@@ -119,6 +119,7 @@
     border: 1px solid #a3a3a3;
     display: flex;
     justify-content: space-between;
+    flex-direction: row-reverse;
     align-items: center;
     cursor: pointer;
 }
