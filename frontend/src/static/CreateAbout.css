@@ -80,27 +80,31 @@
 }
 
 .form-about {
+    font-family: 'Handlee';
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align to the start of the flex container */
+    align-items: flex-start; 
     justify-content: center;
-    margin-left: auto; /* Center the form in the main container */
+    margin-left: auto; 
     margin-right: auto;
-    width: 500px; /* This width should match the width of your photo-container-about */
+    width: 500px;
 }
 
 .form-group {
-    margin: 15px 0;
-    margin-left: 300px;
-    width: 100%;
+    display: flex; 
+    align-items: center;
+    margin: 35px 35px 35px 200px; 
+    width: 100%; 
 }
 
 .form-group label {
-    display: block;
     font-family: 'Handlee';
     font-size: 30px; 
     color: #000;
     -webkit-text-stroke: 0.5px #000;
+    width: 120px; 
+    margin-right: 40px; 
+    text-align: right; 
 }
 
 .form-group input {
@@ -114,15 +118,25 @@
 
 .custom-input {
     padding: 10px;
-    width: 320px;
+    width: 330px;
     background-color: rgba(245, 245, 245, 0.16); 
     border-radius: 10px;
     border: 1px solid #a3a3a3;
     display: flex;
     justify-content: space-between;
-    flex-direction: row-reverse;
     align-items: center;
     cursor: pointer;
+    flex-direction: row-reverse;
+}
+
+.form-group input,
+.form-group .custom-input {
+    flex: 1;
+    padding: 10px;
+    margin-top: 5px;
+    background-color: rgba(245, 245, 245, 0.16); 
+    border-radius: 10px;
+    border: 1px solid #a3a3a3;
 }
 
 .calendar-icon {

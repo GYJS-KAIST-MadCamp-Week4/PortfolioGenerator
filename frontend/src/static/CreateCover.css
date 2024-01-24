@@ -28,6 +28,7 @@
 .preview-icon:hover {
     cursor: pointer;
 }
+
 .progress-bar {
     width: 850px;
     height: 50px;
@@ -67,7 +68,6 @@
 .content-container {
     display: flex;
     align-items: center;
-    justify-content: center;
     margin-left: 0;
     width: 100%; 
 }
@@ -78,47 +78,63 @@
     background-image: url('../img/cover_icon.png');
     background-repeat: no-repeat;
     background-size: contain;
-    margin-right: 200px; 
+    margin-left:230px;
 }
 
-.form-container {
-    display: flex;
-    flex-direction: column; 
-    width: 400px;
-}
-
-@font-face {
-    font-family: 'Nanum';
-    src: url(../font/Nanum.ttf);
-}
-
-.input-label {
+.form-cover {
     font-family: 'Handlee';
-    font-size: 30px; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 40px;
+    width: 500px;
+}
+
+.form-group-cover {
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    margin: 35px 35px 35px -30px; 
+    width: 100%; 
+}
+
+.form-group-cover label {
+    font-family: 'Handlee';
+    font-size: 30px;
     color: #000;
     -webkit-text-stroke: 0.5px #000;
-    margin-bottom: 10px;
+    width: 120px; 
+    margin-right: 40px; 
+    text-align: right; 
 }
 
-.name-input, .subtitle-input {
-    width: 100%; 
+.form-group-cover input[type="text"],
+.form-group-cover textarea {
+    flex: 1; 
+    padding: 13px;
+    margin-top: 5px;
+    background-color: rgba(245, 245, 245, 0.16); 
+    border-radius: 10px;
+    border: 1px solid #a3a3a3; 
+}
+
+.form-group-cover input[type="file"]{
+    flex: 1; 
     padding: 10px;
-    font-size: 16px; 
-    margin-bottom: 20px; 
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    margin-top: 5px;
+    background-color: rgba(245, 245, 245, 0.16); 
+    border-radius: 10px;
+    border: 1px solid #a3a3a3; 
 }
 
-.image-upload-wrapper {
-    border: 1px solid #ccc; 
-    padding: 10px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
+input[type="text"],
+textarea {
+    border: none; 
 }
 
-.image-upload-input {
-    width: 100%; 
-    padding: 10px 0;
-    font-size: 16px; 
+.form-group-cover textarea {
+    height: 100px; 
+    resize: none; 
 }

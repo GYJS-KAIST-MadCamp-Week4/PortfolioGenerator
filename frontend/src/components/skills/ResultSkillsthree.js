@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../static/skillsthree.scss'
-import Layer from './Layer'
+import { Fade } from "react-awesome-reveal";
 
 function ResultSkillsthree({frontend, backend, others}) {
     console.log(frontend)
@@ -9,7 +9,8 @@ function ResultSkillsthree({frontend, backend, others}) {
 
   return (
     <div className='skills-container-three' style={{backgroundColor: '#e7e6e6'}}>
-        <h2>Main Skills</h2>
+            <Fade duration={2500}>
+        <h2 style={{fontSize: '24pt'}}>Main Skills</h2>
 
                     <div className='layer-container'>
                     <h2 style={{textAlign: 'center'}}>Frontend</h2>
@@ -44,7 +45,10 @@ function ResultSkillsthree({frontend, backend, others}) {
                             ))}
                     </div>
                 </div>
+                </Fade>
+
     </div>
+
   )
 }
 

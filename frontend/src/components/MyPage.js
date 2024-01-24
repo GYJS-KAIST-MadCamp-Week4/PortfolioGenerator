@@ -9,12 +9,10 @@ import ResultProjectOne from './projects/ResultProjectOne';
 import ResultProjecttwo from './projects/ResultProjecttwo';
 import global from './global.js';
 import { useNavigate } from 'react-router-dom';
-
-// import { userInfo } from 'os';
 import { useData } from '../context/DataContext';
 
-function Result() {
-  const navigate = useNavigate();
+function MyPage() {
+    const navigate = useNavigate();
 
     const [responseData, setResponseData] = useState([]); // Assuming you have a context to store user data
     const {userData, setUserData} = useData();
@@ -65,9 +63,8 @@ function Result() {
         handleSignal();
       }, [setResponseData]); // Add dependencies if needed
 
-    
-      return (
-        <div style={{ height: '200vh', width: '100%' }}>
+  return (
+        <div style={{ height: '100vh', width: '100%' }}>
             <div>
           {responseData.userData?.signal?.[0]?.[0] === 1 && (
             <ResultCoverOne
@@ -96,7 +93,7 @@ function Result() {
           {responseData.userData?.signal?.[1]?.[0] === 1 && (
             <ResultAboutMeOne
               name={responseData.userData.name}
-              emailAddress={responseData.userData.emailAddress}
+              email={responseData.userData.emailAddress}
               education={responseData.userData.education}
               aboutfile={responseData.userData.aboutfile}
             />
@@ -139,11 +136,8 @@ function Result() {
             />
           )}
           </div>
-          <button onClick={handleHome}>Home</button>
-          <button onClick={handleSave}>Save</button>
-
         </div>
-      );
+  )
 }
 
-export default Result
+export default MyPage

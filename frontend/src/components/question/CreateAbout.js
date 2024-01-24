@@ -59,60 +59,8 @@ const CreateAbout = () => {
             setEducation(event.target.value);
           };
 
-          // const handleFileChange = (event) => {
-          //   const file = event.target.files[0];
-      
-          //   // Check if a file is selected
-          //   if (file) {
-          //     const reader = new FileReader();
-          
-          //     reader.onloadend = () => {
-          //       // When reading is complete, set the result (base64 string) in state
-          //       const base64String = reader.result;
-          //       setSelectedFile(base64String);
-          //     };
-          
-          //     // Read the contents of the file as a data URL (base64 encoded)
-          //     reader.readAsDataURL(file);
-          //   } else {
-          //     // Handle the case where no file is selected
-          //     setSelectedFile(null);
-          //   }
-          // };
-          const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
 
-          // const handleAbout = async () => {
-          //   // const apiUrl = 'http://192.249.29.120:4000/saveabout'; // Replace with your backend API endpoint
-      
-          //   const requestData = {
-          //     userID: "jjpark57@hotmail.com",
-          //     signal: signal,
-          //     date: date,
-          //     address: address,
-          //     email: email,
-          //     education: education,
-          //     // selectedFile: selectedFile
-          //   };
-        
-          //   // console.log(selectedFile)
-          //   try {
-        
-        
-          //     const response = await fetch(apiUrl, {
-          //       method: 'POST',
-          //       headers: {
-          //         'Content-Type': 'application/json',
-          //       },
-          //       body: JSON.stringify(requestData),
-          //     });
-              
-        
-          //   } catch (error) {
-          //     // Handle network errors or other issues
-          //     console.error('Error sending answers to backend', error);
-          //   }
-        
-          // };
+          const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
       
           const handleAbout = async () => {
             const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
@@ -137,9 +85,9 @@ const CreateAbout = () => {
                   const requestData = {
                     userID: "jjpark57@hotmail.com",
                     signal: signal,
-                    title: name,
+                    name: name,
                     address: address,
-                    email: email,
+                    emailAddress: email,
                     education: education,
                     aboutfile: base64Image,
                   };
@@ -172,11 +120,21 @@ const CreateAbout = () => {
               const file = event.target.files[0];
               setSelectedFile(file);
             };
+            const handlePreview = ()=> {
+              const userID = "jjpark57@hotmail.com"
+
+              if(signal[1][0] == 1){
+                navigate('/aboutmeone', {state: {userID, signal, name, email, education, selectedFile}});
+        
+              }
+  
+        
+            }
 
           return (
             <div className="create-container-about">
                 <header className="create-header-about">
-                    <div className="preview-icon-about"></div>
+                    <div className="preview-icon-about" onClick={handlePreview}></div>
                     <div className="progress-bar-about"></div>
                 </header>
                 <main className="create-main">
@@ -189,13 +147,13 @@ const CreateAbout = () => {
                             <label htmlFor="name">Name</label>
                             <input type="text" id="name" name="name" value={name} onChange={handleInputChange} placeholder="이름을 입력해주세요"/>
                         </div>
-                        <div className="form-group">
+                        {/* <div className="form-group"> */}
                         {/* <label htmlFor="birthDate">Birth</label>
                         <DatePicker
                            selected={date} onChange={(date) => setDate(date)}
                             customInput={<CustomInput />}
-                        /> */}
-                        </div>
+                        /> */} 
+                        {/* </div> */}
                         <div className="form-group">
                             <label htmlFor="image">Image</label>
                             <input type="file" id="image" name="image" onChange={handleFileChange} />
@@ -205,7 +163,7 @@ const CreateAbout = () => {
                             <input type="email" id="email" name="email" value={email} onChange={handleEmail} placeholder="이메일(연락처)을 입력해주세요" />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="address">Address</label>
+                            <label htmlFor="address">Github Link</label>
                             <input type="text" id="address" name="address" value={address} onChange={handleAddress} placeholder="주소지를 입력해주세요" />
                         </div>
                         <div className="form-group">

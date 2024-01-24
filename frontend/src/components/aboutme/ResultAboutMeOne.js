@@ -17,8 +17,10 @@ const backgroundImageStyle = aboutfile
 
   return (
     <div className='about'>
-        <Fade  duration={3500}>
+                  <Fade  duration={2500}>
+
             <div className='aboutme-container'>
+
                 <div className='title'>About Me</div>    
                 <div className='profile' style={backgroundImageStyle} ></div>
                 <div className='Name'><div className='box1'>< Person2Icon /> </div > <div className='box2'><span>이름</span></div><div className='box3'>{name}</div></div>
@@ -26,8 +28,10 @@ const backgroundImageStyle = aboutfile
                 <div className='Email'> <div className='box1'><EmailIcon /></div><div className='box2'>이메일</div><div className='box3'>{emailAddress}</div> </div>
                 <div className='Github'><div className='box1'><GitHubIcon /></div><div className='box2'>Github</div> <div className='box3'><a href="https://github.com/jjpark51" style={{color: 'whitesmoke'}}>jjpark51</a></div> </div>
             </div>   
-        </Fade> 
+            </Fade> 
+
     </div>
+
   )
 }
 

@@ -218,11 +218,23 @@ function CreateProject() {
           });
         });
       };
+
+      const handlePreview = ()=> {
+        const userID = "jjpark57@hotmail.com"
+
+        if(signal[3][0] == 1){
+          navigate('/project1', {state: {userID, signal, projects}});
+        }
+        else if(signal[3][1] == 1){
+          navigate('/project2', {state: {userID, signal, projects}});
+        }
+  
+      }
   
   return (
 <div className="create-container">
             <header className="create-header">
-                <div className="preview-icon"></div>
+                <div className="preview-icon" onClick={handlePreview}></div>
                 <div className="progress-bar"></div>
             </header>
             <main className="create-main">

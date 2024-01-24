@@ -6,14 +6,76 @@ import SchoolIcon from '@mui/icons-material/School';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import {useLocation} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import global from '../global.js';
 
 function AboutMeOne() {
   const location = useLocation();
-  const { name, email, education, selectedFile } = location.state;
+  const navigate = useNavigate();
+  const { userID, signal, name, email, education, selectedFile } = location.state;
 
   const backgroundImageStyle = selectedFile
   ? { backgroundImage: `url(${URL.createObjectURL(selectedFile)})`}
   : {};
+  const handleNextClick = async()=> {
+    await handleAbout()
+    navigate('/skillstemplate');
+  }
+      const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
+  
+      const handleAbout = async () => {
+        const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
+          // const apiUrl = 'http://192.249.29.120:4000/savecover'; // Replace with your backend API endpoint
+          console.log(signal);
+          console.log("We are inside the about function");
+        
+          console.log("Selected Image is " + selectedFile);
+          // Convert selected file to base64
+          let base64Image = null;
+        
+          if (selectedFile) {
+            console.log("There is a selectedFile");
+            const reader = new FileReader();
+            console.log(reader);
+        
+            reader.onloadend = async () => {
+              base64Image = reader.result.split(',')[1]; // Get base64 portion of the result
+              console.log(base64Image);
+        
+              // Now you can use base64Image in the rest of your logic
+              const requestData = {
+                userID: "jjpark57@hotmail.com",
+                signal: signal,
+                name: name,
+                emailAddress: email,
+                education: education,
+                aboutfile: base64Image,
+              };
+              
+        
+              try {
+                const response = await fetch(apiUrl, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(requestData),
+                });
+        
+                // Handle the response as needed
+                console.log(response);
+              } catch (error) {
+                // Handle network errors or other issues
+                console.error('Error sending answers to backend', error);
+              }
+            };
+        
+            reader.readAsDataURL(selectedFile);
+            console.log("We transformed to base64");
+          } else {
+            console.log("Did not select file");
+          }
+        };
 
   return (
     <div className='about'>
@@ -26,6 +88,8 @@ function AboutMeOne() {
                 <div className='Email'> <div className='box1'><EmailIcon /></div><div className='box2'>이메일</div><div className='box3'>{email}</div> </div>
                 <div className='Github'><div className='box1'><GitHubIcon /></div><div className='box2'>Github</div> <div className='box3'><a href="https://github.com/jjpark51" style={{color: 'whitesmoke'}}>jjpark51</a></div> </div>
             </div>   
+            <div className="arrow right" onClick={handleNextClick}></div>
+
         </Fade> 
     </div>
   )

@@ -23,6 +23,7 @@ import CreateAbout from './components/question/CreateAbout';
 import CreateSkills from './components/question/CreateSkills';
 import CreateProject from './components/question/CreateProject';
 import CoverPreview from './components/cover/CoverPreview';
+import MyPage from './components/MyPage';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/" element={<Start />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/home" element={<Home/>} />
+        <Route path="/mypage" element={<MyPage/>} />
         <Route path="/coverone" element={<CoverOne/>} />
         <Route path="/aboutmeone" element={<AboutMeOne/>} />
         <Route path="/skills1" element={<Skillsone/>} />

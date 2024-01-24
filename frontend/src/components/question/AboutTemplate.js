@@ -59,12 +59,12 @@ function AboutTemplate({ location }) {
                         </div>
                         <p>Skills</p></div> */}
                     {/* <button onClick={handleInfo} className='next-button' style={{backgroundColor: '#367AFF', width: '80px', borderRadius: '20px', border: '1px solid white', marginTop: '10px'}}><p style={{color: 'white'}}>Next</p></button> */}
-                    <button onClick={handleNextClick} className='next-button' style={{backgroundColor: '#367AFF', width: '80px', borderRadius: '20px', border: '1px solid white', marginTop: '-10px'}}><p style={{color: 'white'}}>Details</p></button>
 
             </div>
+            <button onClick={handleNextClick} className='next-button' style={{backgroundColor: '#367AFF', width: '80px', borderRadius: '20px', border: '1px solid white', marginTop: '-10px'}}><p style={{color: 'white'}}>Details</p></button>
 
         </div>
-        {status == 1 && <Aboutinfo status={status} signal={signal}/> }
+        {/* {status == 1 && <Aboutinfo status={status} signal={signal}/> } */}
         </div>
 
         </>

@@ -3,7 +3,7 @@ import ReactCardFlip from 'react-card-flip';
 import '../../static/projectone.scss'
 import GitHubIcon from '@mui/icons-material/GitHub';
 
-function ProjectCard({title, file, github, description, skills, frontend, backend}) {
+function PreviewProjectCard({title, file, github, description, skills, frontend, backend}) {
 
     const [isFlipped, setFlipped] = useState(false);
     
@@ -12,10 +12,12 @@ function ProjectCard({title, file, github, description, skills, frontend, backen
       e.preventDefault();
       setFlipped(!isFlipped);
     };
+    console.log("We are inside the preview project card")
+    // console.log(file)
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
     <div onClick={handleClick}
-        style={{backgroundImage: `url(${file})`,borderRadius: '20px',  width: '380px', height: '300px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+        style={{backgroundImage: `url(data:image/png;base64,${file})`,borderRadius: '20px',  width: '380px', height: '300px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
     </div>
 
     <div onClick={handleClick}
@@ -51,4 +53,4 @@ function ProjectCard({title, file, github, description, skills, frontend, backen
   )
 }
 
-export default ProjectCard
+export default PreviewProjectCard

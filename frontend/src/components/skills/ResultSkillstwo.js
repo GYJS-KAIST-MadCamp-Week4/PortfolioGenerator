@@ -13,7 +13,7 @@ function ResultSkillstwo({frontend, backend, others}) {
 
             <Fade duration={3500}>
 
-                    <center><div style={{color: 'whitesmoke', justifyContent: 'center', fontSize: '40pt'}}><CodeIcon style={{fontSize:'40pt'}} /> <span>Skills</span></div></center>
+                    <center><div style={{color: 'black', justifyContent: 'center'}}><span style={{fontSize: '24pt', fontWeight: 'bold'}}>Skills</span></div></center>
                 
             </Fade>
 

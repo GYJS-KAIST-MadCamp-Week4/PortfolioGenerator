@@ -108,35 +108,47 @@ const CreateCover = () => {
     }
     
     return (
-        <div className="create-container">
-            <header className="create-header">
-                <div className="preview-icon" onClick={handlePreview}></div>
-                <div className="progress-bar"></div>
-            </header>
-            <main className="create-main">
-                <div className="arrow left" onClick={handleBackClick}></div>
-                <div className="content-container">
-                    <div className="photo-container"></div>
-                    <div className="form-container">
-                        <label className="input-label">Name</label>
-                        <input type="text" className="name-input" placeholder="이름을 입력해주세요"  value={name} onChange={handleInputChange}/>
-                        
-                        <label className="input-label">Subtitle</label>
-                        <input type="text" className="-input" placeholder="소제목을 입력해주세요" value={subtitle} onChange={handleSubtitleChange}/>
-                        
-                        <label className="input-label">Image</label>
-                        <div className="image-upload-wrapper">
-                            <input type="file" className="image-upload-input" onChange={handleFileChange}/>
-                        </div>
-
-                        <label className="input-label">Introduction</label>
-                        <textarea className="introduction-input" placeholder="소개글을 입력해주세요" value={description} onChange={handleDescription}></textarea>
-                    </div>
+      <div className="create-container">
+      <header className="create-header">
+          <div className="preview-icon" onClick={handlePreview}></div>
+          <div className="progress-bar"></div>
+      </header>
+      <main className="create-main">
+          <div className="arrow left" onClick={handleBackClick}></div>
+          <div className="content-container">
+              <div className="photo-container"></div>
+              <form className="form-cover">
+                <div className="form-group-cover">
+                  <label htmlFor='name'>Name</label>
+                  <input type="text" id="name" placeholder="이름을 입력해주세요"  value={name} onChange={handleInputChange} plavehodler="이름을 입력해주세요"/>
                 </div>
-                <div className="arrow right" onClick={handleNextClick}></div>
-            </main>
-            
-        </div>
+
+                <div className="form-group-cover">
+                    <label htmlFor='image'>Image</label>
+                    <input type="file" id="image" onChange={handleFileChange}/>
+                </div>
+                  
+                <div className="form-group-cover">
+                  <label htmlFor="subtitle">Subtitle</label>
+                  <input type="text" id="subtitle" value={subtitle} onChange={handleSubtitleChange} placeholder="소제목을 입력해주세요" />
+                </div>
+
+                <div className="form-group-cover">
+                  <label htmlFor="introduction">Introduction</label>
+                  <textarea 
+                    id="introduction" 
+                    value={description} 
+                    onChange={handleDescription}
+                    placeholder="소개글을 입력해주세요" >
+                  </textarea>
+                </div>
+          </form>
+          <div className="arrow right" onClick={handleNextClick}></div>
+          </div>
+      </main>
+  </div>
+
+        
     );
 };
 

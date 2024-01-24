@@ -19,8 +19,8 @@ function CreateSkills() {
    // We are going to send this data to the backend
    const {userData, setUserData} = useData();
 
-   const [frontend, setFrontend] = useState('');
-   const [backend, setBackend] = useState('')
+  //  const [frontend, setFrontend] = useState('');
+  //  const [backend, setBackend] = useState('')
    
    const handleBackClick = () => {
     navigate('/skillstemplate');
@@ -28,6 +28,19 @@ function CreateSkills() {
 const handleNextClick = async() => {
     await handleSkills()
     navigate('/projecttemplate');
+}
+const handlePreview = ()=> {
+  const userID = "jjpark57@hotmail.com"
+
+  if(signal[2][1] == 1){
+    navigate('/skills2', {state: {signal,userID, frontskills, backskills, others}});
+
+  }
+  else {
+    navigate('/skills3', {state: {signal, userID, frontskills, backskills, others}});
+
+  }
+
 }
     const skilllist = [
       {
@@ -126,7 +139,7 @@ const handleNextClick = async() => {
 <>
 <div className="create-container">
             <header className="create-header">
-                <div className="preview-icon"></div>
+                <div className="preview-icon" onClick={handlePreview}></div>
                 <div className="progress-bar"></div>
             </header>
             <main className="create-main">
