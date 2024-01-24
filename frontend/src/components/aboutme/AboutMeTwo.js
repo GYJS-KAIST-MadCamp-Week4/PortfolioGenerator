@@ -13,7 +13,7 @@ import global from '../global.js';
 function AboutMeTwo() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { signal,date, address, email, education, name } = location.state;
+    const { signal, address, email, education, name } = location.state;
 
     const handleAbout = async () => {
         const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
