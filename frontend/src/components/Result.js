@@ -7,16 +7,25 @@ import ResultSkillstwo from './skills/ResultSkillstwo';
 import ResultSkillsthree from './skills/ResultSkillsthree';
 import ResultProjectOne from './projects/ResultProjectOne';
 import ResultProjecttwo from './projects/ResultProjecttwo';
+import global from './global.js';
+
+// import { userInfo } from 'os';
+import { useData } from '../context/DataContext';
+
 function Result() {
 
     const [responseData, setResponseData] = useState([]); // Assuming you have a context to store user data
+    const {userData, setUserData} = useData();
+    console.log("This is the userData")
+    console.log(userData)
+    const apiUrl = 'http://' + global.address + ':4000/result'; // Replace with your backend API endpoint
 
     useEffect(() => {
         const handleSignal = async () => {
-          const apiUrl = 'http://192.249.29.120:4000/result'; // Replace with your backend API endpoint
+          // const apiUrl = 'http://192.249.29.120:4000/result'; // Replace with your backend API endpoint
     
           const requestData = {
-            userID: "jjpark57@hotmail.com",
+            userID: "jjpark57@hotmail.com"
           };
     
           try {
@@ -34,7 +43,7 @@ function Result() {
               // Assuming you have a context or state to store the user data
               // You can update your state or context with the received data
               setResponseData(data);
-    
+              console.log("This is the data from the backend")
               console.log(data); // Log the data to the console for verification
             } else {
               console.error('Error getting data from the backend');
@@ -100,6 +109,7 @@ function Result() {
               name={responseData.userData.name}
               email={responseData.userData.email}
               education={responseData.userData.education}
+              aboutfile={responseData.userData.aboutfile}
             />
           )}
           </div>

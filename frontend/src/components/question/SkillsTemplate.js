@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import '../../static/covertemplate.scss'
 import { useNavigate } from 'react-router-dom';
-import Skillsinfo from './Skillsinfo';
 import skillsone from '../../assets/skillsone.png'
 import skillstwo from '../../assets/skillstwo.png'
 import skillsthree from '../../assets/skillsthree.png'
@@ -12,16 +11,14 @@ function SkillsTemplate() {
     const navigate = useNavigate();
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const { signal, setSignal } = useSignal();
-
+    console.log("Signal inside the skills template")
     console.log(signal)
 
     const handleNextClick = () => {
         navigate('/create/skills');
     }
     const [status, setStatus] = useState(0)
-    const handleInfo = () => {
-        setStatus(1)
-    }   
+
     const handleAnswerClick = (answer, index) => {
         // Update the signal array using useState\
         setSignal((prevSignal) => {
@@ -64,7 +61,7 @@ function SkillsTemplate() {
             </div>
 
         </div>
-        {status == 1 && <Skillsinfo status={status} signal={signal}/> }
+        {/* {status == 1 && <Skillsinfo status={status} signal={signal}/> } */}
         </div>
 
         </>

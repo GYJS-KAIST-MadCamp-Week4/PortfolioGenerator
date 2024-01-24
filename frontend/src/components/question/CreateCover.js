@@ -2,7 +2,8 @@ import React , {useState, useEffect} from 'react';
 import '../../static/CreateCover.css';
 import { useNavigate } from 'react-router-dom';
 import { useSignal } from '../../context/SignalContext';
-
+import {useData} from '../../context/DataContext'
+import global from '../global.js';
 
 const CreateCover = () => {
     const navigate = useNavigate();
@@ -12,7 +13,7 @@ const CreateCover = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [isModalOpen, setModalOpen] = useState(false);
     const { signal, setSignal } = useSignal();
-
+    const {userData, setUserData} = useData();
 
     const handleBackClick = () => {
         navigate('/create');
@@ -21,10 +22,12 @@ const CreateCover = () => {
         await handleCover()
         navigate('/abouttemplate');
     }
-
+    // console.log("This is the userData")
+    // console.log(userData)
 
     const handleCover = async () => {
-        const apiUrl = 'http://192.249.29.120:4000/savecover'; // Replace with your backend API endpoint
+      const apiUrl = 'http://' + global.address + ':4000/savecover'; // Replace with your backend API endpoint
+        // const apiUrl = 'http://192.249.29.120:4000/savecover'; // Replace with your backend API endpoint
         console.log(signal);
         console.log("We are inside the cover function");
       
@@ -45,11 +48,12 @@ const CreateCover = () => {
             const requestData = {
               userID: "jjpark57@hotmail.com",
               signal: signal,
-              name: name,
+              title: name,
               subtitle: subtitle,
               description: description,
               coverimage: base64Image,
             };
+            
       
             try {
               const response = await fetch(apiUrl, {
@@ -89,11 +93,24 @@ const CreateCover = () => {
         const file = event.target.files[0];
         setSelectedFile(file);
       };
+
+    const handlePreview = ()=> {
+
+      if(signal[0][0] == 1){
+        navigate('/coverone', {state: {name, subtitle, description, selectedFile}});
+
+      }
+      else {
+        navigate('/coverone', {state: {name, subtitle, description, selectedFile}});
+
+      }
+
+    }
     
     return (
         <div className="create-container">
             <header className="create-header">
-                <div className="preview-icon"></div>
+                <div className="preview-icon" onClick={handlePreview}></div>
                 <div className="progress-bar"></div>
             </header>
             <main className="create-main">
@@ -118,6 +135,7 @@ const CreateCover = () => {
                 </div>
                 <div className="arrow right" onClick={handleNextClick}></div>
             </main>
+            
         </div>
     );
 };

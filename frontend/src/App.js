@@ -22,6 +22,7 @@ import CreateCover from './components/question/CreateCover';
 import CreateAbout from './components/question/CreateAbout';
 import CreateSkills from './components/question/CreateSkills';
 import CreateProject from './components/question/CreateProject';
+import CoverPreview from './components/cover/CoverPreview';
 
 function App() {
   return (
@@ -50,6 +51,8 @@ function App() {
           <Route path="/create/about" element={<CreateAbout />} />
           <Route path="/create/skills" element={<CreateSkills />} />
           <Route path="/create/project" element={<CreateProject />} />
+
+        <Route path="/coverpreview" element={<CoverPreview />} />
 
 
       </Routes>

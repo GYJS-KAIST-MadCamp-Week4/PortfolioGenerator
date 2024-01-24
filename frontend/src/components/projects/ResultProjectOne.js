@@ -64,7 +64,7 @@ function ResultProjectone({projects}) {
     //     }
     // ]
   return (
-    <div className='project-container-one' >
+    <div className='project-container-one' style={{marginBottom: '30px'}} >
         <h2>Projects</h2>
          <div className='project-layout' style={{display: 'flex',justifyContent: 'center',  flexDirection: 'row', width: '80%', gap: '30px', flexWrap: 'wrap' , alignContent: 'flex-start'}}>
             {

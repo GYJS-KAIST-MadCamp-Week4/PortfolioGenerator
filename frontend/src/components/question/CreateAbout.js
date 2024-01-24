@@ -5,6 +5,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import '../../static/CreateAbout.css';
 import { useSignal } from '../../context/SignalContext';
 import { useNavigate } from 'react-router-dom';
+import {useData} from '../../context/DataContext'
+import global from '../global.js';
 
 const CreateAbout = () => {
     const { signal, setSignal } = useSignal();
@@ -16,21 +18,24 @@ const CreateAbout = () => {
     const [email, setEmail] = useState('')
     const [education, setEducation] = useState('')
     const [selectedFile, setSelectedFile] = useState(null);
+    const {userData, setUserData} = useData();
 
+    // console.log("This is the userData")
+    // console.log(userData)
 
-    const CustomInput = ({ value, onClick }) => (
-        <button 
-          className="custom-input" 
-          onClick={(e) => {
-            e.preventDefault(); 
-            e.stopPropagation(); 
-            onClick(e); 
-          }}
-        >
-          {value}
-          <img src={calendarIcon} alt="calendar icon" className="calendar-icon" />
-        </button>
-    );
+    // const CustomInput = ({ value, onClick }) => (
+    //     <button 
+    //       className="custom-input" 
+    //       onClick={(e) => {
+    //         e.preventDefault(); 
+    //         e.stopPropagation(); 
+    //         onClick(e); 
+    //       }}
+    //     >
+    //       {value}
+    //       <img src={calendarIcon} alt="calendar icon" className="calendar-icon" />
+    //     </button>
+    // );
       
     const handleNextClick = async() => {
         await handleAbout()
@@ -48,64 +53,125 @@ const CreateAbout = () => {
     const handleEmail = (event) => {
       setEmail(event.target.value);
     };
+
         // Event handler to update the input value
     const handleEducation = (event) => {
             setEducation(event.target.value);
           };
 
-          const handleFileChange = (event) => {
-            const file = event.target.files[0];
+          // const handleFileChange = (event) => {
+          //   const file = event.target.files[0];
       
-            // Check if a file is selected
-            if (file) {
-              const reader = new FileReader();
+          //   // Check if a file is selected
+          //   if (file) {
+          //     const reader = new FileReader();
           
-              reader.onloadend = () => {
-                // When reading is complete, set the result (base64 string) in state
-                const base64String = reader.result;
-                setSelectedFile(base64String);
-              };
+          //     reader.onloadend = () => {
+          //       // When reading is complete, set the result (base64 string) in state
+          //       const base64String = reader.result;
+          //       setSelectedFile(base64String);
+          //     };
           
-              // Read the contents of the file as a data URL (base64 encoded)
-              reader.readAsDataURL(file);
-            } else {
-              // Handle the case where no file is selected
-              setSelectedFile(null);
-            }
-          };
-          const handleAbout = async () => {
-            const apiUrl = 'http://192.249.29.120:4000/saveabout'; // Replace with your backend API endpoint
+          //     // Read the contents of the file as a data URL (base64 encoded)
+          //     reader.readAsDataURL(file);
+          //   } else {
+          //     // Handle the case where no file is selected
+          //     setSelectedFile(null);
+          //   }
+          // };
+          const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
+
+          // const handleAbout = async () => {
+          //   // const apiUrl = 'http://192.249.29.120:4000/saveabout'; // Replace with your backend API endpoint
       
-            const requestData = {
-              userID: "jjpark57@hotmail.com",
-              signal: signal,
-              date: date,
-              address: address,
-              email: email,
-              education: education,
-              // selectedFile: selectedFile
-            };
+          //   const requestData = {
+          //     userID: "jjpark57@hotmail.com",
+          //     signal: signal,
+          //     date: date,
+          //     address: address,
+          //     email: email,
+          //     education: education,
+          //     // selectedFile: selectedFile
+          //   };
         
-            console.log(selectedFile)
-            try {
+          //   // console.log(selectedFile)
+          //   try {
         
         
-              const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(requestData),
-              });
+          //     const response = await fetch(apiUrl, {
+          //       method: 'POST',
+          //       headers: {
+          //         'Content-Type': 'application/json',
+          //       },
+          //       body: JSON.stringify(requestData),
+          //     });
               
         
-            } catch (error) {
-              // Handle network errors or other issues
-              console.error('Error sending answers to backend', error);
-            }
+          //   } catch (error) {
+          //     // Handle network errors or other issues
+          //     console.error('Error sending answers to backend', error);
+          //   }
         
-          };
+          // };
       
+          const handleAbout = async () => {
+            const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
+              // const apiUrl = 'http://192.249.29.120:4000/savecover'; // Replace with your backend API endpoint
+              console.log(signal);
+              console.log("We are inside the about function");
+            
+              console.log("Selected Image is " + selectedFile);
+              // Convert selected file to base64
+              let base64Image = null;
+            
+              if (selectedFile) {
+                console.log("There is a selectedFile");
+                const reader = new FileReader();
+                console.log(reader);
+            
+                reader.onloadend = async () => {
+                  base64Image = reader.result.split(',')[1]; // Get base64 portion of the result
+                  console.log(base64Image);
+            
+                  // Now you can use base64Image in the rest of your logic
+                  const requestData = {
+                    userID: "jjpark57@hotmail.com",
+                    signal: signal,
+                    title: name,
+                    address: address,
+                    email: email,
+                    education: education,
+                    aboutfile: base64Image,
+                  };
+                  
+            
+                  try {
+                    const response = await fetch(apiUrl, {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify(requestData),
+                    });
+            
+                    // Handle the response as needed
+                    console.log(response);
+                  } catch (error) {
+                    // Handle network errors or other issues
+                    console.error('Error sending answers to backend', error);
+                  }
+                };
+            
+                reader.readAsDataURL(selectedFile);
+                console.log("We transformed to base64");
+              } else {
+                console.log("Did not select file");
+              }
+            };
+            const handleFileChange = (event) => {
+              const file = event.target.files[0];
+              setSelectedFile(file);
+            };
 
           return (
             <div className="create-container-about">
@@ -124,11 +190,11 @@ const CreateAbout = () => {
                             <input type="text" id="name" name="name" value={name} onChange={handleInputChange} placeholder="이름을 입력해주세요"/>
                         </div>
                         <div className="form-group">
-                        <label htmlFor="birthDate">Birth</label>
+                        {/* <label htmlFor="birthDate">Birth</label>
                         <DatePicker
                            selected={date} onChange={(date) => setDate(date)}
                             customInput={<CustomInput />}
-                        />
+                        /> */}
                         </div>
                         <div className="form-group">
                             <label htmlFor="image">Image</label>

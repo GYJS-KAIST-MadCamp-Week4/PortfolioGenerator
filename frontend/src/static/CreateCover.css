@@ -25,7 +25,9 @@
     position: absolute;
     left: 80px;
 }
-
+.preview-icon:hover {
+    cursor: pointer;
+}
 .progress-bar {
     width: 850px;
     height: 50px;

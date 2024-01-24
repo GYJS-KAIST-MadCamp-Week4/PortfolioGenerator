@@ -11,15 +11,14 @@ function ProjectTemplate() {
     const navigate = useNavigate();
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const { signal, setSignal } = useSignal();
+    console.log("Signal inside the project template")
     console.log(signal)
 
     const handleNextClick = () => {
         navigate('/create/project');
     }
     const [status, setStatus] = useState(0)
-    const handleInfo = () => {
-        setStatus(1)
-    }   
+
     const handleAnswerClick = (answer, index) => {
         // Update the signal array using useState\
         setSignal((prevSignal) => {

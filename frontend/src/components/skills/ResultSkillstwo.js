@@ -6,6 +6,8 @@ import Cards from './Cards';
 import '../../static/skillstwo.scss'
 
 function ResultSkillstwo({frontend, backend, others}) {
+
+
   return (
         <div className='skill-section' style={{height: '100vh'}}>
 

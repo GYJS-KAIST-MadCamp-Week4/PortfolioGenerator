@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css'
 // import Layer from '../skills/Layer';
 import { useSignal } from '../../context/SignalContext';
+import {useData} from '../../context/DataContext'
+import global from '../global.js';
 
 function CreateSkills() {
   const { signal, setSignal } = useSignal();
@@ -15,6 +17,7 @@ function CreateSkills() {
     const [backskills, setBackskills ]= useState([])
     const [others, setOthers] = useState([])
    // We are going to send this data to the backend
+   const {userData, setUserData} = useData();
 
    const [frontend, setFrontend] = useState('');
    const [backend, setBackend] = useState('')
@@ -85,8 +88,10 @@ const handleNextClick = async() => {
         console.log(others)
       };
     
+      const apiUrl = 'http://' + global.address + ':4000/saveskills'; // Replace with your backend API endpoint
+
       const handleSkills = async () => {
-        const apiUrl = 'http://192.249.29.120:4000/saveskills'; // Replace with your backend API endpoint
+        // const apiUrl = 'http://192.249.29.120:4000/saveskills'; // Replace with your backend API endpoint
   
         const requestData = {
           userID: "jjpark57@hotmail.com",

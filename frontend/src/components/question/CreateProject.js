@@ -7,12 +7,16 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import '../../static/projectinfo.scss'
 import { useSignal } from '../../context/SignalContext';
+import {useData} from '../../context/DataContext'
+import global from '../global.js';
 
 function CreateProject() {
     const navigate = useNavigate();
     const { signal, setSignal } = useSignal();
+    console.log(signal)
 
     const [selectedFile, setSelectedFile] = useState(null);
+    const {userData, setUserData} = useData();
 
     const handleBackClick = () => {
         navigate('/projecttemplate');
@@ -97,15 +101,17 @@ function CreateProject() {
     ]
   }
   ]
-    const handleProject = async () => {
-        const apiUrl = 'http://192.249.29.120:4000/saveproject'; // Replace with your backend API endpoint
+  const apiUrl = 'http://' + global.address + ':4000/saveproject'; // Replace with your backend API endpoint
+
+    const handleProject = async() => {
+        // const apiUrl = 'http://192.249.29.120:4000/saveproject'; // Replace with your backend API endpoint
   
         console.log("We are inside the project function")
 
         
             const requestData = {
               signal: signal,
-              userID: 'jjpark57@hotmail.com',
+              userID: "jjpark57@hotmail.com",
               projects: projects
     
             };
