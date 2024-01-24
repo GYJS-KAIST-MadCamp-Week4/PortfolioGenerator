@@ -52,22 +52,17 @@
 }
 
 .right {
-    right: 15px;
+    right:15px;
     background-image: url('../../img/next_button.png');
-}
-
-
-@font-face {
-    font-family: 'Handlee';
-    src: url(../../font/Handlee.ttf);
 }
 
 .content-container {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     margin-left: 0;
     width: 100%; 
+    
 }
 
 .photo-container {
@@ -76,47 +71,71 @@
     background-image: url('../../img/cover_icon.png');
     background-repeat: no-repeat;
     background-size: contain;
-    margin-right: 200px; 
+    margin-left:230px;
+    margin-top: 60px;
 }
 
-.form-container {
+.form-cover {
+    font-family: 'Handlee';
     display: flex;
-    flex-direction: column; 
-    width: 400px;
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: center;
+    margin-left: auto; 
+    margin-right: auto;
+    width: 500px;
+}
+
+.form-group-cover {
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    margin: 35px 35px 35px -30px; 
+    width: 100%; 
+}
+
+.form-group-cover label {
+    font-family: 'Handlee';
+    font-size: 30px;
+    color: #000;
+    -webkit-text-stroke: 0.5px #000;
+    width: 120px; 
+    margin-right: 40px; 
+    text-align: right; 
 }
 
 @font-face {
-    font-family: 'Nanum';
-    src: url(../../font/Nanum.ttf);
-}
-
-.input-label {
     font-family: 'Handlee';
-    font-size: 30px; 
-    color: #000;
-    -webkit-text-stroke: 0.5px #000;
-    margin-bottom: 10px;
+    src: url(../../font/Handlee.ttf);
 }
 
-.name-input, .subtitle-input {
-    width: 100%; 
+
+.form-group-cover input[type="text"],
+.form-group-cover textarea {
+    flex: 1; 
+    padding: 13px;
+    margin-top: 5px;
+    background-color: rgba(245, 245, 245, 0.16); 
+    border-radius: 10px;
+    border: 1px solid #a3a3a3; 
+}
+
+.form-group-cover input[type="file"]{
+    flex: 1; 
     padding: 10px;
-    font-size: 16px; 
-    margin-bottom: 20px; 
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    margin-top: 5px;
+    background-color: rgba(245, 245, 245, 0.16); 
+    border-radius: 10px;
+    border: 1px solid #a3a3a3; 
 }
 
-.image-upload-wrapper {
-    border: 1px solid #ccc; 
-    padding: 10px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
+input[type="text"],
+textarea {
+    border: none; 
 }
 
-.image-upload-input {
-    width: 100%; 
-    padding: 10px 0;
-    font-size: 16px; 
+
+.form-group-cover textarea {
+    height: 150px; 
+    resize: none; 
 }

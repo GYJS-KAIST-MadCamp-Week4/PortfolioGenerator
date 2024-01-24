@@ -73,12 +73,9 @@
     margin-top: 70px;
 }
 
-@font-face {
-    font-family: 'Handlee';
-    src: url(../../font/Handlee.ttf);
-}
 
 .form-about {
+    font-family: 'Handlee';
     display: flex;
     flex-direction: column;
     align-items: flex-start; 
