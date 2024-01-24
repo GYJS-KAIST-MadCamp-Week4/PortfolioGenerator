@@ -1,0 +1,129 @@
+.create-container-about {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url('../img/background_icon.png');
+    background-size: auto;
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-color: #FAFFFF;
+}
+
+.create-header-about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-icon-about {
+    width: 50px;
+    height: 50px;
+    background-image: url('../img/preview_button.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+    position: absolute;
+    left: 80px;
+}
+
+.progress-bar-about{
+    width: 850px;
+    height: 50px;
+    background-image: url('../img/progress_about.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 40px auto; 
+}
+
+.arrow {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.left-about {
+    left: 30px;
+    background-image: url('../img/preview_button.png');
+}
+
+.right-about {
+    right:15px;
+    background-image: url('../img/next_button.png');
+}
+
+.content-container-about{
+    display: flex;
+    margin-left: 0;
+    width: 100%; 
+}
+
+.photo-container-about {
+    width: 500px; 
+    height: 500px; 
+    background-image: url('../img/aboutme_icon.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    margin-left: 200px;
+    margin-top: 70px;
+}
+
+@font-face {
+    font-family: 'Handlee';
+    src: url(../font/Handlee.ttf);
+}
+
+.form-about {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align to the start of the flex container */
+    justify-content: center;
+    margin-left: auto; /* Center the form in the main container */
+    margin-right: auto;
+    width: 500px; /* This width should match the width of your photo-container-about */
+}
+
+.form-group {
+    margin: 15px 0;
+    margin-left: 300px;
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Handlee';
+    font-size: 30px; 
+    color: #000;
+    -webkit-text-stroke: 0.5px #000;
+}
+
+.form-group input {
+    padding: 10px;
+    margin-top: 5px;
+    width: 300px; 
+    background-color: rgba(245, 245, 245, 0.16); 
+    border-radius: 10px;
+    border: 1px solid #a3a3a3;
+}
+
+.custom-input {
+    padding: 10px;
+    width: 320px;
+    background-color: rgba(245, 245, 245, 0.16); 
+    border-radius: 10px;
+    border: 1px solid #a3a3a3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.calendar-icon {
+    width: 24px; 
+    height: auto;
+}

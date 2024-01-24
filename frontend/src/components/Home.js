@@ -31,7 +31,7 @@ const Column1 = () => {
   const navigate = useNavigate();
 
   const handleTryNowClick = () => {
-    navigate('/question');
+    navigate('/create');
   };
 
   return (
@@ -97,7 +97,7 @@ const Column4 = () => {
   const navigate = useNavigate();
 
   const handleTryNowClick = () => {
-    navigate('/question');
+    navigate('/create');
   };
 
   const faqs = [

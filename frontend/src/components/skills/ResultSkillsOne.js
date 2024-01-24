@@ -5,11 +5,7 @@ import styled from 'styled-components';
 const Ability = styled.div`
 width: ${props => props.ability}%;
 `;
-<<<<<<< HEAD
 function ResultSkillsone({frontend, backend, others}) {
-=======
-function ResultSkillsone() {
->>>>>>> 001a1643d7d7738d0447e64b37e933c4ea7f0948
 
     const mainSkills = [
         { lang: 'HTML5', ability: 80 },

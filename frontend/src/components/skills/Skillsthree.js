@@ -2,11 +2,7 @@ import React from 'react'
 import '../../static/skillsthree.scss'
 import Layer from './Layer'
 
-<<<<<<< HEAD
 function Skillsthree({frontend, backend, others}) {
-=======
-function Skillsthree() {
->>>>>>> 001a1643d7d7738d0447e64b37e933c4ea7f0948
 
     const skilllist = [
         {

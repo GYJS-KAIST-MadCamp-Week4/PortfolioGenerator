@@ -83,7 +83,7 @@ const Login = () => {
       if (response.ok) {
         console.log('로그인 성공:', data);
         setUserData(data);
-        navigate('/home');
+        navigate('/create');
       } else {
         throw new Error(data.error || '로그인에 실패했습니다.');
       }

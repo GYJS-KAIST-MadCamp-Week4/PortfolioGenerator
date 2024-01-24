@@ -5,15 +5,9 @@ import {frontend} from '../../assets/frontend'
 import Cards from './Cards';
 import '../../static/skillstwo.scss'
 
-<<<<<<< HEAD
 function ResultSkillstwo({frontend, backend, others}) {
   return (
         <div className='skill-section' style={{height: '100vh'}}>
-=======
-function ResultSkillstwo() {
-  return (
-        <div className='skill-section' >
->>>>>>> 001a1643d7d7738d0447e64b37e933c4ea7f0948
 
             <Fade duration={3500}>
 
@@ -24,7 +18,6 @@ function ResultSkillstwo() {
             <Fade duration={3500}>
 
 
-<<<<<<< HEAD
         <div className='skill-container' style={{height: '100vh'}} >
 
 
@@ -50,27 +43,6 @@ function ResultSkillstwo() {
                    </div>
                      
                    </div>
-=======
-        <div className='skill-container'>
-
-
-
-            <div><div className='frontend'><center><span>Frontend</span><br/><a style={{color: '#214832'}}> ____________________________ </a></center>{ frontend[0].map(e => ( 
-                    < Cards {...e} />
-            ))}</div></div>
-            <div><div className='backend'><center><span>Backend</span><br/><a style={{color: '#214832'}}> ____________________________ </a></center>{ frontend[1].map(e => ( 
-                    < Cards {...e} />
-            ))}</div></div>
-            <div className='version-control'><div className='backend'><center><span>Version Control</span><br/><a style={{color: '#214832'}}> ____________________________ </a></center>{ frontend[2].map(e => ( 
-                    < Cards {...e} />
-            ))}</div></div>
-            <div className='AI'>   <div className='backend'><center><span>Artificial Intelligence</span><br/><a style={{color: '#214832'}}> ____________________________ </a></center>{ frontend[3].map(e => ( 
-                    < Cards {...e} />
-            ))}</div></div>
-            <div>
-            <div className='backend'><center><span>Others</span><br/><a style={{color: '#214832'}}> ____________________________ </a></center>{ frontend[4].map(e => ( 
-                    < Cards {...e} />
->>>>>>> 001a1643d7d7738d0447e64b37e933c4ea7f0948
             ))}</div>
             </div>
 

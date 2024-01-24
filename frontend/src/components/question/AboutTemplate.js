@@ -15,7 +15,7 @@ function AboutTemplate({ location }) {
     console.log(signal)
 
     const handleNextClick = () => {
-        navigate('/skillstemplate');
+        navigate('/create/about');
     }
     const [status, setStatus] = useState(0)
     const handleInfo = () => {
@@ -41,8 +41,9 @@ function AboutTemplate({ location }) {
 <div className='question-container' style={{marginTop: '-240px'}}>
         <div className='question-image'></div>
         <div className='cover-template-wrapper'>
-            <div className='question-title'>Choose your template</div>
-            <div className='question-subtitle'>마음에 드는 템플릿을 선택해주세요</div>
+        <div className="progress-bar-about"></div>
+            <div className='question-title' style={{fontSize: '24pt'}}>Choose your template</div>
+            <div className='question-subtitle' style={{fontSize: '16pt'}}>마음에 드는 템플릿을 선택해주세요</div>
             <div className='question-box' style={{display: 'flex',justifyContent: 'center',  flexDirection: 'row', width: '100%', gap: '50px', flexWrap: 'wrap' }}>
                     <div className={`answerone ${selectedAnswer === 'answerone' ? 'selected-answer' : ''}`} onClick={() => handleAnswerClick('answerone',0)} style={{width: '350px', height: '300px',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)', textAlign: 'center', borderRadius: '20px', backgroundColor: 'white'}} >
                         <div className='display-one' style={{backgroundImage: `url(${aboutmeone})` , height: '170px',width: '350px', backgroundSize: 'contain', backgroundPosition: 'top', backgroundRepeat: 'no-repeat', borderTopLeftRadius: '20px', borderTopRightRadius: '20px'}}>
@@ -57,8 +58,8 @@ function AboutTemplate({ location }) {
                     <div className='display-one' style={{backgroundImage: `url(${aboutmetwo})` , height: '170px',width: '350px', backgroundSize: 'contain', backgroundPosition: 'top', backgroundRepeat: 'no-repeat', borderTopLeftRadius: '20px', borderTopRightRadius: '20px'}}>
                         </div>
                         <p>Skills</p></div>
-                    <button onClick={handleInfo} className='next-button' style={{backgroundColor: '#367AFF', width: '80px', borderRadius: '20px', border: '1px solid white', marginTop: '10px'}}><p style={{color: 'white'}}>Next</p></button>
-                    <button onClick={handleNextClick} className='next-button' style={{backgroundColor: '#367AFF', width: '80px', borderRadius: '20px', border: '1px solid white', marginTop: '10px'}}><p style={{color: 'white'}}>About Me</p></button>
+                    {/* <button onClick={handleInfo} className='next-button' style={{backgroundColor: '#367AFF', width: '80px', borderRadius: '20px', border: '1px solid white', marginTop: '10px'}}><p style={{color: 'white'}}>Next</p></button> */}
+                    <button onClick={handleNextClick} className='next-button' style={{backgroundColor: '#367AFF', width: '80px', borderRadius: '20px', border: '1px solid white', marginTop: '-10px'}}><p style={{color: 'white'}}>Details</p></button>
 
             </div>
 
