@@ -1,6 +1,7 @@
 import React, { useEffect , useState} from 'react'
 import CoverOne from './cover/CoverOne';
 import ResultCoverOne from './cover/ResultCoverOne'
+import ResultCoverTwo from './cover/ResultCoverTwo.js';
 import ResultAboutMeOne from './aboutme/ResultAboutMeOne'
 import ResultAboutMeTwo from './aboutme/ResultAboutMeTwo.js';
 import ResultSkillsone from './skills/ResultSkillsOne';
@@ -79,14 +80,7 @@ function Result() {
             />
           )}
           {responseData.userData?.signal?.[0]?.[1] === 1 && (
-            <ResultCoverOne
-              title={responseData.userData.title}
-              subtitle={responseData.userData.subtitle}
-              description={responseData.userData.description}
-            />
-          )}
-          {responseData.userData?.signal?.[0]?.[2] === 1 && (
-            <ResultCoverOne
+            <ResultCoverTwo
               title={responseData.userData.title}
               subtitle={responseData.userData.subtitle}
               description={responseData.userData.description}

@@ -6,14 +6,10 @@ import SchoolIcon from '@mui/icons-material/School';
 import EmailIcon from '@mui/icons-material/Email';
 import CakeIcon from '@mui/icons-material/Cake';
 import HomeIcon from '@mui/icons-material/Home';
-import {useLocation} from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+
 import global from '../global.js';
 
-function ResultAboutMeTwo() {
-    const location = useLocation();
-    const navigate = useNavigate();
-    const { signal,date, address, email, education, name } = location.state;
+function ResultAboutMeTwo({address, email ,education, name}) {
 
 
 

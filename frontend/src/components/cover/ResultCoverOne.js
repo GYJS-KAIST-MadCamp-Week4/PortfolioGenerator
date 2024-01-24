@@ -3,7 +3,7 @@ import React from 'react';
 import '../../static/CoverOne.scss';
 import { Fade } from "react-awesome-reveal";
 
-function CoverOne({ title, subtitle, description, image }) {
+function ResultCoverOne({ title, subtitle, description, image }) {
   const backgroundImageStyle = image
     ? { backgroundImage: `url(${image})` }
     : {};
@@ -23,4 +23,4 @@ function CoverOne({ title, subtitle, description, image }) {
   );
 }
 
-export default CoverOne;
+export default ResultCoverOne;
