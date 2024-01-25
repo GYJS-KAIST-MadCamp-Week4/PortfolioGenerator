@@ -9,6 +9,8 @@ import ResultSkillstwo from './skills/ResultSkillstwo';
 import ResultSkillsthree from './skills/ResultSkillsthree';
 import ResultProjectOne from './projects/ResultProjectOne';
 import ResultProjecttwo from './projects/ResultProjecttwo';
+import HomeIcon from '@mui/icons-material/Home';
+import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import global from './global.js';
 import { useNavigate } from 'react-router-dom';
 import { Link, Element, Events, animateScroll as scroll } from 'react-scroll';
@@ -157,7 +159,7 @@ function Result() {
             )}
           </Element>
     
-          <Element name="projects" className="element" style={{ minHeight: '100vh' }}>
+          <Element name="projects" className="element" >
             {responseData.userData?.signal?.[3]?.[0] === 1 && (
               <ResultProjectOne
                 projects={responseData.userData.projects}
@@ -174,8 +176,18 @@ function Result() {
             )}
           </Element>
     
-          <button onClick={handleHome}>Home</button>
-          <button onClick={handleSave}>Save</button>
+          <div style={{
+              display: 'flex',
+              justifyContent: 'right', 
+              alignItems: 'center',     
+              position: 'fixed',        
+              left: '0',                
+              bottom: '20px',           
+              width: '100%',       
+            }}>
+              <button onClick={handleHome} style={{ marginRight: '10px' }}><HomeIcon />Home</button>
+              <button onClick={handleSave}><SaveAltIcon />Save</button>
+            </div>
         </div>
       );
     }

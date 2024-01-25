@@ -57,11 +57,11 @@ const CreateAbout = () => {
           };
 
 
-          const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
+          //const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
       
           const handleAbout = async () => {
-            const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
-              // const apiUrl = 'http://192.249.29.120:4000/savecover'; // Replace with your backend API endpoint
+            // const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
+            const apiUrl = 'http://192.249.29.120:4000/saveabout'; // Replace with your backend API endpoint
               console.log(signal);
               console.log("We are inside the about function");
             
@@ -89,6 +89,8 @@ const CreateAbout = () => {
                     aboutfile: base64Image,
                     date: date.format('YYYY-MM-DD')
                   };
+
+                  console.log(requestData);
                   
             
                   try {

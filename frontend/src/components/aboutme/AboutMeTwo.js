@@ -8,8 +8,8 @@ import CakeIcon from '@mui/icons-material/Cake';
 import HomeIcon from '@mui/icons-material/Home';
 import {useLocation} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useData } from '../../context/DataContext';
 import global from '../global.js';
-import { useData } from '../../context/DataContext.js';
 import { useSignal } from '../../context/SignalContext.js';
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/css";
@@ -24,8 +24,8 @@ function AboutMeTwo() {
     console.log(date);
 
     const handleAbout = async () => {
-        const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
-          // const apiUrl = 'http://192.249.29.120:4000/savecover'; // Replace with your backend API endpoint
+        // const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
+          const apiUrl = 'http://192.249.29.120:4000/saveabout'; // Replace with your backend API endpoint
           
               console.log(userData.email)
               // Now you can use base64Image in the rest of your logic

@@ -27,11 +27,11 @@ function CreateSkills() {
    
    const handleBackClick = () => {
     navigate('/skillstemplate');
-}
-const handleNextClick = async() => {
-    await handleSkills()
-    navigate('/projecttemplate');
-}
+  }
+  const handleNextClick = async() => {
+      await handleSkills()
+      navigate('/projecttemplate');
+  }
 const handlePreview = ()=> {
 
   if(signal[2][1] == 1){
