@@ -10,7 +10,6 @@ import {useLocation} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useData } from '../../context/DataContext';
 import global from '../global.js';
-import { useData } from '../../context/DataContext.js';
 import { useSignal } from '../../context/SignalContext.js';
 
 function AboutMeTwo() {

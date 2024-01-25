@@ -11,6 +11,7 @@ import ResultProjectOne from './projects/ResultProjectOne';
 import ResultProjecttwo from './projects/ResultProjecttwo';
 import global from './global.js';
 import { useNavigate } from 'react-router-dom';
+import { Link, Element, Events, animateScroll as scroll } from 'react-scroll';
 
 // import { userInfo } from 'os';
 import { useData } from '../context/DataContext';
@@ -30,7 +31,15 @@ function Result() {
     const handleSave=()=> {
       navigate('/mypage')
     }
+
     useEffect(() => {
+      Events.scrollEvent.register('begin', function () {
+        console.log("begin", arguments);
+      });
+  
+      Events.scrollEvent.register('end', function () {
+        console.log("end", arguments);
+      });
         const handleSignal = async () => {
           // const apiUrl = 'http://192.249.29.120:4000/result'; // Replace with your backend API endpoint
     
@@ -65,93 +74,98 @@ function Result() {
         };
     
         handleSignal();
+
+        return () => {
+          Events.scrollEvent.remove('begin');
+          Events.scrollEvent.remove('end');
+        };
       }, [setResponseData]); // Add dependencies if needed
 
     
       return (
-        <div style={{ height: '200vh', width: '100%' }}>
-            <div>
-          {responseData.userData?.signal?.[0]?.[0] === 1 && (
-            <ResultCoverOne
-              image={responseData.userData.coverimage}
-              title={responseData.userData.title}
-              subtitle={responseData.userData.subtitle}
-              description={responseData.userData.description}
-            />
-          )}
-          {responseData.userData?.signal?.[0]?.[1] === 1 && (
-            <ResultCoverTwo
-              title={responseData.userData.title}
-              subtitle={responseData.userData.subtitle}
-              description={responseData.userData.description}
-            />
-          )}
-          </div>
-          <div style={{marginTop: '100vh'}}>
-          {responseData.userData?.signal?.[1]?.[0] === 1 && (
-            <ResultAboutMeOne
-              name={responseData.userData.name}
-              emailAddress={responseData.userData.emailAddress}
-              education={responseData.userData.education}
-              aboutfile={responseData.userData.aboutfile}
-              date={responseData.userData.date}
-            />
-          )}
-          </div>
-          <div style={{marginTop: '100vh'}}>
-          {responseData.userData?.signal?.[1]?.[1] === 1 && (
-            <ResultAboutMeTwo
-              name={responseData.userData.name}
-              emailAddress={responseData.userData.emailAddress}
-              education={responseData.userData.education}
-              aboutfile={responseData.userData.aboutfile}
-              date={responseData.userData.date}
-              address={responseData.userData.address}
-            />
-          )}
-          </div>
-          <div style={{marginTop: '0vh'}}>
-          {responseData.userData?.signal?.[2]?.[0] === 1 && (
-            <ResultSkillsone
-              frontend={responseData.userData.frontend}
-              backend={responseData.userData.backend}
-              others={responseData.userData.others}
-            />
-          )}
-          {responseData.userData?.signal?.[2]?.[1] === 1 && (
-            <ResultSkillstwo
-              frontend={responseData.userData.frontend}
-              backend={responseData.userData.backend}
-              others={responseData.userData.others}
-            />
-          )}
-          {responseData.userData?.signal?.[2]?.[2] === 1 && (
-            <ResultSkillsthree
-              frontend={responseData.userData.frontend}
-              backend={responseData.userData.backend}
-              others={responseData.userData.others}
-            />
-          )}
-          </div>
-          <div style={{marginTop: '0vh'}}>
-          {responseData.userData?.signal?.[3]?.[0] === 1 && (
-            <ResultProjectOne
-              projects={responseData.userData.projects}
-
-            />
-          )}
-          {responseData.userData?.signal?.[3]?.[1] === 1 && (
-            <ResultProjecttwo
-              projects={responseData.userData.projects}
-
-            />
-          )}
-          </div>
+        <div style={{ width: '100%' }}>
+          <Element name="cover" className="element"style={{ minHeight: '100vh' }}>
+            {responseData.userData?.signal?.[0]?.[0] === 1 && (
+              <ResultCoverOne
+                image={responseData.userData.coverimage}
+                title={responseData.userData.title}
+                subtitle={responseData.userData.subtitle}
+                description={responseData.userData.description}
+              />
+            )}
+            {responseData.userData?.signal?.[0]?.[1] === 1 && (
+              <ResultCoverTwo
+                title={responseData.userData.title}
+                subtitle={responseData.userData.subtitle}
+                description={responseData.userData.description}
+              />
+            )}
+          </Element>
+    
+          <Element name="aboutme" className="element"style={{ minHeight: '70vh' }}>
+            {responseData.userData?.signal?.[1]?.[0] === 1 && (
+              <ResultAboutMeOne
+                name={responseData.userData.name}
+                emailAddress={responseData.userData.emailAddress}
+                education={responseData.userData.education}
+                aboutfile={responseData.userData.aboutfile}
+                date={responseData.userData.date}
+              />
+            )}
+            {responseData.userData?.signal?.[1]?.[1] === 1 && (
+              <ResultAboutMeTwo
+                name={responseData.userData.name}
+                emailAddress={responseData.userData.emailAddress}
+                education={responseData.userData.education}
+                aboutfile={responseData.userData.aboutfile}
+                date={responseData.userData.date}
+                address={responseData.userData.address}
+              />
+            )}
+          </Element>
+    
+          <Element name="skills" className="element" style={{ minHeight: '100vh' }}>
+            {responseData.userData?.signal?.[2]?.[0] === 1 && (
+              <ResultSkillsone
+                frontend={responseData.userData.frontend}
+                backend={responseData.userData.backend}
+                others={responseData.userData.others}
+              />
+            )}
+            {responseData.userData?.signal?.[2]?.[1] === 1 && (
+              <ResultSkillstwo
+                frontend={responseData.userData.frontend}
+                backend={responseData.userData.backend}
+                others={responseData.userData.others}
+              />
+            )}
+            {responseData.userData?.signal?.[2]?.[2] === 1 && (
+              <ResultSkillsthree
+                frontend={responseData.userData.frontend}
+                backend={responseData.userData.backend}
+                others={responseData.userData.others}
+              />
+            )}
+          </Element>
+    
+          <Element name="projects" className="element" style={{ minHeight: '100vh' }}>
+            {responseData.userData?.signal?.[3]?.[0] === 1 && (
+              <ResultProjectOne
+                projects={responseData.userData.projects}
+              />
+            )}
+            {responseData.userData?.signal?.[3]?.[1] === 1 && (
+              <ResultProjecttwo
+                projects={responseData.userData.projects}
+              />
+            )}
+          </Element>
+  
+    
           <button onClick={handleHome}>Home</button>
           <button onClick={handleSave}>Save</button>
-
         </div>
       );
-}
+    }
 
 export default Result

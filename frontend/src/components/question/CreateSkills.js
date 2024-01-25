@@ -24,11 +24,11 @@ function CreateSkills() {
    
    const handleBackClick = () => {
     navigate('/skillstemplate');
-}
-const handleNextClick = async() => {
-    await handleSkills()
-    navigate('/projecttemplate');
-}
+  }
+  const handleNextClick = async() => {
+      await handleSkills()
+      navigate('/projecttemplate');
+  }
 const handlePreview = ()=> {
 
   if(signal[2][1] == 1){
@@ -105,9 +105,8 @@ const handlePreview = ()=> {
       const handleSkills = async () => {
         // const apiUrl = 'http://192.249.29.120:4000/saveskills'; // Replace with your backend API endpoint
           console.log("This is the handleskills userdata email")
-          console.log(userData[1])
         const requestData = {
-          userID: userData[1],
+          userID: userData.email,
           signal: signal,
           frontend: frontskills,
           backend: backskills,
@@ -135,60 +134,60 @@ const handlePreview = ()=> {
     
       };
   
-  return (
-<>
-<div className="create-container-skills">
-            <header className="create-header-skills">
-                <div className="preview-icon-skills" onClick={handlePreview}></div>
-                <div className="progress-bar-skills"></div>
-            </header>
-            <main className="create-main">
-                <div className="arrow left" onClick={handleBackClick}></div>
-                  <div className='cover-template-wrapper'>
-                    <div className="photo-container-skills"></div>
-                        <div className='layer-container'>
-                          <div className='question-title'>Frontend</div>
-                          <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
-                              {
-                                  skilllist[0].types.map((e,index) => (
-                                          <div key={index}  
-                                              onClick={()=> handleFrontend(index)}
-                                              className={`skill-card ${frontskills.includes(e) ? 'selected' : ''}`}
-                                              style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
-                                          </div>
-                                  ))
-                              }
-                        </div>
-                        <div className='question-title'>Backend</div>
-                            <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
-                                {
-                                    skilllist[1].types.map((e,index) => (
-                                            <div key={index}  
-                                            onClick={()=> handleBackend(index)}
-                                                style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
-                                            </div>
-                                    ))
-                                }
-                        </div>
-                  
-                        <div className='question-title'>Others</div>
-                            <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
-                                {
-                                    skilllist[2].types.map((e,index) => (
-                                            <div key={index}  
-                                                onClick={()=> handleOthers(index)}
-                                                style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
-                                            </div>
-                                    ))
-                                }
-                            </div>
-                        </div> 
-                    </div>           
-                <div className="arrow right" onClick={handleNextClick}></div>
-            </main>
-        </div>
-  </>
-  )
-}
+      return (
+        <>
+        <div className="create-container-skills">
+                    <header className="create-header-skills">
+                        <div className="preview-icon-skills" onClick={handlePreview}></div>
+                        <div className="progress-bar-skills"></div>
+                    </header>
+                    <main className="create-main">
+                        <div className="arrow left" onClick={handleBackClick}></div>
+                          <div className='cover-template-wrapper'>
+                            <div className="photo-container-skills"></div>
+                                <div className='layer-container'>
+                                  <div className='question-title'>Frontend</div>
+                                  <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
+                                      {
+                                          skilllist[0].types.map((e,index) => (
+                                                  <div key={index}  
+                                                      onClick={()=> handleFrontend(index)}
+                                                      className={`skill-card ${frontskills.includes(e) ? 'selected' : ''}`}
+                                                      style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                                  </div>
+                                          ))
+                                      }
+                                </div>
+                                <div className='question-title'>Backend</div>
+                                    <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
+                                        {
+                                            skilllist[1].types.map((e,index) => (
+                                                    <div key={index}  
+                                                    onClick={()=> handleBackend(index)}
+                                                        style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                                    </div>
+                                            ))
+                                        }
+                                </div>
+                          
+                                <div className='question-title'>Others</div>
+                                    <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
+                                        {
+                                            skilllist[2].types.map((e,index) => (
+                                                    <div key={index}  
+                                                        onClick={()=> handleOthers(index)}
+                                                        style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                                    </div>
+                                            ))
+                                        }
+                                    </div>
+                                </div> 
+                            </div>           
+                        <div className="arrow right" onClick={handleNextClick}></div>
+                    </main>
+                </div>
+          </>
+          )
+        }
 
 export default CreateSkills
