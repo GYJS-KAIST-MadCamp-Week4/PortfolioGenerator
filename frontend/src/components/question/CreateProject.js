@@ -295,8 +295,8 @@ function CreateProject() {
                             skilllist[0].types.map((e,skillIndex) => (
                                     <div key={skillIndex}  
                                         onClick={() => handleFrontend(index, skillIndex)}
-                                        className={`skill-card ${frontskills.includes(e) ? 'selected' : ''}`}
-                                        style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '30px', height: '30px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                        className={`skill-card `}
+                                        style={{ backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '30px', height: '30px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
                                     </div>
                             ))
                         }
@@ -312,7 +312,7 @@ function CreateProject() {
                               skilllist[1].types.map((e,skillIndex) => (
                                       <div key={skillIndex}  
                                       onClick={()=> handleOthers(index, skillIndex)}
-                                          style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '30px', height: '30px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                          style={{opacity: backskills.includes(e) ? 0.3 : 1, backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '30px', height: '30px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
                                       </div>
                               ))
                           }
@@ -327,7 +327,7 @@ function CreateProject() {
                                     <div key={skillIndex}  
                                         onClick={()=> handleBackend(index,skillIndex )}
                                         className={`skill-card ${frontskills.includes(e) ? 'selected' : ''}`}
-                                        style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '30px', height: '30px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                        style={{opacity: others.includes(e) ? 0.3 : 1, backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '30px', height: '30px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
                                     </div>
                             ))
                         }

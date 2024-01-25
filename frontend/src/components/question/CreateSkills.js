@@ -145,8 +145,8 @@ const handlePreview = ()=> {
                         <div className="progress-bar-skills"></div>
                     </header>
                     <main className="create-main">
-                        <div className="arrow left" onClick={handleBackClick}></div>
-                          <div className='cover-template-wrapper'>
+                        <div className="arrow left" onClick={handleBackClick} style={{zIndex: '2'}}></div>
+                          <div className='cover-template-wrapper' style={{zIndex: "1"}}>
                             <div className="photo-container-skills"></div>
                                 <div className='layer-container'>
                                   <div className='question-title'>Frontend</div>
@@ -156,7 +156,8 @@ const handlePreview = ()=> {
                                                   <div key={index}  
                                                       onClick={()=> handleFrontend(index)}
                                                       className={`skill-card ${frontskills.includes(e) ? 'selected' : ''}`}
-                                                      style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                                      style={{        opacity: frontskills.includes(e) ? 0.3 : 1, // Adjust the opacity value as needed
+                                                      backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
                                                   </div>
                                           ))
                                       }
@@ -167,7 +168,7 @@ const handlePreview = ()=> {
                                             skilllist[1].types.map((e,index) => (
                                                     <div key={index}  
                                                     onClick={()=> handleBackend(index)}
-                                                        style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                                        style={{opacity: backskills.includes(e) ? 0.3 : 1, backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
                                                     </div>
                                             ))
                                         }
@@ -179,7 +180,7 @@ const handlePreview = ()=> {
                                             skilllist[2].types.map((e,index) => (
                                                     <div key={index}  
                                                         onClick={()=> handleOthers(index)}
-                                                        style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                                        style={{opacity: others.includes(e) ? 0.3 : 1, backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
                                                     </div>
                                             ))
                                         }
@@ -189,7 +190,7 @@ const handlePreview = ()=> {
                                 
                             </div>  
                                      
-                        <div className="arrow right" onClick={handleNextClick}></div>
+                        <div className="arrow right" onClick={handleNextClick} style={{zIndex: '2'}}></div>
                     </main>
                 </div>
           </>
