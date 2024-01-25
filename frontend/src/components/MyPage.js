@@ -33,7 +33,7 @@ function MyPage() {
           // const apiUrl = 'http://192.249.29.120:4000/result'; // Replace with your backend API endpoint
     
           const requestData = {
-            userID: "jjpark57@hotmail.com"
+            userID: userData.email
           };
     
           try {

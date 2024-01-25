@@ -1,10 +1,6 @@
 import React, {useState} from 'react'
-import CoverModal from '../cover/CoverModal';
 import 'reactjs-popup/dist/index.css';
-import '../../static/coverinfo.scss'
 import { useNavigate } from 'react-router-dom';
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
 import '../../static/projectinfo.scss'
 import { useSignal } from '../../context/SignalContext';
 import {useData} from '../../context/DataContext'
@@ -17,6 +13,7 @@ function CreateProject() {
 
     const [selectedFile, setSelectedFile] = useState(null);
     const {userData, setUserData} = useData();
+    const [projectIconVisible, setProjectIconVisible] = useState(true);
 
     const handleBackClick = () => {
         navigate('/projecttemplate');
@@ -53,6 +50,7 @@ function CreateProject() {
 
         },
       ]);
+      setProjectIconVisible(false);
     };
 
     const [frontskills, setFrontskills ]= useState([])
@@ -111,7 +109,7 @@ function CreateProject() {
         
             const requestData = {
               signal: signal,
-              userID: userData.emails,
+              userID: userData.email,
               projects: projects
     
             };
@@ -232,117 +230,119 @@ function CreateProject() {
       }
   
   return (
-<div className="create-container">
-            <header className="create-header">
-                <div className="preview-icon" onClick={handlePreview}></div>
-                <div className="progress-bar"></div>
-            </header>
-            <main className="create-main">
-                <div className="arrow left" onClick={handleBackClick}></div>
-                      <div className='cover-template-wrapper' style={{marginTop: '-200px', height: 'max-content'}}>
-                      <div className='project-container' style={{backgroundColor: 'white', marginTop: '200px', gridTemplateColumns: '1fr'}}>
-      {projects.map((project, index) => (
-        <div key={index} className='project-card' style={{backgroundColor: 'white', display: 'grid', gridTemplateColumns: '1fr 1fr', height: '460px', border: '1px solid black', borderRadius: '20px', padding: '15px', boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
-          <div>
-            <div className='question-title' style={{ fontWeight: 'normal', fontSize: '16pt', marginLeft: '10px' }}>Github Link</div>
-            <input
-              className='question-titleinput'
-              type="text"
-              style={{ border: '1px solid #BEBEBE', width: '70%', height: '30px', borderRadius: '20px', paddingLeft: '20px', marginTop: '10px', marginLeft: '10px' }}
-              value={project.github}
-              onChange={(event) => handleGithub(event, index)}
-              placeholder="Github link..."
-            />
-          </div>
-          <div>
-            <div className='question-title' style={{ fontWeight: 'normal', fontSize: '16pt', marginLeft: '10px' }}>Project Title</div>
-            <input
-              className='question-titleinput'
-              type="text"
-              style={{ border: '1px solid #BEBEBE', width: '70%', height: '30px', borderRadius: '20px', paddingLeft: '20px', marginTop: '10px', marginLeft: '10px' }}
-              value={project.title}
-              onChange={(event) => handleTitle(event, index)}
-              placeholder="Github link..."
-            />
-          </div>
-          <div>
-              <div style={{ fontSize: '16pt', marginTop: '5px', fontWeight: 'normal', marginLeft: '10px' }}>Project Image</div>
-              <input
-                className='question-imageinput'
-                type="file"
-                onChange={(event) => handleFileChange(event, index)}
-                style={{ border: '1px solid #BEBEBE', width: '80%', height: '30px', borderRadius: '20px', textAlign: 'center', marginBottom: '15px', paddingLeft: '20px', marginLeft: '10px', marginTop: '10px' }}
-                placeholder="Upload Background image"
-              />
-          </div>
-          <div>
-              <div className='question-title' style={{ fontWeight: 'normal', fontSize: '16pt', marginLeft: '10px' }}>Desecription</div>
-              <input
-                type="text"
-                style={{ border: '1px solid #BEBEBE', width: '80%', height: '100px', borderRadius: '20px', marginBottom: '50px', paddingLeft: '20px', marginLeft: '10px', marginTop: '10px' }}
-                value={project.description}
-                onChange={(event) => handleDescription(event, index)}
-                placeholder="Describe yourself..."
-              />
-          </div>
-          <div>
-          <div className='question-title' style={{fontWeight: 'normal', fontSize: '16pt'}}>Frontend</div>
-          <div className='layer-container' style={{backgroundColor: 'white', width: '90%', display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
-                <h2 style={{textAlign: 'center'}}></h2>
-                <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
-                    {
-                        skilllist[0].types.map((e,skillIndex) => (
-                                <div key={skillIndex}  
-                                     onClick={() => handleFrontend(index, skillIndex)}
-                                    className={`skill-card ${frontskills.includes(e) ? 'selected' : ''}`}
-                                    style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '30px', height: '30px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
-                                </div>
-                        ))
-                    }
-                </div>
+<div className="create-container-project">
+  <div className="background-icon"></div>
+    <header className="create-header-project">
+        <div className="add-button" onClick={handleAddProject}></div>
+        <div className="preview-icon" onClick={handlePreview}></div>
+        <div className="progress-bar-project"></div>
+        <div className={`project-icon ${!projectIconVisible ? 'hidden' : ''}`}></div>
+    </header>
+    <main className="create-main">
+      <div className="arrow left" onClick={handleBackClick}></div>
+      <div className='cover-template-wrapper-project'>
+        <div className='project-container'>
+          {projects.map((project, index) => (
+            <div key={index} className='project-card'>
+              <div>
+                <div className='question-title' >Github Link</div>
+                <input
+                  className='question-titleinput'
+                  type="text"
+                  style={{ border: '1px solid #BEBEBE', width: '85%', height: '30px', borderRadius: '5px', paddingLeft: '20px', marginTop: '10px', marginLeft: '10px' }}
+                  value={project.github}
+                  onChange={(event) => handleGithub(event, index)}
+                  placeholder="Github link..."
+                />
               </div>
-          </div>
-          <div>
-          <div className='question-title' style={{fontWeight: 'normal', fontSize: '16pt'}}>Others</div>
-          <div className='layer-container' style={{backgroundColor: 'white', width: '90%', display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
-                <h2 style={{textAlign: 'center'}}></h2>
-                <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
-                    {
-                        skilllist[2].types.map((e,skillIndex) => (
-                                <div key={skillIndex}  
-                                    onClick={()=> handleBackend(index,skillIndex )}
-                                    className={`skill-card ${frontskills.includes(e) ? 'selected' : ''}`}
-                                    style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '30px', height: '30px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
-                                </div>
-                        ))
-                    }
-                </div>
+              <div>
+                <div className='question-title'>Project Title</div>
+                <input
+                  className='question-titleinput'
+                  type="text"
+                  style={{ border: '1px solid #BEBEBE', width: '90%', height: '30px', borderRadius: '5px', paddingLeft: '20px', marginTop: '10px', marginLeft: '10px' }}
+                  value={project.title}
+                  onChange={(event) => handleTitle(event, index)}
+                  placeholder="Project Title..."
+                />
               </div>
-          </div>
-          <div>
-            <div style={{fontSize: '16pt', marginTop: '0px', fontWeight: 'normal'}}>Backend</div>
-              <div className='layer-container'>
-                  <h2 style={{textAlign: 'center'}}></h2>
-                  <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
-                      {
-                          skilllist[1].types.map((e,skillIndex) => (
-                                  <div key={skillIndex}  
-                                  onClick={()=> handleOthers(index, skillIndex)}
-                                      style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '30px', height: '30px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
-                                  </div>
-                          ))
-                      }
+              <div>
+                  <div className='question-title'>Project Image</div>
+                  <input
+                    className='question-imageinput'
+                    type="file"
+                    onChange={(event) => handleFileChange(event, index)}
+                    style={{ border: '1px solid #BEBEBE', width: '90%', height: '30px', borderRadius: '5px', paddingLeft: '20px', marginTop: '10px', marginLeft: '10px'}}
+                    placeholder="Upload Background image"
+                  />
+              </div>
+              <div>
+                  <div className='question-title' >Desecription</div>
+                  <input
+                    type="text"
+                    value={project.description}
+                    onChange={(event) => handleDescription(event, index)}
+                    placeholder="Describe yourself..."
+                    style={{ border: '1px solid #BEBEBE', width: '90%', height: '100px', borderRadius: '5px', paddingLeft: '20px', marginTop: '10px', marginLeft: '10px' }}
+                  />
+              </div>
+              <div>
+              <div className='question-title' >Frontend</div>
+              <div className='layer-container' style={{backgroundColor: 'white', width: '90%', display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
+                    <h2 style={{textAlign: 'center'}}></h2>
+                    <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
+                        {
+                            skilllist[0].types.map((e,skillIndex) => (
+                                    <div key={skillIndex}  
+                                        onClick={() => handleFrontend(index, skillIndex)}
+                                        className={`skill-card ${frontskills.includes(e) ? 'selected' : ''}`}
+                                        style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '30px', height: '30px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                    </div>
+                            ))
+                        }
+                    </div>
                   </div>
               </div>
-          </div>
-        </div>
-      ))}
-      </div>
-      <button onClick={handleAddProject}>+ Add Project</button>
+              <div>
+              <div className='question-title'>Backend</div>
+                  <div className='layer-container' style={{backgroundColor: 'white', width: '90%', display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
+                      <h2 style={{textAlign: 'center'}}></h2>
+                      <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
+                          {
+                              skilllist[1].types.map((e,skillIndex) => (
+                                      <div key={skillIndex}  
+                                      onClick={()=> handleOthers(index, skillIndex)}
+                                          style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '30px', height: '30px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                      </div>
+                              ))
+                          }
+                </div>
+              </div>
+              <div className='question-title' >Others</div>
+              <div className='layer-container' style={{backgroundColor: 'white', width: '90%', display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
+                    <h2 style={{textAlign: 'center'}}></h2>
+                    <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
+                        {
+                            skilllist[2].types.map((e,skillIndex) => (
+                                    <div key={skillIndex}  
+                                        onClick={()=> handleBackend(index,skillIndex )}
+                                        className={`skill-card ${frontskills.includes(e) ? 'selected' : ''}`}
+                                        style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '30px', height: '30px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                    </div>
+                            ))
+                        }
                     </div>
-                <div className="arrow right" onClick={handleNextClick}></div>
-            </main>
+                  </div>
+              </div>
+              <div>
+              </div>
+            </div>
+          ))}
         </div>
+    </div>
+    <div className="arrow right" onClick={handleNextClick}></div>
+  </main>
+  </div>
   )
 }
 
