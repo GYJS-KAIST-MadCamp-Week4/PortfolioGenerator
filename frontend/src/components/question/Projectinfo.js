@@ -6,10 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import '../../static/projectinfo.scss'
+import { useData } from '../../context/DataContext';
 
 function Projectinfo({status, signal}) {
     const navigate = useNavigate();
-
+    const {userData, setUserData} = useData()
     const [selectedFile, setSelectedFile] = useState(null);
     const [projects, setProjects] = useState([
       {
@@ -95,7 +96,7 @@ function Projectinfo({status, signal}) {
         
             const requestData = {
               signal: signal,
-              userID: 'jjpark57@hotmail.com',
+              userID: userData[1],
               projects: projects
     
             };

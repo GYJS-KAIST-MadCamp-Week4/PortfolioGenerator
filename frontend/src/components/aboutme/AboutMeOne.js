@@ -8,13 +8,16 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import CakeIcon from '@mui/icons-material/Cake';
 import {useLocation} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useData } from '../../context/DataContext.js';
+import { useSignal } from '../../context/SignalContext.js';
 import global from '../global.js';
 
 function AboutMeOne() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { userID, signal, name, email, education, address, selectedFile, date } = location.state;
-
+  const {userData, setUserData} = useData()
+  const { userID, name, email, education, address, selectedFile, date } = location.state;
+  const {signal} = useSignal()
   const backgroundImageStyle = selectedFile
   ? { backgroundImage: `url(${URL.createObjectURL(selectedFile)})`}
   : {};
@@ -42,10 +45,11 @@ function AboutMeOne() {
             reader.onloadend = async () => {
               base64Image = reader.result.split(',')[1]; // Get base64 portion of the result
               console.log(base64Image);
+              console.log(userData.email)
         
               // Now you can use base64Image in the rest of your logic
               const requestData = {
-                userID: "jjpark57@hotmail.com",
+                userID: userData.email,
                 signal: signal,
                 name: name,
                 emailAddress: email,

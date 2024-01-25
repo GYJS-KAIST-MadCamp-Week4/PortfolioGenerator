@@ -4,25 +4,30 @@ import { useNavigate } from 'react-router-dom';
 import {useLocation} from 'react-router-dom';
 import global from '../global.js';
 import { Fade } from "react-awesome-reveal";
-
+import { useData } from '../../context/DataContext.js';
+import { useSignal } from '../../context/SignalContext.js';
 
 function Skillsthree() {
 
     const location = useLocation();
     const navigate = useNavigate();
-    const {userID, signal,  frontskills, backskills, others } = location.state;
+    const {userData, setUserData} = useData()
+    const {   frontskills, backskills, others } = location.state;
+    const {signal} = useSignal()
     const apiUrl = 'http://' + global.address + ':4000/saveskills'; // Replace with your backend API endpoint
     const handleNextClick = async() => {
             await handleSkills()
             navigate('/projecttemplate');
         }
         console.log(others)
+        console.log("This is the userData")
+        console.log(userData.email)
 
     const handleSkills = async () => {
       // const apiUrl = 'http://192.249.29.120:4000/saveskills'; // Replace with your backend API endpoint
 
       const requestData = {
-        userID: "jjpark57@hotmail.com",
+        userID: userData.email,
         signal: signal,
         frontend: frontskills,
         backend: backskills,

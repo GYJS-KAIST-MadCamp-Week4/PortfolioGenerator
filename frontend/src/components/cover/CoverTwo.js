@@ -4,46 +4,48 @@ import '../../static/CoverTwo.scss'
 import {useLocation} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useData } from '../../context/DataContext';
+import { useSignal } from '../../context/SignalContext';
+import global from '../global.js';
 
 function CoverTwo() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { name,signal, subtitle, description, selectedFile } = location.state;
-  const {userData, setUserData} = useData()
+  const { name, subtitle, description , userID } = location.state;
+  const { signal } = useSignal();
 
-  const backgroundImageStyle = selectedFile
-  ? { backgroundImage: `url(${URL.createObjectURL(selectedFile)})`}
-  : {};
+  const {userData} = useData()
+  console.log("userData in covertwo")
+  console.log(userData.email)
 
-  useEffect(() => {
-    const styleElement = document.createElement('style');
-    document.head.appendChild(styleElement);
-    const styleSheet = styleElement.sheet;
+
+  // useEffect(() => {
+  //   const styleElement = document.createElement('style');
+  //   document.head.appendChild(styleElement);
+  //   const styleSheet = styleElement.sheet;
     
-    styleSheet.insertRule(`
-      body::before {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: url(${backgroundImageStyle});
-        background-size: cover;
-        background-repeat: no-repeat;
-        opacity: 0.6; 
-        z-index: -1;
-      }
-    `, styleSheet.cssRules.length);
+  //   styleSheet.insertRule(`
+  //     body::before {
+  //       content: "";
+  //       display: block;
+  //       position: absolute;
+  //       top: 0;
+  //       left: 0;
+  //       right: 0;
+  //       bottom: 0;
+  //       background-size: cover;
+  //       background-repeat: no-repeat;
+  //       opacity: 0.6; 
+  //       z-index: -1;
+  //     }
+  //   `, styleSheet.cssRules.length);
 
-    document.body.style.background = 'none';
+  //   document.body.style.background = 'none';
   
-    return () => {
-      document.head.removeChild(styleElement);
-      document.body.style.background = '';
-    };
-  }, [backgroundImageStyle]);
+  //   return () => {
+  //     document.head.removeChild(styleElement);
+  //     document.body.style.background = '';
+  //   };
+  // }, []);
   const handleNextClick = async()=> {
     await handleCover()
     navigate('/abouttemplate');
@@ -54,29 +56,18 @@ function CoverTwo() {
       console.log(signal);
       console.log("We are inside the cover function");
     
-      console.log("Selected Image is " + selectedFile);
       // Convert selected file to base64
-      let base64Image = null;
     
-      if (selectedFile) {
-        console.log("There is a selectedFile");
-        const reader = new FileReader();
-        console.log(reader);
-    
-        reader.onloadend = async () => {
-          base64Image = reader.result.split(',')[1]; // Get base64 portion of the result
-          console.log(base64Image);
-    
+     
           // Now you can use base64Image in the rest of your logic
           console.log("This is userDAta in cover2")
-          console.log(userData)
+          console.log(userData.email)
           const requestData = {
             userID: userData.email,
             signal: signal,
             title: name,
             subtitle: subtitle,
             description: description,
-            coverimage: base64Image,
           };
           
     
@@ -95,13 +86,7 @@ function CoverTwo() {
             // Handle network errors or other issues
             console.error('Error sending answers to backend', error);
           }
-        };
     
-        reader.readAsDataURL(selectedFile);
-        console.log("We transformed to base64");
-      } else {
-        console.log("Did not select file");
-      }
     };
 
 

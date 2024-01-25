@@ -30,14 +30,13 @@ const handleNextClick = async() => {
     navigate('/projecttemplate');
 }
 const handlePreview = ()=> {
-  const userID = "jjpark57@hotmail.com"
 
   if(signal[2][1] == 1){
-    navigate('/skills2', {state: {signal,userID, frontskills, backskills, others}});
+    navigate('/skills2', {state: {signal, frontskills, backskills, others}});
 
   }
   else {
-    navigate('/skills3', {state: {signal, userID, frontskills, backskills, others}});
+    navigate('/skills3', {state: {signal,  frontskills, backskills, others}});
 
   }
 
@@ -105,9 +104,10 @@ const handlePreview = ()=> {
 
       const handleSkills = async () => {
         // const apiUrl = 'http://192.249.29.120:4000/saveskills'; // Replace with your backend API endpoint
-  
+          console.log("This is the handleskills userdata email")
+          console.log(userData[1])
         const requestData = {
-          userID: "jjpark57@hotmail.com",
+          userID: userData[1],
           signal: signal,
           frontend: frontskills,
           backend: backskills,

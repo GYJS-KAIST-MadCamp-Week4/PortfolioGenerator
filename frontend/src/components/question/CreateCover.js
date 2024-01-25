@@ -13,7 +13,7 @@ const CreateCover = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [isModalOpen, setModalOpen] = useState(false);
     const { signal, setSignal } = useSignal();
-    const {userData, setUserData} = useData();
+    const {userData} = useData();
 
     const handleBackClick = () => {
         navigate('/create');
@@ -24,6 +24,8 @@ const CreateCover = () => {
     }
     // console.log("This is the userData")
     // console.log(userData)
+    console.log("This is the userData ")
+    console.log(userData.email)
 
     const handleCover = async () => {
       // const apiUrl = 'http://' + global.address + ':4000/savecover'; // Replace with your backend API endpoint
@@ -34,7 +36,7 @@ const CreateCover = () => {
         console.log("Selected Image is " + selectedFile);
         // Convert selected file to base64
         let base64Image = null;
-      
+ 
         if (selectedFile) {
           console.log("There is a selectedFile");
           const reader = new FileReader();
@@ -46,7 +48,7 @@ const CreateCover = () => {
       
             // Now you can use base64Image in the rest of your logic
             const requestData = {
-              userID: "jjpark57@hotmail.com",
+              userID: userData.email,
               signal: signal,
               title: name,
               subtitle: subtitle,

@@ -3,12 +3,15 @@ import PreviewProjectCard from './PreviewProjectCard'
 import global from '../global.js';
 import {useLocation} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import { useData } from '../../context/DataContext.js';
+import { useSignal } from '../../context/SignalContext.js';
 function Projectone() {
 
     const location = useLocation();
     const navigate = useNavigate();
-    const {signal, userID, projects} = location.state;
+    const {userData} = useData()
+    const {signal} = useSignal()
+    const { userID, projects} = location.state;
     console.log(projects)
 
     const handleNextClick = async() => {
@@ -26,7 +29,7 @@ function Projectone() {
         
             const requestData = {
               signal: signal,
-              userID: "jjpark57@hotmail.com",
+              userID: userData.email,
               projects: projects
     
             };

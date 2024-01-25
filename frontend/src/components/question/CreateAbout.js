@@ -77,7 +77,7 @@ const CreateAbout = () => {
             
                   // Now you can use base64Image in the rest of your logic
                   const requestData = {
-                    userID: userData.email,
+                    userID: userData[1],
                     signal: signal,
                     name: name,
                     address: address,
@@ -119,14 +119,13 @@ const CreateAbout = () => {
             };
 
             const handlePreview = () => {
-              const userID = userData.email;
               const formattedDate = date.format('YYYY-MM-DD'); 
             
               if(signal[1][0] == 1){
-                navigate('/aboutmeone', {state: {userID, signal, name, address, email, education, selectedFile, date: formattedDate}});
+                navigate('/aboutmeone', {state: { signal, name, address, email, education, selectedFile, date: formattedDate}});
               }
               else {
-                navigate('/aboutmetwo', {state: {userID, signal, name, address, email, education, selectedFile, date: formattedDate}});
+                navigate('/aboutmetwo', {state: { signal, name, address, email, education, selectedFile, date: formattedDate}});
               }
             }
             

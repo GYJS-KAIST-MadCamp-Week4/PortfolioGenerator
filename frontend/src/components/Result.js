@@ -35,7 +35,7 @@ function Result() {
           // const apiUrl = 'http://192.249.29.120:4000/result'; // Replace with your backend API endpoint
     
           const requestData = {
-            userID: "jjpark57@hotmail.com"
+            userID: userData.email
           };
     
           try {
@@ -106,6 +106,7 @@ function Result() {
               education={responseData.userData.education}
               aboutfile={responseData.userData.aboutfile}
               date={responseData.userData.date}
+              address={responseData.userData.address}
             />
           )}
           </div>
