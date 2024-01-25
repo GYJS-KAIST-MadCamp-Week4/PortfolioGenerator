@@ -5,6 +5,7 @@ import { Fade } from "react-awesome-reveal";
 import {useLocation} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useSignal } from '../../context/SignalContext';
+import { useData } from '../../context/DataContext.js';
 import global from '../global.js';
 
 function CoverOne() {
@@ -12,7 +13,9 @@ function CoverOne() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { name, subtitle, description, selectedFile } = location.state;
+  const {userData, setUserData} = useData()
+
+  const { name, subtitle, description, selectedFile, userID } = location.state;
   const { signal, setSignal } = useSignal();
 
   const backgroundImageStyle = selectedFile
@@ -44,7 +47,7 @@ function CoverOne() {
     
           // Now you can use base64Image in the rest of your logic
           const requestData = {
-            userID: "jjpark57@hotmail.com",
+            userID: userData.email,
             signal: signal,
             title: name,
             subtitle: subtitle,

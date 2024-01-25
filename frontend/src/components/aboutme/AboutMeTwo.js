@@ -9,27 +9,31 @@ import HomeIcon from '@mui/icons-material/Home';
 import {useLocation} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import global from '../global.js';
+import { useData } from '../../context/DataContext.js';
+import { useSignal } from '../../context/SignalContext.js';
 
 function AboutMeTwo() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { signal, address, email, education, name, date } = location.state;
-
+    const { address, email, education, name, date } = location.state;
+    const {userData, setUserData} = useData()
+    const {signal} = useSignal()
     console.log(date);
 
     const handleAbout = async () => {
         const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
           // const apiUrl = 'http://192.249.29.120:4000/savecover'; // Replace with your backend API endpoint
           
-        
+              console.log(userData.email)
               // Now you can use base64Image in the rest of your logic
               const requestData = {
-                userID: "jjpark57@hotmail.com",
+                userID: userData.email,
                 signal: signal,
                 name: name,
                 emailAddress: email,
                 education: education,
-                date: date
+                date: date,
+                address: address
               };
               
         

@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { SectionsContainer, Section } from 'react-fullpage';
 import { useNavigate } from 'react-router-dom';
 import '../static/Home.css'
-
+import { useData } from '../context/DataContext';
 
 const Header = () => {
   const navigate = useNavigate();
-
   const handleMyPageClick = () => {
     navigate('/mypage');
   };
@@ -99,7 +98,9 @@ const Column4 = () => {
   const handleTryNowClick = () => {
     navigate('/create');
   };
-
+  const {userData} = useData()
+  console.log("This is the user data in home")
+  console.log(userData)
   const faqs = [
     { question: "'해줘'를 개발한 사람은 누구인가요?", answer: "'해줘'를 개발한 사람은 몰입캠프 1분반의 김가연 그리고 박진석 입니다." },
     { question: '정말 배포된 사이트가 결과물로 도출되나요?', answer: '물론입니다:)' },
@@ -131,6 +132,7 @@ const Column4 = () => {
     </div>
   );
 };
+
 
 
 const Home = () => {

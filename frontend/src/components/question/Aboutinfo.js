@@ -5,7 +5,7 @@ import '../../static/coverinfo.scss'
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-
+import { useData } from '../../context/DataContext';
 function Aboutinfo({status, signal}) {
     const navigate = useNavigate();
 
@@ -18,6 +18,7 @@ function Aboutinfo({status, signal}) {
     const [education, setEducation] = useState('')
     const [selectedFile, setSelectedFile] = useState(null);
     const [isModalOpen, setModalOpen] = useState(false);
+    const {userData, setUserData} = useData()
 
     const handleModalButtonClick = () => {
 
@@ -82,7 +83,7 @@ function Aboutinfo({status, signal}) {
       const apiUrl = 'http://192.249.29.120:4000/saveabout'; // Replace with your backend API endpoint
 
       const requestData = {
-        userID: "jjpark57@hotmail.com",
+        userID: userData[1],
         signal: signal,
         date: date,
         address: address,

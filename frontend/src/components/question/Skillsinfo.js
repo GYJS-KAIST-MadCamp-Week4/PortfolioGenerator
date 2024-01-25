@@ -6,13 +6,14 @@ import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import Layer from '../skills/Layer';
-
+import { useData } from '../../context/DataContext';
 function Skillsinfo({status, signal}) {
 
 
   const [frontskills, setFrontskills ]= useState([])
   const [backskills, setBackskills ]= useState([])
   const [others, setOthers] = useState([])
+  const {userData , setUserData} = useData()
 
   const skilllist = [
     {
@@ -97,7 +98,7 @@ function Skillsinfo({status, signal}) {
         const apiUrl = 'http://192.249.29.120:4000/saveskills'; // Replace with your backend API endpoint
   
         const requestData = {
-          userID: "jjpark57@hotmail.com",
+          userID: userData[1],
           signal: signal,
           frontend: frontskills,
           backend: backskills,

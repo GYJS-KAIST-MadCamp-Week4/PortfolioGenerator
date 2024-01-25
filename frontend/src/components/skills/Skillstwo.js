@@ -4,11 +4,14 @@ import '../../static/skillstwo.scss'
 import { useNavigate } from 'react-router-dom';
 import {useLocation} from 'react-router-dom';
 import global from '../global.js';
-
+import { useData } from '../../context/DataContext.js';
+import { useSignal } from '../../context/SignalContext.js';
 function Skillstwo() {
         const location = useLocation();
         const navigate = useNavigate();
-        const {userID, signal,  frontskills, backskills, others } = location.state;
+        const {userData, setUserData} = useData()
+        const { frontskills, backskills, others } = location.state;
+        const {signal} = useSignal()
         const apiUrl = 'http://' + global.address + ':4000/saveskills'; // Replace with your backend API endpoint
         const handleNextClick = async() => {
                 await handleSkills()
@@ -18,7 +21,7 @@ function Skillstwo() {
           // const apiUrl = 'http://192.249.29.120:4000/saveskills'; // Replace with your backend API endpoint
     
           const requestData = {
-            userID: "jjpark57@hotmail.com",
+            userID: userData.email,
             signal: signal,
             frontend: frontskills,
             backend: backskills,
