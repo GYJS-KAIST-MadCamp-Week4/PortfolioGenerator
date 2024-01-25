@@ -12,7 +12,7 @@ import ResultProjecttwo from './projects/ResultProjecttwo';
 import global from './global.js';
 import { useNavigate } from 'react-router-dom';
 import { useData } from '../context/DataContext';
-
+import LogoutIcon from '@mui/icons-material/Logout';
 function MyPage() {
     const navigate = useNavigate();
 
@@ -158,8 +158,17 @@ function MyPage() {
             />
           )}
           </div>
-          <button onClick={handleLogout}>Logout</button>
-
+          <div style={{
+              display: 'flex',
+              justifyContent: 'right', 
+              alignItems: 'center',     
+              position: 'fixed',        
+              left: '0',                
+              bottom: '20px',           
+              width: '100%',       
+            }}>
+              <button onClick={handleLogout} style={{ marginRight: '10px' }}><LogoutIcon />Logout</button>
+            </div>
         </div>
       );
 }

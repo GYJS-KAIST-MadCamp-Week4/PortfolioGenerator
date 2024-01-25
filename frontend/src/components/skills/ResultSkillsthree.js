@@ -2,13 +2,13 @@ import React from 'react'
 import '../../static/skillsthree.scss'
 import { Fade } from "react-awesome-reveal";
 
-function ResultSkillsthree({frontend, backend, others}) {
+function ResultSkillsthree({frontend, backend, others, color}) {
     console.log(frontend)
     console.log(backend)
     console.log(others)
 
   return (
-    <div className='skills-container-three' style={{backgroundColor: '#e7e6e6'}}>
+    <div className='skills-container-three' style={{backgroundColor: color.hex}}>
             <Fade duration={2500}>
         <h2 style={{fontSize: '24pt'}}>Main Skills</h2>
 

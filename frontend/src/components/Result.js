@@ -113,6 +113,7 @@ function Result() {
                 aboutfile={responseData.userData.aboutfile}
                 date={responseData.userData.date}
                 color={responseData.userData.aboutcolor}
+                address={responseData.userData.address}
               />
             )}
             {responseData.userData?.signal?.[1]?.[1] === 1 && (
