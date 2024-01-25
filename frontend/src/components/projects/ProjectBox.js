@@ -2,11 +2,11 @@ import React from 'react'
 import '../../static/projecttwo.scss'
 import GitHubIcon from '@mui/icons-material/GitHub';
 
-function ProjectBox({title, image, github, description, skills, frontend, backend}) {
+function ProjectBox({title, file, github, description, skills, frontend, backend}) {
   return (
-<div className="Box">
+<div className="Box" >
       <div className="Box_image" style={{ backgroundSize: 'cover',  backgroundRepeat: 'no-repeat', backgroundPosition: 'center', height: '300px', width: '400px'}}>
-         <img src={image} style={{padding: '15px',paddingTop: '40px',  width:'400px', height: '100%'}}/>
+         <img src={file} style={{padding: '15px',paddingTop: '40px',  width:'400px', height: '100%'}}/>
       </div>
       <div className="Box_info">
         <h1 className="Box_title">{title}</h1>

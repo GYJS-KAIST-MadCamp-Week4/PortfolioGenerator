@@ -27,14 +27,18 @@ const userSchema = new mongoose.Schema({
     date: String,
     address: String,
     emailAddress: String,
-    frontend: String,
-    backend: String,
-    versionControl: String,
-    deployment: String,
-    others: String,
+    frontend: Object,
+    backend: Object,
+    others: Object,
     github: String,
     introduction: String,
-    coverimage: String
+    coverimage: String,
+    projects: Object,
+    aboutfile: String,
+    title: String,
+    aboutcolor: Object,
+    skillcolor: Object,
+    projectcolor: Object
 }, { timestamps: true });
 
 const User = mongoose.model("User", userSchema);
@@ -68,6 +72,7 @@ app.post('/confirm', async (req, res) => {
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
+        console.log(email);
         if (user && await bcrypt.compare(password, user.password)) {
             const { nickname, email} = user.toObject(); 
             res.status(200).json({ nickname, email});
@@ -153,38 +158,53 @@ app.post('/summary', async (req, res) => {
 
 app.post("/savecover", async(req, res) => {
     try {
-        const { signal, name, subtitle, description, coverimage, userID } = req.body;
+        const { signal, title, subtitle, description, coverimage, userID } = req.body;
         console.log("We are inside nodejs savecover function");
         console.log(signal);
-        console.log(name);
+        console.log(title);
         console.log(subtitle);
         console.log(description);
-        console.log(userID);
-        console.log(typeof(signal));
+        console.log(userID);;
+        console.log(coverimage);
 
-        const buffer = Buffer.from(coverimage, 'base64');
-        const fileName = userID + '-' + Date.now() + '.png'; // 확장자는 실제 이미지 타입에 맞게 변경
-        const filePath = path.join(__dirname, 'uploads', fileName);
+        if (coverimage == null) {
+            const updatedUser = await User.findOneAndUpdate(
+                { email: userID }, 
+                { 
+                    $set: {
+                        signal: signal, 
+                        title: title, 
+                        subtitle: subtitle, 
+                        description: description,
+                    }
+                },
+                { new: true } 
+            );
 
-        fs.writeFileSync(filePath, buffer);
+        } else{
+            const buffer = Buffer.from(coverimage, 'base64');
+            const fileName = userID + '-' + Date.now() + '.png'; 
+            const filePath = path.join(__dirname, 'uploads', fileName);
+    
+            fs.writeFileSync(filePath, buffer);
 
-        const imageUrl = `http://192.249.29.120:4000/uploads/${fileName}`;
-        console.log(imageUrl);
+            const imageUrl = `http://192.249.29.120:4000/uploads/${fileName}`;
+            console.log(imageUrl)
 
-
-        const updatedUser = await User.findOneAndUpdate(
-            { email: userID }, 
-            { 
-                $set: {
-                    signal: signal, 
-                    name: name, 
-                    subtitle: subtitle, 
-                    description: description,
-                    coverimage: imageUrl
-                }
-            },
-            { new: true } 
-        );
+            const updatedUser = await User.findOneAndUpdate(
+                { email: userID }, 
+                { 
+                    $set: {
+                        signal: signal, 
+                        title: title, 
+                        subtitle: subtitle, 
+                        description: description,
+                        coverimage: imageUrl,
+                    }
+                },
+                { new: true } 
+            );
+        }
 
         console.log(updatedUser);
         res.json({ status: 'success' });
@@ -197,29 +217,62 @@ app.post("/savecover", async(req, res) => {
 
 app.post("/saveabout", async(req, res) => {
     try {
-        const { date, address, email, education, signal, userID } = req.body;
-        console.log("We are inside nodejs savecover function")
+        const { date, address, emailAddress, education, signal, userID, name,aboutfile,aboutcolor } = req.body;
+        console.log("We are inside nodejs saveabout function")
         console.log(date)
         console.log(address)
-        console.log(email)
+        console.log(emailAddress)
         console.log(education)
         console.log(signal)
+        console.log(name)
+        console.log(userID)
+        console.log(aboutfile)
+        console.log(aboutcolor)
 
-        // const imagePath = base64Img.imgSync(selectedFile, './uploads', 'image');
 
-        const updatedUser = await User.findOneAndUpdate(
-            { email: userID }, 
-            { 
-                $set: {
-                    date: date, 
-                    address: address, 
-                    emailAddress: email, 
-                    education: education,
-                    signal: signal
-                }
-            },
-            { new: true } 
-        );
+        if (!(aboutfile == null)){
+            const buffer = Buffer.from(aboutfile, 'base64');
+            const fileName = userID + '-' + Date.now() + '.png'; 
+            const filePath = path.join(__dirname, 'uploads', fileName);
+    
+            fs.writeFileSync(filePath, buffer);
+    
+            const imageUrl = `http://192.249.29.120:4000/uploads/${fileName}`;
+            console.log(imageUrl);
+
+            const updatedUser = await User.findOneAndUpdate(
+                { email: userID }, 
+                { 
+                    $set: {
+                        date: date, 
+                        address: address, 
+                        emailAddress: emailAddress, 
+                        education: education,
+                        signal: signal,
+                        name: name,
+                        aboutfile: imageUrl,
+                        aboutcolor:aboutcolor
+                    }
+                },
+                { new: true } 
+            );
+        } else{
+            const updatedUser = await User.findOneAndUpdate(
+                { email: userID }, 
+                { 
+                    $set: {
+                        date: date, 
+                        address: address, 
+                        emailAddress: emailAddress, 
+                        education: education,
+                        signal: signal,
+                        name: name,
+                        aboutcolor:aboutcolor
+                    }
+                },
+                { new: true } 
+            );
+        }
 
         console.log(updatedUser);
         res.json({ status: 'success'});
@@ -231,16 +284,14 @@ app.post("/saveabout", async(req, res) => {
 
 app.post("/saveskills", async(req, res) => {
     try {
-        const { frontend, backend, vc, deployment, others, userID } = req.body;
-        console.log("We are inside nodejs savecover function")
+        const { frontend, backend,others, userID,skillcolor } = req.body;
+        console.log("We are inside nodejs saveskills function")
         console.log(frontend);
         console.log(backend);
-        console.log(vc);
-        console.log(deployment);
         console.log(others);
         console.log(userID);
+        console.log(skillcolor);
         
-        // const imagePath = base64Img.imgSync(selectedFile, './uploads', 'image');
 
         const updatedUser = await User.findOneAndUpdate(
             { email: userID }, 
@@ -248,9 +299,8 @@ app.post("/saveskills", async(req, res) => {
                 $set: {
                     frontend: frontend,
                     backend: backend,
-                    versionControl: vc,
-                    deployment: deployment,
-                    others: others
+                    others: others,
+                    skillcolor: skillcolor
                 }
             },
             { new: true } 
@@ -267,22 +317,34 @@ app.post("/saveskills", async(req, res) => {
 
 app.post("/saveproject", async(req, res) => {
     try {
-        const { github, introduction, signal,userID } = req.body;
-        console.log("We are inside nodejs savecover function")
-        console.log(github);
-        console.log(introduction);
+        const { projects, signal,userID,projectcolor } = req.body;
+        console.log("We are inside nodejs saveproject function")
         console.log(userID);
         console.log(signal);
-        
-        // const imagePath = base64Img.imgSync(selectedFile, './uploads', 'image');
+        console.log(projects);
+        console.log(projectcolor);
+
+        for (let i=0; i<projects.length; i++) {
+            const image = projects[i].file;
+
+            const buffer = Buffer.from(image, 'base64');
+            const fileName = userID + '-' + Date.now() + '.png'; 
+            const filePath = path.join(__dirname, 'uploads', fileName);
+
+            fs.writeFileSync(filePath, buffer);
+
+            const imageUrl = `http://192.249.29.120:4000/uploads/${fileName}`;
+
+            projects[i].file = imageUrl;
+        }
 
         const updatedUser = await User.findOneAndUpdate(
             { email: userID }, 
             { 
                 $set: {
-                    github: github,
-                    introduction: introduction,
-                    signal: signal
+                    projects: projects,
+                    signal: signal,
+                    projectcolor: projectcolor
                 }
             },
             { new: true } 

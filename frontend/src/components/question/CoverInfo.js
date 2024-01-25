@@ -4,7 +4,7 @@ import 'reactjs-popup/dist/index.css';
 import '../../static/coverinfo.scss'
 import CoverOne from '../cover/CoverOne';
 import { useNavigate } from 'react-router-dom';
-
+import { useData } from '../../context/DataContext';
 
 function CoverInfo({status, signal}) {
     const navigate = useNavigate();
@@ -17,6 +17,7 @@ function CoverInfo({status, signal}) {
     const [description, setDescription] = useState('')
     const [selectedFile, setSelectedFile] = useState(null);
     const [isModalOpen, setModalOpen] = useState(false);
+    const {userData, setUserData} = useData()
 
     const handleCover = async () => {
       const apiUrl = 'http://192.249.29.120:4000/savecover'; // Replace with your backend API endpoint
@@ -38,7 +39,7 @@ function CoverInfo({status, signal}) {
     
           // Now you can use base64Image in the rest of your logic
           const requestData = {
-            userID: "jjpark57@hotmail.com",
+            userID: userData[1],
             signal: signal,
             name: name,
             subtitle: subtitle,
@@ -112,7 +113,7 @@ function CoverInfo({status, signal}) {
   
   return (
     <>
-    <div className='cover-template-wrapper' style={{marginTop: '400px', height: 'max-content'}}>
+    <div className='cover-template-wrapper' style={{marginTop: '400px', height: 'max-content', overflowY: 'auto'}}>
             <div className='question-title' style={{fontWeight: 'normal'}}>Name</div>
             <input className='question-titleinput' type="text" style={{border: '1px solid #BEBEBE', width: '80%', height: '50px', borderRadius: '20px', paddingLeft: '20px'}} value={name} onChange={handleInputChange} placeholder="Whats your name..." />
             <div className='question-subtitle' style={{fontWeight: 'normal'}}>Subtitle</div>
