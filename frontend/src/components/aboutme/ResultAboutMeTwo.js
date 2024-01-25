@@ -9,7 +9,7 @@ import HomeIcon from '@mui/icons-material/Home';
 
 import global from '../global.js';
 
-function ResultAboutMeTwo({address, email ,education, name}) {
+function ResultAboutMeTwo({address, email ,education, name, date}) {
 
 
 
@@ -23,10 +23,10 @@ function ResultAboutMeTwo({address, email ,education, name}) {
                     <div className='info-item'>< Person2Icon />이름</div>
                     <div className='info-item-input'>{name}</div>
                 </div>
-                {/* <div className='info-input'>
+                <div className='info-input'>
                     <div className='info-item'>< CakeIcon />생년월일</div>
                     <div className='info-item-input'>{date}</div>
-                </div> */}
+                </div> 
                 <div className='info-input'>
                     <div className='info-item'>< EmailIcon />이메일</div>
                     <div className='info-item-input'>{email}</div>

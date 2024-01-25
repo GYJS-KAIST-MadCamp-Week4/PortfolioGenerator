@@ -5,7 +5,7 @@ import '../static/Login.css';
 
 const Login = () => {
   const [active, setActive] = useState('login');
-  const { setUserData } = useData();
+  const { userData,setUserData } = useData();
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

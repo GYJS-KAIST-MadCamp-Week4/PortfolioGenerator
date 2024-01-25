@@ -137,63 +137,53 @@ const handlePreview = ()=> {
   
   return (
 <>
-<div className="create-container">
-            <header className="create-header">
-                <div className="preview-icon" onClick={handlePreview}></div>
-                <div className="progress-bar"></div>
+<div className="create-container-skills">
+            <header className="create-header-skills">
+                <div className="preview-icon-skills" onClick={handlePreview}></div>
+                <div className="progress-bar-skills"></div>
             </header>
             <main className="create-main">
                 <div className="arrow left" onClick={handleBackClick}></div>
-                      <div className='cover-template-wrapper' style={{marginTop: '0px', height: 'max-content'}}>
-                  <div className='question-title' style={{fontWeight: 'normal'}}>Frontend</div>
-                      <div className='layer-container'>
-                      <h2 style={{textAlign: 'center'}}></h2>
-                      <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
-                          {
-                              skilllist[0].types.map((e,index) => (
-                                      <div key={index}  
-                                          onClick={()=> handleFrontend(index)}
-                                          className={`skill-card ${frontskills.includes(e) ? 'selected' : ''}`}
-                                          style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
-                                      </div>
-                              ))
-                          }
-                      </div>
-                  </div>
-                  <div style={{fontSize: '28pt', marginTop: '60px', fontWeight: 'normal'}}>Backend</div>
-                  <div className='layer-container'>
-                      <h2 style={{textAlign: 'center'}}></h2>
-                      <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
-                          {
-                              skilllist[1].types.map((e,index) => (
-                                      <div key={index}  
-                                      onClick={()=> handleBackend(index)}
-                                          style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
-                                      </div>
-                              ))
-                          }
-                      </div>
-                  </div>
-                
-                  <div style={{fontSize: '28pt', marginTop: '60px', fontWeight: 'normal'}}>Others</div>
-                  <div className='layer-container'>
-                      <h2 style={{textAlign: 'center'}}></h2>
-                      <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
-                          {
-                              skilllist[2].types.map((e,index) => (
-                                      <div key={index}  
-                                          onClick={()=> handleOthers(index)}
-                                          style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
-                                      </div>
-                              ))
-                          }
-                      </div>
-                  </div>            
-                  {/* <button onClick={handleModalButtonClick}>Open Modal</button> */}
-                  {/* <button onClick={handleSkills}>Send Skills</button> */}
-
-
-          </div>
+                  <div className='cover-template-wrapper'>
+                    <div className="photo-container-skills"></div>
+                        <div className='layer-container'>
+                          <div className='question-title'>Frontend</div>
+                          <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
+                              {
+                                  skilllist[0].types.map((e,index) => (
+                                          <div key={index}  
+                                              onClick={()=> handleFrontend(index)}
+                                              className={`skill-card ${frontskills.includes(e) ? 'selected' : ''}`}
+                                              style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                          </div>
+                                  ))
+                              }
+                        </div>
+                        <div className='question-title'>Backend</div>
+                            <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
+                                {
+                                    skilllist[1].types.map((e,index) => (
+                                            <div key={index}  
+                                            onClick={()=> handleBackend(index)}
+                                                style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                            </div>
+                                    ))
+                                }
+                        </div>
+                  
+                        <div className='question-title'>Others</div>
+                            <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
+                                {
+                                    skilllist[2].types.map((e,index) => (
+                                            <div key={index}  
+                                                onClick={()=> handleOthers(index)}
+                                                style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                            </div>
+                                    ))
+                                }
+                            </div>
+                        </div> 
+                    </div>           
                 <div className="arrow right" onClick={handleNextClick}></div>
             </main>
         </div>

@@ -3,11 +3,13 @@ import TypeIt from "typeit-react";
 import '../../static/CoverTwo.scss'
 import {useLocation} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useData } from '../../context/DataContext';
 
 function CoverTwo() {
   const location = useLocation();
   const navigate = useNavigate();
   const { name,signal, subtitle, description, selectedFile } = location.state;
+  const {userData, setUserData} = useData()
 
   const backgroundImageStyle = selectedFile
   ? { backgroundImage: `url(${URL.createObjectURL(selectedFile)})`}
@@ -47,8 +49,8 @@ function CoverTwo() {
     navigate('/abouttemplate');
   }
   const handleCover = async () => {
-    const apiUrl = 'http://' + global.address + ':4000/savecover'; // Replace with your backend API endpoint
-      // const apiUrl = 'http://192.249.29.120:4000/savecover'; // Replace with your backend API endpoint
+    // const apiUrl = 'http://' + global.address + ':4000/savecover'; // Replace with your backend API endpoint
+      const apiUrl = 'http://192.249.29.120:4000/savecover'; // Replace with your backend API endpoint
       console.log(signal);
       console.log("We are inside the cover function");
     
@@ -66,8 +68,10 @@ function CoverTwo() {
           console.log(base64Image);
     
           // Now you can use base64Image in the rest of your logic
+          console.log("This is userDAta in cover2")
+          console.log(userData)
           const requestData = {
-            userID: "jjpark57@hotmail.com",
+            userID: userData.email,
             signal: signal,
             title: name,
             subtitle: subtitle,

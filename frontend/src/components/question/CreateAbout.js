@@ -54,11 +54,11 @@ const CreateAbout = () => {
           };
 
 
-          const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
+          //const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
       
           const handleAbout = async () => {
-            const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
-              // const apiUrl = 'http://192.249.29.120:4000/savecover'; // Replace with your backend API endpoint
+            // const apiUrl = 'http://' + global.address + ':4000/saveabout'; // Replace with your backend API endpoint
+            const apiUrl = 'http://192.249.29.120:4000/saveabout'; // Replace with your backend API endpoint
               console.log(signal);
               console.log("We are inside the about function");
             
@@ -77,7 +77,7 @@ const CreateAbout = () => {
             
                   // Now you can use base64Image in the rest of your logic
                   const requestData = {
-                    userID: "jjpark57@hotmail.com",
+                    userID: userData.email,
                     signal: signal,
                     name: name,
                     address: address,
@@ -86,6 +86,8 @@ const CreateAbout = () => {
                     aboutfile: base64Image,
                     date: date.format('YYYY-MM-DD')
                   };
+
+                  console.log(requestData);
                   
             
                   try {
@@ -117,7 +119,7 @@ const CreateAbout = () => {
             };
 
             const handlePreview = () => {
-              const userID = "jjpark57@hotmail.com";
+              const userID = userData.email;
               const formattedDate = date.format('YYYY-MM-DD'); 
             
               if(signal[1][0] == 1){
