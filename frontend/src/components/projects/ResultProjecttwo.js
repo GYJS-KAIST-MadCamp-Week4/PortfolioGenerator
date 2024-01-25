@@ -3,13 +3,13 @@ import '../../static/projecttwo.scss'
 import ProjectBox from './ProjectBox'
 import { Fade } from "react-awesome-reveal";
 
-function ResultProjecttwo({projects}) {
+function ResultProjecttwo({projects, color}) {
 
     console.log(projects)
 
    
   return (
-<div className='project-container-two' style={{backgroundColor: '#6cdab2', marginBottom: '30px'}}>
+<div className='project-container-two' style={{backgroundColor: `${color.hex}`, marginBottom: '30px', paddingBottom: '100px'}}>
 <Fade duration={2500}>
 
         <h2 style={{fontSize: '24pt'}}>Projects</h2>

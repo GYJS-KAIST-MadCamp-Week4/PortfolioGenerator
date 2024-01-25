@@ -5,12 +5,16 @@ import {useLocation} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useData } from '../../context/DataContext.js';
 import { useSignal } from '../../context/SignalContext.js';
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/css";
 function Projectone() {
 
     const location = useLocation();
     const navigate = useNavigate();
     const {userData} = useData()
     const {signal} = useSignal()
+    const [color, setColor] = useColor("#561ecb");
+
     const { userID, projects} = location.state;
     console.log(projects)
 
@@ -30,7 +34,8 @@ function Projectone() {
             const requestData = {
               signal: signal,
               userID: userData.email,
-              projects: projects
+              projects: projects,
+              projectcolor: color
     
             };
 
@@ -52,9 +57,9 @@ function Projectone() {
         }  
 
   return (
-<div className='project-container-one' >
+<div className='project-container-one' style={{height: '100vh', backgroundColor: color.hex}}>
         <h2>Projects</h2>
-         <div className='project-layout' style={{display: 'flex',justifyContent: 'center',  flexDirection: 'row', width: '80%', gap: '30px', flexWrap: 'wrap' , alignContent: 'flex-start'}}>
+         <div className='project-layout' style={{display: 'flex',justifyContent: 'center',  flexDirection: 'row', width: '80%', gap: '30px', flexWrap: 'wrap' , alignContent: 'flex-start',}}>
             {
                 projects.map((e, index) => (
                     <PreviewProjectCard key={index} {...e} style={{ flex: '0 0 calc(33.33% - 30px)' , width: '100%'}}/>
@@ -62,6 +67,10 @@ function Projectone() {
             }
         </div>
         <div className="arrow right" onClick={handleNextClick}></div>
+        <div style={{position: 'absolute', left: '70%', top: '40%'}}>
+                  <ColorPicker hideInput={["rgb", "hsv"]} color={color} onChange={setColor} />
+
+                </div>
     </div>
   )
 }

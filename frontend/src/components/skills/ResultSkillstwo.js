@@ -5,15 +5,15 @@ import {frontend} from '../../assets/frontend'
 import Cards from './Cards';
 import '../../static/skillstwo.scss'
 
-function ResultSkillstwo({frontend, backend, others}) {
+function ResultSkillstwo({frontend, backend, others, color}) {
 
 
   return (
-        <div className='skill-section' style={{height: '100vh'}}>
+        <div className='skill-section' style={{height: '100vh' , backgroundColor: `${color.hex}`, padding: '20px'}}>
 
             <Fade duration={3500}>
 
-                    <center><div style={{color: 'black', justifyContent: 'center'}}><span style={{fontSize: '24pt', fontWeight: 'bold'}}>Skills</span></div></center>
+                    <center><div style={{color: 'black', justifyContent: 'center'}}><span style={{fontSize: '28pt', fontWeight: 'bold'}}>Skills</span></div></center>
                 
             </Fade>
 

@@ -110,6 +110,7 @@ function Result() {
                 education={responseData.userData.education}
                 aboutfile={responseData.userData.aboutfile}
                 date={responseData.userData.date}
+                color={responseData.userData.color}
               />
             )}
             {responseData.userData?.signal?.[1]?.[1] === 1 && (
@@ -120,6 +121,8 @@ function Result() {
                 aboutfile={responseData.userData.aboutfile}
                 date={responseData.userData.date}
                 address={responseData.userData.address}
+                color={responseData.userData.color}
+
               />
             )}
           </Element>
@@ -130,6 +133,8 @@ function Result() {
                 frontend={responseData.userData.frontend}
                 backend={responseData.userData.backend}
                 others={responseData.userData.others}
+                color={responseData.userData.color}
+
               />
             )}
             {responseData.userData?.signal?.[2]?.[1] === 1 && (
@@ -137,6 +142,8 @@ function Result() {
                 frontend={responseData.userData.frontend}
                 backend={responseData.userData.backend}
                 others={responseData.userData.others}
+                color={responseData.userData.color}
+
               />
             )}
             {responseData.userData?.signal?.[2]?.[2] === 1 && (
@@ -144,6 +151,8 @@ function Result() {
                 frontend={responseData.userData.frontend}
                 backend={responseData.userData.backend}
                 others={responseData.userData.others}
+                color={responseData.userData.color}
+
               />
             )}
           </Element>
@@ -152,15 +161,18 @@ function Result() {
             {responseData.userData?.signal?.[3]?.[0] === 1 && (
               <ResultProjectOne
                 projects={responseData.userData.projects}
+                color={responseData.userData.color}
+
               />
             )}
             {responseData.userData?.signal?.[3]?.[1] === 1 && (
               <ResultProjecttwo
                 projects={responseData.userData.projects}
+                color={responseData.userData.color}
+
               />
             )}
           </Element>
-  
     
           <button onClick={handleHome}>Home</button>
           <button onClick={handleSave}>Save</button>

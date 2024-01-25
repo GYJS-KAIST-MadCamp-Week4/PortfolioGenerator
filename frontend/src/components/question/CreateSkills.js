@@ -7,6 +7,8 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { useSignal } from '../../context/SignalContext';
 import {useData} from '../../context/DataContext'
 import global from '../global.js';
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/css";
 
 function CreateSkills() {
   const { signal, setSignal } = useSignal();
@@ -18,6 +20,7 @@ function CreateSkills() {
     const [others, setOthers] = useState([])
    // We are going to send this data to the backend
    const {userData, setUserData} = useData();
+   const [color, setColor] = useColor("#561ecb");
 
   //  const [frontend, setFrontend] = useState('');
   //  const [backend, setBackend] = useState('')
@@ -106,7 +109,11 @@ const handlePreview = ()=> {
         // const apiUrl = 'http://192.249.29.120:4000/saveskills'; // Replace with your backend API endpoint
           console.log("This is the handleskills userdata email")
         const requestData = {
+<<<<<<< HEAD
           userID: userData.email,
+=======
+          userID: userData.emails,
+>>>>>>> eec66fc8b98695de7d16918e1f5aef6994af4d0f
           signal: signal,
           frontend: frontskills,
           backend: backskills,
@@ -181,8 +188,16 @@ const handlePreview = ()=> {
                                             ))
                                         }
                                     </div>
+<<<<<<< HEAD
                                 </div> 
                             </div>           
+=======
+
+                                </div> 
+                                
+                            </div>  
+                                     
+>>>>>>> eec66fc8b98695de7d16918e1f5aef6994af4d0f
                         <div className="arrow right" onClick={handleNextClick}></div>
                     </main>
                 </div>

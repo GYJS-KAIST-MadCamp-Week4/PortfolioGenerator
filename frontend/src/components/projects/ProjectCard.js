@@ -19,9 +19,9 @@ function ProjectCard({title, file, github, description, skills, frontend, backen
     </div>
 
     <div onClick={handleClick}
-        style={{borderRadius: '20px',  width: '380px', height: '300px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+        style={{borderRadius: '20px',  width: '380px', height: '300px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)' ,borderRadius: '20px', backgroundColor: 'white'}}>
 
-          <div className='back-container' style={{display: 'flex', flexDirection: 'column', columnGap: '30px', flexWrap: 'wrap', padding: '20px'}}>
+          <div className='back-container' style={{display: 'flex', flexDirection: 'column', columnGap: '30px', flexWrap: 'wrap', padding: '20px', backgroundColor: 'white'}}>
             <div className='back-title' style={{fontWeight: 'bold', marginBottom: '20px'}}>{title}</div>
             <div className='back-description'>{description}</div>
               <ul className="back-skills" style={{listStyleType: 'none', padding: 0, display: 'flex', flexWrap: 'wrap', columnGap: '20px'}}>

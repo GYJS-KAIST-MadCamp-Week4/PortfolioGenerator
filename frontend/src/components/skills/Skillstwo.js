@@ -6,10 +6,13 @@ import {useLocation} from 'react-router-dom';
 import global from '../global.js';
 import { useData } from '../../context/DataContext.js';
 import { useSignal } from '../../context/SignalContext.js';
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/css";
 function Skillstwo() {
         const location = useLocation();
         const navigate = useNavigate();
         const {userData, setUserData} = useData()
+        const [color, setColor] = useColor("#561ecb");
         const { frontskills, backskills, others } = location.state;
         const {signal} = useSignal()
         const apiUrl = 'http://' + global.address + ':4000/saveskills'; // Replace with your backend API endpoint
@@ -26,6 +29,7 @@ function Skillstwo() {
             frontend: frontskills,
             backend: backskills,
             others: others,
+            skillcolor: color
             // selectedFile: selectedFile
           };
       
@@ -50,12 +54,11 @@ function Skillstwo() {
         };
 
         return (
-                <div className='skill-section' style={{height: '100vh'}}>
+                <div className='skill-section' style={{height: '100vh', backgroundColor: color.hex}}>
         
                     <Fade duration={3500}>
         
                             <center><div style={{color: 'black', justifyContent: 'center'}}><span style={{fontSize: '24pt', fontWeight: 'bold'}}>Skills</span></div></center>
-                        
                     </Fade>
         
                     <Fade duration={3500}>
@@ -90,7 +93,10 @@ function Skillstwo() {
                     </div>
                     <div className="arrow right" onClick={handleNextClick}></div>
         
-        
+                    <div style={{position: 'absolute', left: '80%', top: '60%'}}>
+                  <ColorPicker hideInput={["rgb", "hsv"]} color={color} onChange={setColor} />
+
+                </div>
         
                 </div>
         

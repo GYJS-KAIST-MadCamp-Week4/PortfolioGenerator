@@ -3,6 +3,11 @@ import { SectionsContainer, Section } from 'react-fullpage';
 import { useNavigate } from 'react-router-dom';
 import '../static/Home.css'
 import { useData } from '../context/DataContext';
+import jinsukone from '../img/jinsukone.png'
+import jinsukthree from '../img/jinsukthree.png'
+
+import examplepage from '../img/exampleone.png'
+import exampletwo from '../img/exampletwo.png'
 
 const Header = () => {
   const navigate = useNavigate();
@@ -17,7 +22,7 @@ const Header = () => {
         <div className="menu">
           <a href="#home">Home</a>
           <a href="#instruction">Instruction</a>
-          <a href="#reviews">Reviews</a>
+          {/* <a href="#reviews">Reviews</a> */}
           <a href="#faq">FAQ</a>
           <a onClick={handleMyPageClick}>My Page</a> 
         </div>
@@ -44,6 +49,9 @@ const Column1 = () => {
         <button onClick={handleTryNowClick}>Try Now</button>
         <button>View More</button>
       </div>
+      <div style={{backgroundImage: `url(${jinsukone})`, width: '500px', height: '300px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat',zIndex:'2', marginLeft: '55%', marginTop: '50px',boxShadow: '0 4px 8px rgba(0, 0, 0, 0.8)',}}></div>
+      <div style={{backgroundImage: `url(${jinsukthree})`, width: '500px', height: '300px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', zIndex:'1', left: '15%', top: '56%',boxShadow: '0 4px 8px rgba(0, 0, 0, 0.8)', position: 'absolute'}}></div>
+
     </div>
   );
 };
@@ -57,6 +65,8 @@ const Column2 = () => (
         처음 방문한 여러분들을 위해 시연 동영상을 만들어보았으니 참고해주세요. <br />
         이제 본인만의 포트폴리오 제작을 시도해보세요.</p>
       <button className="text-button">Learn More</button>
+      <div style={{backgroundImage: `url(${examplepage})`,position: 'absolute', width: '500px', height: '300px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', left: '60%', top: '10%',boxShadow: '0 4px 8px rgba(0, 0, 0, 0.4)',}}></div>
+
     </div>
     <div className="template-section">
       <p className="template-title">Template</p>
@@ -64,6 +74,8 @@ const Column2 = () => (
       <p className="template-description">당신을 위해 여러가지 템플릿을 준비해봤어요. <br />
         여러 템플릿 중 마음에 드는 것을 골라 본인 만의 포트폴리오를 만들어보세요.<br /></p>
       <button  className="template-button">Learn More</button>
+      <div style={{backgroundImage: `url(${exampletwo})`,position: 'absolute', width: '500px', height: '300px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', left: '10%', top: '55%',  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.4)',}}></div>
+
     </div>
   </div>
 );
@@ -139,7 +151,7 @@ const Home = () => {
   const [activeSection, setActiveSection] = useState('');
 
   let options = {
-    anchors: ['home', 'instruction', 'reviews', 'faq'], 
+    anchors: ['home', 'instruction', 'faq'], 
     scrollBar: false,
     navigation: true,
   };
@@ -163,9 +175,9 @@ const Home = () => {
         <Section className={`section ${isActive('instruction') ? 'active' : ''}`} anchor="instruction"> 
           <Column2/>
         </Section>
-        <Section className={`section ${isActive('reviews') ? 'active' : ''}`} anchor="reviews"> 
+        {/* <Section className={`section ${isActive('reviews') ? 'active' : ''}`} anchor="reviews"> 
           <Column3/>
-        </Section>
+        </Section> */}
         <Section className={`section ${isActive('faq') ? 'active' : ''}`} anchor="faq"> 
           <Column4/>
         </Section>

@@ -6,12 +6,14 @@ import global from '../global.js';
 import { Fade } from "react-awesome-reveal";
 import { useData } from '../../context/DataContext.js';
 import { useSignal } from '../../context/SignalContext.js';
-
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/css";
 function Skillsthree() {
 
     const location = useLocation();
     const navigate = useNavigate();
     const {userData, setUserData} = useData()
+    const [color, setColor] = useColor("#561ecb");
     const {   frontskills, backskills, others } = location.state;
     const {signal} = useSignal()
     const apiUrl = 'http://' + global.address + ':4000/saveskills'; // Replace with your backend API endpoint
@@ -32,6 +34,7 @@ function Skillsthree() {
         frontend: frontskills,
         backend: backskills,
         others: others,
+        skillcolor: color
         // selectedFile: selectedFile
       };
   
@@ -57,7 +60,7 @@ function Skillsthree() {
 
 
   return (
-    <div className='skills-container-three' style={{backgroundColor: '#e7e6e6'}}>
+    <div className='skills-container-three' style={{backgroundColor: color.hex}}>
                     <Fade duration={2500}>
         <h2>Main Skills</h2>
         <div className='layer-container'>
@@ -93,6 +96,10 @@ function Skillsthree() {
                             ))}
                     </div>
                     <div className="arrow right" onClick={handleNextClick}></div>
+
+                </div>
+                <div style={{position: 'absolute', left: '80%', top: '50%'}}>
+                  <ColorPicker hideInput={["rgb", "hsv"]} color={color} onChange={setColor} />
 
                 </div>
                 </Fade>
