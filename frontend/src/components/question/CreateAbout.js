@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom';
 import {useData} from '../../context/DataContext'
 import global from '../global.js';
 
+
+
 const CreateAbout = () => {
     const { signal, setSignal } = useSignal();
     const navigate = useNavigate();
@@ -21,6 +23,7 @@ const CreateAbout = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [date, setDate] = useState(dayjs()); 
     const {userData, setUserData} = useData();
+
 
 
     const handleBackClick = async() => {
@@ -77,7 +80,7 @@ const CreateAbout = () => {
             
                   // Now you can use base64Image in the rest of your logic
                   const requestData = {
-                    userID: userData[1],
+                    userID: userData.email,
                     signal: signal,
                     name: name,
                     address: address,
@@ -171,6 +174,7 @@ const CreateAbout = () => {
                             <label htmlFor="education">Education</label>
                             <input type="text" id="education" name="education" value={education} onChange={handleEducation} placeholder="학력을 기입해주세요" />
                         </div>
+ 
                     </form>
                     <div className="arrow right-about" onClick={handleNextClick}></div>
                 </main>

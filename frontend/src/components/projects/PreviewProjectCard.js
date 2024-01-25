@@ -21,7 +21,7 @@ function PreviewProjectCard({title, file, github, description, skills, frontend,
     </div>
 
     <div onClick={handleClick}
-        style={{borderRadius: '20px',  width: '380px', height: '300px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+        style={{backgroundColor: 'white', borderRadius: '20px',  width: '380px', height: '300px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
 
           <div className='back-container' style={{display: 'flex', flexDirection: 'column', columnGap: '30px', flexWrap: 'wrap', padding: '20px'}}>
             <div className='back-title' style={{fontWeight: 'bold', marginBottom: '20px'}}>{title}</div>

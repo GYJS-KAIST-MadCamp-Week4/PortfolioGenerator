@@ -38,7 +38,7 @@ function SkillsTemplate() {
 <div className='question-container' style={{marginTop: '-240px'}}>
         <div className='question-image'></div>
         <div className='cover-template-wrapper'>
-        <div className="progress-bar-about"></div>
+        <div className="progress-bar-skills"></div>
             <div className='question-title' style={{fontSize: '24pt'}}>Choose your template</div>
             <div className='question-subtitle' style={{fontSize: '16pt'}}>마음에 드는 템플릿을 선택해주세요</div>
             <div className='question-box' style={{display: 'flex',justifyContent: 'center',  flexDirection: 'row', width: '100%', gap: '50px', flexWrap: 'wrap' }}>

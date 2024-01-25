@@ -7,6 +7,8 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { useSignal } from '../../context/SignalContext';
 import {useData} from '../../context/DataContext'
 import global from '../global.js';
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/css";
 
 function CreateSkills() {
   const { signal, setSignal } = useSignal();
@@ -18,6 +20,7 @@ function CreateSkills() {
     const [others, setOthers] = useState([])
    // We are going to send this data to the backend
    const {userData, setUserData} = useData();
+   const [color, setColor] = useColor("#561ecb");
 
   //  const [frontend, setFrontend] = useState('');
   //  const [backend, setBackend] = useState('')
@@ -105,9 +108,8 @@ const handlePreview = ()=> {
       const handleSkills = async () => {
         // const apiUrl = 'http://192.249.29.120:4000/saveskills'; // Replace with your backend API endpoint
           console.log("This is the handleskills userdata email")
-          console.log(userData[1])
         const requestData = {
-          userID: userData[1],
+          userID: userData.emails,
           signal: signal,
           frontend: frontskills,
           backend: backskills,
@@ -135,70 +137,63 @@ const handlePreview = ()=> {
     
       };
   
-  return (
-<>
-<div className="create-container">
-            <header className="create-header">
-                <div className="preview-icon" onClick={handlePreview}></div>
-                <div className="progress-bar"></div>
-            </header>
-            <main className="create-main">
-                <div className="arrow left" onClick={handleBackClick}></div>
-                      <div className='cover-template-wrapper' style={{marginTop: '0px', height: 'max-content'}}>
-                  <div className='question-title' style={{fontWeight: 'normal'}}>Frontend</div>
-                      <div className='layer-container'>
-                      <h2 style={{textAlign: 'center'}}></h2>
-                      <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
-                          {
-                              skilllist[0].types.map((e,index) => (
-                                      <div key={index}  
-                                          onClick={()=> handleFrontend(index)}
-                                          className={`skill-card ${frontskills.includes(e) ? 'selected' : ''}`}
-                                          style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
-                                      </div>
-                              ))
-                          }
-                      </div>
-                  </div>
-                  <div style={{fontSize: '28pt', marginTop: '60px', fontWeight: 'normal'}}>Backend</div>
-                  <div className='layer-container'>
-                      <h2 style={{textAlign: 'center'}}></h2>
-                      <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
-                          {
-                              skilllist[1].types.map((e,index) => (
-                                      <div key={index}  
-                                      onClick={()=> handleBackend(index)}
-                                          style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
-                                      </div>
-                              ))
-                          }
-                      </div>
-                  </div>
-                
-                  <div style={{fontSize: '28pt', marginTop: '60px', fontWeight: 'normal'}}>Others</div>
-                  <div className='layer-container'>
-                      <h2 style={{textAlign: 'center'}}></h2>
-                      <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
-                          {
-                              skilllist[2].types.map((e,index) => (
-                                      <div key={index}  
-                                          onClick={()=> handleOthers(index)}
-                                          style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
-                                      </div>
-                              ))
-                          }
-                      </div>
-                  </div>            
-                  {/* <button onClick={handleModalButtonClick}>Open Modal</button> */}
-                  {/* <button onClick={handleSkills}>Send Skills</button> */}
+      return (
+        <>
+        <div className="create-container-skills">
+                    <header className="create-header-skills">
+                        <div className="preview-icon-skills" onClick={handlePreview}></div>
+                        <div className="progress-bar-skills"></div>
+                    </header>
+                    <main className="create-main">
+                        <div className="arrow left" onClick={handleBackClick}></div>
+                          <div className='cover-template-wrapper'>
+                            <div className="photo-container-skills"></div>
+                                <div className='layer-container'>
+                                  <div className='question-title'>Frontend</div>
+                                  <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
+                                      {
+                                          skilllist[0].types.map((e,index) => (
+                                                  <div key={index}  
+                                                      onClick={()=> handleFrontend(index)}
+                                                      className={`skill-card ${frontskills.includes(e) ? 'selected' : ''}`}
+                                                      style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                                  </div>
+                                          ))
+                                      }
+                                </div>
+                                <div className='question-title'>Backend</div>
+                                    <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
+                                        {
+                                            skilllist[1].types.map((e,index) => (
+                                                    <div key={index}  
+                                                    onClick={()=> handleBackend(index)}
+                                                        style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                                    </div>
+                                            ))
+                                        }
+                                </div>
+                          
+                                <div className='question-title'>Others</div>
+                                    <div className='layer-cards' style={{display: 'flex', flexDirection: 'row', width: '100%', gap: '30px'}} >
+                                        {
+                                            skilllist[2].types.map((e,index) => (
+                                                    <div key={index}  
+                                                        onClick={()=> handleOthers(index)}
+                                                        style={{backgroundImage: `url(${e})`,borderRadius: '20px', backgroundColor: 'white', width: '70px', height: '70px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.2)'}}>
+                                                    </div>
+                                            ))
+                                        }
+                                    </div>
 
-
-          </div>
-                <div className="arrow right" onClick={handleNextClick}></div>
-            </main>
-        </div>
-  </>
-  )
-}
+                                </div> 
+                                
+                            </div>  
+                                     
+                        <div className="arrow right" onClick={handleNextClick}></div>
+                    </main>
+                </div>
+          </>
+          )
+        }
 
 export default CreateSkills

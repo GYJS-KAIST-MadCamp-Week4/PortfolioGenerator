@@ -5,12 +5,15 @@ import Person2Icon from '@mui/icons-material/Person2';
 import SchoolIcon from '@mui/icons-material/School';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import HomeIcon from '@mui/icons-material/Home';
 import CakeIcon from '@mui/icons-material/Cake';
 import {useLocation} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useData } from '../../context/DataContext.js';
 import { useSignal } from '../../context/SignalContext.js';
 import global from '../global.js';
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/css";
 
 function AboutMeOne() {
   const location = useLocation();
@@ -18,6 +21,8 @@ function AboutMeOne() {
   const {userData, setUserData} = useData()
   const { userID, name, email, education, address, selectedFile, date } = location.state;
   const {signal} = useSignal()
+  const [color, setColor] = useColor("#561ecb");
+
   const backgroundImageStyle = selectedFile
   ? { backgroundImage: `url(${URL.createObjectURL(selectedFile)})`}
   : {};
@@ -56,7 +61,8 @@ function AboutMeOne() {
                 address: address,
                 education: education,
                 aboutfile: base64Image,
-                date:date
+                date:date,
+                aboutcolor: color
               };
               
         
@@ -83,18 +89,25 @@ function AboutMeOne() {
             console.log("Did not select file");
           }
         };
+        console.log(color)
 
   return (
-    <div className='about'>
+    <div className='about' style={{backgroundColor: color.hex}}>
         <Fade  duration={3500}>
             <div className='aboutme-container'>
-                <div className='title'>About Me</div>    
+              <div className='title'>About Me</div>
+   
                 <div className='profile' style={backgroundImageStyle}></div>
                 <div className='Name'><div className='box1'>< Person2Icon /> </div > <div className='box2'><span>이름</span></div><div className='box3'>{name}</div></div>
                 <div className='Birth'><div className='box1'>< CakeIcon /> </div > <div className='box2'><span>생일</span></div><div className='box3'>{date}</div></div>
                 <div className='School'> <div className='box1'><SchoolIcon /></div> <div className='box2'><span>학교</span></div><div className='box3'>{education}</div></div>
                 <div className='Email'> <div className='box1'><EmailIcon /></div><div className='box2'>이메일</div><div className='box3'>{email}</div> </div>
-                <div className='Github'><div className='box1'><GitHubIcon /></div><div className='box2'>주소지</div> <div className='box3'><a href="https://github.com/jjpark51" style={{color: 'whitesmoke'}}>{address}</a></div> </div>
+                <div className='Github'><div className='box1'><HomeIcon /></div><div className='box2'>주소지</div> <div className='box3'>{address}</div> </div>
+                <div style={{position: 'absolute', left: '80%', top: '20%'}}>
+                  <ColorPicker hideInput={["rgb", "hsv"]} color={color} onChange={setColor} />
+
+                </div>
+
             </div>   
             <div className="arrow right" onClick={handleNextClick}></div>
 

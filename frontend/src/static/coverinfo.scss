@@ -1,22 +1,105 @@
-.cover-template-wrapper {
-    height: 400px;
-    width:80%;
-    margin: auto;
-    transform: translateY(0%);
-    z-index: 2;
+.create-container-skills{
     display: flex;
     flex-direction: column;
-    justify-content: center;  // Center content vertically
-    align-items: center;      // Center content horizontally
-    .question-title {
-        text-align: center;
-        font-size: 28pt;
-        font-weight: bold;
+    height: 100vh;
+    background-image: url('../img/background_icon.png');
+    background-size: auto;
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-color: #FAFFFF;
+
+
+    .create-header-skills{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .preview-icon-skills{
+            width: 50px;
+            height: 50px;
+            background-image: url('../img/preview_button.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-bottom: 20px;
+            position: absolute;
+            left: 80px;
+        }
+
+
+        .progress-bar-skills{
+            width: 850px;
+            height: 50px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin: 40px auto; 
+            background-image: url(../img/progress-skills.png);
+        }
     }
-    .question-subtitle {
-        text-align: center;
-        margin-top: 20px;
-        font-size: 28pt;
-        font-weight: bold;
+
+    @font-face {
+        font-family: 'Handlee';
+        src: url(../font/Handlee.ttf);
+    }
+
+    .create-main{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end; 
+        justify-content: space-between; 
+        .arrow {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-size: contain;
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
+        
+        .left {
+            left: 30px;
+            background-image: url('../img/previous_button.png');
+        }
+        
+        .right {
+            right: 15px;
+            background-image: url('../img/next_button.png');
+        }
+        .cover-template-wrapper {
+            display: flex;
+            flex-direction: row; 
+            width: 100%;
+
+            .photo-container-skills{
+                flex: 1;
+                max-width: 50%; 
+                height: 400px; 
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-image: url(../img/skills_icon.png);
+                margin-top:650px;
+            }
+
+            .layer-container{
+                flex: 1;
+                max-width: 50%;
+                font-family: 'Handlee';
+                font-size: 30px; 
+                color: #000;
+                -webkit-text-stroke: 0.3px #000;
+                display: flex; 
+                flex-direction: column; 
+                justify-content: flex-start; 
+                align-items: flex-start;
+                margin-top: 180px;
+                margin-right:200px;
+
+                .question-title{
+                    margin: 20px;
+                    margin-top:100px;
+                }
+            }
+        }
     }
 }

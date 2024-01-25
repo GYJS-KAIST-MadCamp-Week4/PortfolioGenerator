@@ -1,6 +1,8 @@
 import React, { useEffect , useState} from 'react'
 import CoverOne from './cover/CoverOne';
 import ResultCoverOne from './cover/ResultCoverOne'
+import ResultCoverTwo from './cover/ResultCoverTwo.js';
+import ResultAboutMeTwo from './aboutme/ResultAboutMeTwo.js';
 import ResultAboutMeOne from './aboutme/ResultAboutMeOne'
 import ResultSkillsone from './skills/ResultSkillsOne';
 import ResultSkillstwo from './skills/ResultSkillstwo';
@@ -20,8 +22,8 @@ function MyPage() {
     console.log(userData)
     const apiUrl = 'http://' + global.address + ':4000/result'; // Replace with your backend API endpoint
 
-    const handleHome=()=> {
-      navigate('/home')
+    const handleLogout=()=> {
+      navigate('/login')
     }
     const handleSave=()=> {
       navigate('/mypage')
@@ -63,7 +65,7 @@ function MyPage() {
         handleSignal();
       }, [setResponseData]); // Add dependencies if needed
 
-  return (
+      return (
         <div style={{ height: '100vh', width: '100%' }}>
             <div>
           {responseData.userData?.signal?.[0]?.[0] === 1 && (
@@ -75,14 +77,7 @@ function MyPage() {
             />
           )}
           {responseData.userData?.signal?.[0]?.[1] === 1 && (
-            <ResultCoverOne
-              title={responseData.userData.title}
-              subtitle={responseData.userData.subtitle}
-              description={responseData.userData.description}
-            />
-          )}
-          {responseData.userData?.signal?.[0]?.[2] === 1 && (
-            <ResultCoverOne
+            <ResultCoverTwo
               title={responseData.userData.title}
               subtitle={responseData.userData.subtitle}
               description={responseData.userData.description}
@@ -93,9 +88,27 @@ function MyPage() {
           {responseData.userData?.signal?.[1]?.[0] === 1 && (
             <ResultAboutMeOne
               name={responseData.userData.name}
-              email={responseData.userData.emailAddress}
+              emailAddress={responseData.userData.emailAddress}
               education={responseData.userData.education}
               aboutfile={responseData.userData.aboutfile}
+              date={responseData.userData.date}
+              address={responseData.userData.address}
+              color={responseData.userData.aboutcolor}
+
+            />
+          )}
+          </div>
+          <div style={{}}>
+          {responseData.userData?.signal?.[1]?.[1] === 1 && (
+            <ResultAboutMeTwo
+              name={responseData.userData.name}
+              emailAddress={responseData.userData.emailAddress}
+              education={responseData.userData.education}
+              aboutfile={responseData.userData.aboutfile}
+              date={responseData.userData.date}
+              address={responseData.userData.address}
+              color={responseData.userData.aboutcolor}
+
             />
           )}
           </div>
@@ -105,6 +118,8 @@ function MyPage() {
               frontend={responseData.userData.frontend}
               backend={responseData.userData.backend}
               others={responseData.userData.others}
+              color={responseData.userData.skillcolor}
+
             />
           )}
           {responseData.userData?.signal?.[2]?.[1] === 1 && (
@@ -112,6 +127,8 @@ function MyPage() {
               frontend={responseData.userData.frontend}
               backend={responseData.userData.backend}
               others={responseData.userData.others}
+              color={responseData.userData.skillcolor}
+
             />
           )}
           {responseData.userData?.signal?.[2]?.[2] === 1 && (
@@ -119,6 +136,8 @@ function MyPage() {
               frontend={responseData.userData.frontend}
               backend={responseData.userData.backend}
               others={responseData.userData.others}
+              color={responseData.userData.skillcolor}
+
             />
           )}
           </div>
@@ -126,18 +145,23 @@ function MyPage() {
           {responseData.userData?.signal?.[3]?.[0] === 1 && (
             <ResultProjectOne
               projects={responseData.userData.projects}
+              color={responseData.userData.projectcolor}
+
 
             />
           )}
           {responseData.userData?.signal?.[3]?.[1] === 1 && (
             <ResultProjecttwo
               projects={responseData.userData.projects}
+              color={responseData.userData.projectcolor}
 
             />
           )}
           </div>
+          <button onClick={handleLogout}>Logout</button>
+
         </div>
-  )
+      );
 }
 
 export default MyPage

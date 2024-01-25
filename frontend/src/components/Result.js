@@ -69,7 +69,7 @@ function Result() {
 
     
       return (
-        <div style={{ height: '200vh', width: '100%' }}>
+        <div style={{ height: '100vh', width: '100%' }}>
             <div>
           {responseData.userData?.signal?.[0]?.[0] === 1 && (
             <ResultCoverOne
@@ -95,10 +95,13 @@ function Result() {
               education={responseData.userData.education}
               aboutfile={responseData.userData.aboutfile}
               date={responseData.userData.date}
+              address={responseData.userData.address}
+              color={responseData.userData.aboutcolor}
+
             />
           )}
           </div>
-          <div style={{marginTop: '100vh'}}>
+          <div style={{}}>
           {responseData.userData?.signal?.[1]?.[1] === 1 && (
             <ResultAboutMeTwo
               name={responseData.userData.name}
@@ -107,6 +110,8 @@ function Result() {
               aboutfile={responseData.userData.aboutfile}
               date={responseData.userData.date}
               address={responseData.userData.address}
+              color={responseData.userData.aboutcolor}
+
             />
           )}
           </div>
@@ -116,6 +121,8 @@ function Result() {
               frontend={responseData.userData.frontend}
               backend={responseData.userData.backend}
               others={responseData.userData.others}
+              color={responseData.userData.skillcolor}
+
             />
           )}
           {responseData.userData?.signal?.[2]?.[1] === 1 && (
@@ -123,6 +130,8 @@ function Result() {
               frontend={responseData.userData.frontend}
               backend={responseData.userData.backend}
               others={responseData.userData.others}
+              color={responseData.userData.skillcolor}
+
             />
           )}
           {responseData.userData?.signal?.[2]?.[2] === 1 && (
@@ -130,6 +139,8 @@ function Result() {
               frontend={responseData.userData.frontend}
               backend={responseData.userData.backend}
               others={responseData.userData.others}
+              color={responseData.userData.skillcolor}
+
             />
           )}
           </div>
@@ -137,12 +148,15 @@ function Result() {
           {responseData.userData?.signal?.[3]?.[0] === 1 && (
             <ResultProjectOne
               projects={responseData.userData.projects}
+              color={responseData.userData.projectcolor}
+
 
             />
           )}
           {responseData.userData?.signal?.[3]?.[1] === 1 && (
             <ResultProjecttwo
               projects={responseData.userData.projects}
+              color={responseData.userData.projectcolor}
 
             />
           )}

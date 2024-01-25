@@ -111,7 +111,7 @@ function CreateProject() {
         
             const requestData = {
               signal: signal,
-              userID: userData[1],
+              userID: userData.emails,
               projects: projects
     
             };

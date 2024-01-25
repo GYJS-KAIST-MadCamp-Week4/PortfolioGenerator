@@ -9,13 +9,13 @@ import HomeIcon from '@mui/icons-material/Home';
 
 import global from '../global.js';
 
-function ResultAboutMeTwo({address, emailAddress ,education, name, date}) {
+function ResultAboutMeTwo({address, emailAddress ,education, name, date, color}) {
 
 
 
     return (
         <Fade>
-        <div className='about-me-container'>
+        <div className='about-me-container' style={{backgroundColor: `${color.hex}`}}>
             <div className='about-me-header'>ABOUT ME</div>
             <div className='about-me-sections'>
             <div className='personal-info'>

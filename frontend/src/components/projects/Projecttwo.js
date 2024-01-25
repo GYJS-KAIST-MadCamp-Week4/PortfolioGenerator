@@ -6,12 +6,16 @@ import {useLocation} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useData } from '../../context/DataContext.js';
 import { useSignal } from '../../context/SignalContext.js';
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/css";
 function Projecttwo() {
     const location = useLocation();
     const navigate = useNavigate();
     const {userData} = useData()
     const {signal} = useSignal();
     const {  projects} = location.state;
+    const [color, setColor] = useColor("#561ecb");
+
     console.log(projects)
 
     const handleNextClick = async() => {
@@ -29,8 +33,9 @@ function Projecttwo() {
             const requestData = {
               signal: signal,
               userID: userData.email,
-              projects: projects
-    
+              projects: projects,
+              projectcolor: color
+
             };
 
             try {
@@ -51,7 +56,7 @@ function Projecttwo() {
         }  
 
   return (
-<div className='project-container-two' style={{backgroundColor: '#e7e6e6'}}>
+<div className='project-container-two' style={{backgroundColor: `${color.hex}`, height: '100vh'}}>
         <h2>Projects</h2>
          <div className='project-layout' style={{display: 'flex',justifyContent: 'center',  flexDirection: 'column', width: '70%', gap: '100px', flexWrap: 'wrap' , alignContent: 'flex-start'}}>
             {
@@ -61,6 +66,10 @@ function Projecttwo() {
             }
         </div>
         <div className="arrow right" onClick={handleNextClick}></div>
+        <div style={{position: 'absolute', left: '78%', top: '50%'}}>
+                  <ColorPicker hideInput={["rgb", "hsv"]} color={color} onChange={setColor} />
+
+                </div>
     </div>
   )
 }

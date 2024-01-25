@@ -11,13 +11,16 @@ import { useNavigate } from 'react-router-dom';
 import global from '../global.js';
 import { useData } from '../../context/DataContext.js';
 import { useSignal } from '../../context/SignalContext.js';
-
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/css";
 function AboutMeTwo() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { address, email, education, name, date } = location.state;
+    const { address, email, education, name, date, } = location.state;
     const {userData, setUserData} = useData()
     const {signal} = useSignal()
+    const [color, setColor] = useColor("#561ecb");
+
     console.log(date);
 
     const handleAbout = async () => {
@@ -33,7 +36,8 @@ function AboutMeTwo() {
                 emailAddress: email,
                 education: education,
                 date: date,
-                address: address
+                address: address,
+                aboutcolor: color
               };
               
         
@@ -61,8 +65,9 @@ function AboutMeTwo() {
           }
     return (
         <Fade>
-        <div className='about-me-container'>
+        <div className='about-me-container' style={{backgroundColor: color.hex}}>
             <div className='about-me-header'>ABOUT ME</div>
+
             <div className='about-me-sections'>
             <div className='personal-info'>
                 <div className='info-input'>
@@ -91,6 +96,10 @@ function AboutMeTwo() {
             </div>
             <div className="arrow right" onClick={handleNextClick}></div>
         </div>
+        <div style={{position: 'absolute', left: '10%', top: '50%', }}>
+                  <ColorPicker hideInput={["rgb", "hsv"]} color={color} onChange={setColor} />
+
+                </div>
         </Fade>
     );
 }
